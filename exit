@@ -1,0 +1,47 @@
+[33mcommit d05865126d9d2295f6f14ed1eedaaa12ee7af9d5[m[33m ([m[1;36mHEAD -> [m[1;32mJoel_Huillca[m[33m, [m[1;31morigin/Joel_Huillca[m[33m)[m
+Author: Yo o <joel.huillca@alumnos.ucn.cl>
+Date:   Mon Apr 25 01:21:09 2022 -0400
+
+    Holi
+
+[33mcommit f68a0080a380aff5db87d442e48c658a9eb19f7b[m[33m ([m[1;32mmain[m[33m)[m
+Author: Yo o <joel.huillca@alumnos.ucn.cl>
+Date:   Sun Apr 24 00:27:07 2022 -0400
+
+    holi
+
+[33mcommit c435a540a59a6a4d4cd21bf234844abdcbc99bcb[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: bdea5e8 f00aeb5
+Author: Diego Leon <89481968+Dalx-Leonct@users.noreply.github.com>
+Date:   Fri Apr 22 19:58:54 2022 -0400
+
+    Merge pull request #2 from diegoAguilera11/ramaPlantilla
+    
+    Plantilla Fashion Dog
+
+[33mcommit f00aeb545364a1e0c8b19b52069ed8a303d82edf[m[33m ([m[1;31morigin/ramaPlantilla[m[33m)[m
+Author: diegoAguilera11 <diego.aguilera@alumnos.ucn.cl>
+Date:   Fri Apr 22 19:48:50 2022 -0400
+
+    plantilla
+
+[33mcommit bdea5e8bfa1f88418573e9a231c4ea010bf50ef1[m
+Merge: 679d175 00a95ad
+Author: Diego_ZR11 <89411992+diegoAguilera11@users.noreply.github.com>
+Date:   Mon Apr 18 16:49:54 2022 -0400
+
+    Merge pull request #1 from diegoAguilera11/modificacion
+    
+    prueba
+
+[33mcommit 00a95ad72d9894a5d7fe93aa480c54a9df3a2e0a[m[33m ([m[1;31morigin/modificacion[m[33m)[m
+Author: Rodrigo <rodrigo.dominguez@alumnos.ucn.cl>
+Date:   Mon Apr 18 16:40:24 2022 -0400
+
+    prueba
+
+[33mcommit 679d175aea02dd4b69fa603395d6ecc6a7cebdd0[m
+Author: diegoAguilera11 <diego.aguilera@alumnos.ucn.cl>
+Date:   Mon Apr 11 17:46:04 2022 -0400
+
+    first commit
