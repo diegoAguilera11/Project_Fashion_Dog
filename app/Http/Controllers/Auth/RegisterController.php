@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Unique;
+use Freshwork\ChileanBundle\Rut;
 
 class RegisterController extends Controller
 {
@@ -52,10 +53,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'rut' => ['required', 'string', 'unique:users'],
-            'name' => ['required', 'string', 'max:255'],
+            'rut' => ['required', 'string', 'unique:users','cl_rut'],
+            'nombre' => ['required', 'string'],
+            'apellidoPaterno' =>['required', 'string'],
+            'telefono' =>['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'confirmed'],
         ]);
     }
 
@@ -67,12 +70,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        /*dd($data);*/ // Datos que se estan guardando.....
+        //dd($data);// // Datos que se estan guardando.....
+
         return User::create([
-            'name' => $data['name'],
-            'rut' => $data ['rut'],
+            'rut' => $data['rut'],
+            'nombre' => $data['nombre'],
+            'apellidoPaterno' => $data['apellidoPaterno'],
+            'telefono' => $data['telefono'],
             'email' => $data['email'],
+            'direccion' => $data['direccion'],
             'password' => Hash::make($data['password']),
+            'rol' => 'cliente',
+            'estado' => 'habilitado',
         ]);
     }
 }
