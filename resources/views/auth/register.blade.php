@@ -93,7 +93,7 @@
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ 'Ingrese un correo electrinico valido' }}</strong>
+                                                <strong>{{ 'Ingrese un correo electronico válido' }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -127,7 +127,7 @@
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ 'ERROR:Ingrese una contraseña entre 10 y 15 caracteres, asegurese que ambas contraseñas sean iguales '}}</strong>
+                                                <strong>{{ 'ERROR: Ingrese una contraseña entre 10 y 15 caracteres, asegurese que ambas contraseñas sean iguales '}}</strong>
                                             </span>
                                         @enderror
                                     </div>

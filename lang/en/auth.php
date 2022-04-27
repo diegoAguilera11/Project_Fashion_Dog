@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'El RUT ingresado no esta registrado.',
+    'failed' => 'Las credenciales de accesos son incorrectas o el usuario no esta registrado en el sistema.',
     'password' => 'La Contraseña es incorrecta',
     'throttle' => 'Demasiados intentos al ingresar. Por favor intentelo mas tarde.',
 
