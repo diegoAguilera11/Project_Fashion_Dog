@@ -56,9 +56,10 @@ class RegisterController extends Controller
             'rut' => ['required', 'string', 'unique:users','cl_rut'],
             'nombre' => ['required', 'string'],
             'apellidoPaterno' =>['required', 'string'],
-            'telefono' =>['required'],
+            'telefono' =>['required', 'integer'],
+            'direccion' =>['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'confirmed'],
+            'password' => ['required', 'string', 'confirmed',],
         ]);
     }
 

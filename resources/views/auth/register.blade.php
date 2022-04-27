@@ -24,7 +24,7 @@
 
                                         @error('rut')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ 'error rut invalido' }}</strong>
+                                                <strong>{{ 'Error RUT invalido' }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -76,7 +76,7 @@
 
                                         @error('telefono')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ 'El teléfono móvil ingresado no es válido (Entre 10 y 15 digitos)' }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -93,7 +93,7 @@
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ 'Ingrese un correo electrinico valido' }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -127,7 +127,7 @@
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <strong>{{ 'ERROR:Ingrese una contraseña entre 10 y 15 caracteres, asegurese que ambas contraseñas sean iguales '}}</strong>
                                             </span>
                                         @enderror
                                     </div>
