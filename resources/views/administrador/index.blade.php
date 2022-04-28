@@ -10,8 +10,8 @@
 
                     <div class="card-body">
                         <center>
-                        <a href="clientes/create" class="btn btn-success">Registrar Estilistas</a>
-                        <a href="clientes/create" class="btn btn-success">Editar Estilistas</a>
+                        <a href="/create" class="btn btn-success">Registrar Estilistas</a>
+                        <a href="adminitrador/create" class="btn btn-success">Editar Estilistas</a>
                         </center>
                     </div>
                 </div>
