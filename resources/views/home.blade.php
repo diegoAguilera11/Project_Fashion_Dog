@@ -16,9 +16,8 @@
                                         <a href="/cliente">
                                             Vista cliente
                                         </a>
-                                        <h1>Bienvenido</h1>
+                                        <h1>Bienvenido {{ Auth::user()->nombre }}</h1>
                                     @endif
-                                    <h1>No Puedes Entrar</h1>
                                 @endif
 
                                 @if (Auth::user()->rol == 'admin')
