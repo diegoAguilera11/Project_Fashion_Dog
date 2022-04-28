@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+    
+
     <div class="container">
 
         <body class style="background-color: #ffffff">
@@ -18,7 +21,7 @@
                                         </a>
                                         <h1>Bienvenido</h1>
                                     @endif
-                                    <h1>No Puedes Entrar</h1>
+                                   
                                 @endif
 
                                 @if (Auth::user()->rol == 'admin')
