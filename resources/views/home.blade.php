@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
     <div class="container">
 
         <body class style="background-color: #ffffff">
@@ -18,9 +21,6 @@
                                         </a>
                                         <h1>Bienvenido {{ Auth::user()->nombre }}</h1>
                                     @endif
-                                @endif
-
-                                @if (Auth::user()->rol == 'admin')
                                     <center>
                                         <h1>Bienvenido Administrador {{ Auth::user()->nombre }}</h1>
                                         <a href="/administrador" class="btn btn-success">Administrar Estilistas</a>

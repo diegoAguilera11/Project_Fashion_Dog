@@ -126,7 +126,7 @@
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ 'ERROR: Ingrese una contraseña entre 10 y 15 caracteres, asegurese que ambas contraseñas sean iguales ' }}</strong>
+                                                <strong>{{ 'ERROR: Ingrese una contraseña entre 10 y 15 caracteres, asegurese que ambas contraseñas sean iguales '}}</strong>
                                             </span>
                                         @enderror
                                     </div>
