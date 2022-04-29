@@ -14,7 +14,6 @@
                         <div class="card-body">
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
-
                                 <div class="row mb-3">
                                     <label for="rut" class="col-md-4 col-form-label text-md-end">{{ __('RUT') }}</label>
 
@@ -70,8 +69,9 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Telefono Movil') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="telefono" type="telefono"
-                                            class="form-control @error('telefono') is-invalid @enderror" name="telefono"
+                                        <input id="telefono" type="text" id="telefono" name="telefono"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /
+                                            class="form-control @error('telefono') is-invalid @enderror"
                                             value="{{ old('telefono') }}" required autocomplete="telefono">
 
                                         @error('telefono')

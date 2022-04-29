@@ -2,7 +2,7 @@
 
 @section('content')
 
-    
+
 
     <div class="container">
 
@@ -19,12 +19,8 @@
                                         <a href="/cliente">
                                             Vista cliente
                                         </a>
-                                        <h1>Bienvenido</h1>
+                                        <h1>Bienvenido {{ Auth::user()->nombre }}</h1>
                                     @endif
-                                   
-                                @endif
-
-                                @if (Auth::user()->rol == 'admin')
                                     <center>
                                         <h1>Bienvenido Administrador {{ Auth::user()->nombre }}</h1>
                                         <a href="/administrador" class="btn btn-success">Administrar Estilistas</a>
@@ -34,6 +30,12 @@
                                     <a href="/estilista">
                                     </a>
                                     <h1>Ingresado Como Estilista</h1>
+                                @endif
+
+                                @if (Auth::user()->rol == 'cliente')
+                                    <a href="/cliente">
+                                    </a>
+                                    <h1>Ingresado Como Cliente</h1>
                                 @endif
                             </div>
                         </div>

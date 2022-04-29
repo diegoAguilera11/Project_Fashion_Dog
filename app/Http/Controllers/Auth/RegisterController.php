@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Rules\ValidacionRut;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -56,7 +55,7 @@ class RegisterController extends Controller
             'rut' => ['required', 'string', 'unique:users','cl_rut'],
             'nombre' => ['required', 'string', 'min:2'],
             'apellidoPaterno' =>['required', 'string', 'min:2'],
-            'telefono' =>['required', 'integer', 'min:10'],
+            'telefono' =>['required', 'string', 'min:10','max:15'],
             'direccion' =>['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'confirmed', 'min:10'],

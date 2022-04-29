@@ -1,7 +1,7 @@
 @extends('layouts.plantilla_estilistas')
 
 @section('contenido')
-    <a href="estilistas/create" class="btn btn-success">REGISTRAR ESTILISTAS</a>
+    <a href="estilista/create" class="btn btn-success">REGISTRAR ESTILISTAS</a>
     <body class style="background-color: #ffffff">
         <table class="table table-dark table-striped mt-4">
             <thead>
