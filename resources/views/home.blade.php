@@ -31,6 +31,12 @@
                                     </a>
                                     <h1>Ingresado Como Estilista</h1>
                                 @endif
+
+                                @if (Auth::user()->rol == 'cliente')
+                                    <a href="/cliente">
+                                    </a>
+                                    <h1>Ingresado Como Cliente</h1>
+                                @endif
                             </div>
                         </div>
                     </div>

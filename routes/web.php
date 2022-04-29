@@ -19,15 +19,33 @@ use Illuminate\Database\Schema\Blueprint;
 Route::get('/', function () {
     return view('mainScreen');
 });
-
+//METODOS QUE RETORNAR LAS VIEWS DE ESTILISTA
 Route::get('/estilista', function () {
     return view('estilista.index');
 });
-
+Route::get('/estilista/create', function () {
+    return view('estilista.create');
+});
+Route::get('/estilista/edit', function () {
+    return view('estilista.edit');
+});
+//METODOS QUE RETORNAN LAS VIEWS DE CLIENTE
+Route::get('/cliente/create', function () {
+    return view('cliente.create');
+});
+Route::get('/cliente/edit', function () {
+    return view('cliente.edit');
+});
 Route::get('/cliente', function () {
     return view('cliente.index');
 });
-
+//METODOS QUE RETORNAN LAS VIEWS DE ADMINISTRADOR
+Route::get('/administrador/create', function () {
+    return view('administrador.create');
+});
+Route::get('/administrador/edit', function () {
+    return view('administrador.edit');
+});
 Route::get('/administrador', function () {
     return view('administrador.index');
 });
@@ -38,7 +56,7 @@ Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
 
-Route::resource('estilistas','App\Http\Controllers\EstilistaController');
+Route::resource('estilistas', 'App\Http\Controllers\EstilistaController');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
