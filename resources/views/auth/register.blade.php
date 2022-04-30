@@ -23,7 +23,7 @@
 
                                         @error('rut')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ 'Error RUT invalido' }}</strong>
+                                                <strong>{{ 'RUT inválido' }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -70,8 +70,8 @@
 
                                     <div class="col-md-6">
                                         <input id="telefono" type="text" id="telefono" name="telefono"
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /
-                                            class="form-control @error('telefono') is-invalid @enderror"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                            / class="form-control @error('telefono') is-invalid @enderror"
                                             value="{{ old('telefono') }}" required autocomplete="telefono">
 
                                         @error('telefono')
@@ -93,7 +93,7 @@
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ 'Ingrese un correo electronico válido' }}</strong>
+                                                <strong>{{ 'Su correo electronico no es válido' }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -127,7 +127,7 @@
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ 'ERROR: Ingrese una contraseña entre 10 y 15 caracteres, asegurese que ambas contraseñas sean iguales '}}</strong>
+                                                <strong>{{ 'El largo de la contraseña debe estar entre 10 y 15 caracteres, asegurese que ambas contraseñas sean iguales ' }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -140,6 +140,11 @@
                                     <div class="col-md-6">
                                         <input id="password-confirm" type="password" class="form-control"
                                             name="password_confirmation" required autocomplete="new-password">
+                                        @error('password-confirm')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ 'Las contraseñas no coinciden' }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row mb-0">

@@ -49,6 +49,7 @@
                         @guest
                             @if (Route::has('register'))
                                 <li class="nav-item">
+                                    <b>
                                     <a class="nav-link" href="/">{{ __('Inicio') }}</a>
                                 </li>
                             @endif
@@ -62,21 +63,22 @@
                                     </a>
                                 @else
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                        document.getElementById('logout-form').submit();">
+                                    {{-- <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                            document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
-                                    </a>
+                                    </a> --}}
                                 @endif
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                            document.getElementById('logout-form').submit();">
+                                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Cambiar Contraseña') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                            document.getElementById('logout-form').submit();">
+                                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </a>
 
