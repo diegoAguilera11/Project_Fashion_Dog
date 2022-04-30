@@ -45,9 +45,9 @@
                     inolvidable junto a tu mascota.</h3>
                 <p class="lead">
                     <center>
-                        <a class="btn btn-primary btn-lg" href="{{ route('login') }}"
+                        <a class="btn btn-success btn-lg" href="{{ route('login') }}"
                             class="text-sm text-gray-700 dark:text-gray-500 underline">Iniciar Sesión</a>
-                        <a class="btn btn-primary btn-lg" href="{{ route('register') }}"
+                        <a class="btn btn-success btn-lg" href="{{ route('register') }}"
                             class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registrar</a>
                     </center>
                 </p>
