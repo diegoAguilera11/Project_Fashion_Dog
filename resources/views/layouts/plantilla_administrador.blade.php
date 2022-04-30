@@ -15,8 +15,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #a1a1a1">
-        <div style="height: 50px; background-color: #a1a1a1 "></div>
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #FC623B">
+        <div style="height: 50px; background-color: #FC623B "></div>
 
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
