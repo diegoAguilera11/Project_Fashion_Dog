@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Fashion Dog') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -50,35 +50,36 @@
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <b>
-                                    <a class="nav-link" href="/">{{ __('Inicio') }}</a>
+                                        <a class="nav-link" href="/" style="color:#ffffff">Inicio</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
                                 @if (Auth::user()->estado == 'habilitado')
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->rut }}
+                                        style="color:#ffffff;" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" v-pre>
+                                        {{ Auth::user()->nombre }}
                                         <!-- Muestra rut apartado superior derecho-->
                                     </a>
                                 @else
                                     </a>
-                                    {{-- <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" style="color:#ffffff" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                            document.getElementById('logout-form').submit();">
+                                                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
-                                    </a> --}}
+                                    </a>
                                 @endif
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                document.getElementById('logout-form').submit();">
+                                                                                        document.getElementById('logout-form').submit();">
                                         {{ __('Cambiar Contraseña') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                document.getElementById('logout-form').submit();">
+                                                                                        document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </a>
 
