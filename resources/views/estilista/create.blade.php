@@ -20,7 +20,7 @@
 
             <div class="mb-3">
                 <label for="" class="form-label">Apellido Paterno</label>
-                <input id="apellido_paterno" name="apellido_paterno" type="text" class="form-control" tabindex="3">
+                <input id="apellidoPaterno" name="apellidoPaterno" type="text" class="form-control" tabindex="3">
             </div>
 
             <div class="mb-3">

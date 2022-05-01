@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Freshwork\ChileanBundle\Rut;
 
 class EstilistaController extends Controller
 {
@@ -15,7 +17,8 @@ class EstilistaController extends Controller
      */
     public function index()
     {
-        //
+        $estilistas = User::where('rol', 'estilista')->get();
+        return view("administrador.index")->with("estilistas",$estilistas);
     }
 
     /**
@@ -25,7 +28,7 @@ class EstilistaController extends Controller
      */
     public function create()
     {
-        //
+        return view("administrador.create");
     }
 
     /**
@@ -34,31 +37,33 @@ class EstilistaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $data)
+    public function store(Request $request)
     {
-
-        Validator::make($data, [
-            'rut' => ['required', 'string', 'unique:users','cl_rut'],
-            'nombre' => ['required', 'string'],
-            'apellidoPaterno' =>['required', 'string'],
-            'telefono' =>['required'],
+        $request->validate([
+            'nombre' => ['required', 'string', 'min:2'],
+            'apellidoPaterno' => ['required', 'string', 'min:2'],
+            'telefono' => ['required', 'string', 'min:10','max:15'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'confirmed'],
+            'rut' => ['required', 'string', 'unique:users','cl_rut'],
         ]);
 
+        //crear contraseña aleatoria
+        $aleatorio = "123456";
+        $request['rut'] = Rut::parse($request['rut'])->format(Rut::FORMAT_ESCAPED);
         User::create([
-            'rut' => $data['rut'],
-            'nombre' => $data['nombre'],
-            'apellidoPaterno' => $data['apellidoPaterno'],
-            'telefono' => $data['telefono'],
-            'email' => $data['email'],
-            'direccion' => $data['direccion'],
-            'password' => Hash::make($data['password']),
-            'rol' => 'cliente',
-            'estado' => 'habilitado',
+            'nombre' => $request['nombre'],
+            'apellidoPaterno' => $request['apellidoPaterno'],
+            'telefono' => $request['telefono'],
+            'direccion' => "0",
+            'rut' => $request['rut'],
+            'email' => $request['email'],
+            'password' => Hash::make($aleatorio),
+            'rol' => "estilista",
         ]);
 
-       /*  return view */
+        $estilistas = User::where('rol', 'estilista')->get();
+
+        return redirect(route('estilista'))->with("estilistaCreado",true)->with("estilistas",$estilistas);
     }
 
     /**
@@ -69,7 +74,7 @@ class EstilistaController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -80,7 +85,8 @@ class EstilistaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::where('id', $id)->FirstOrFail();
+        return view('administrador.edit')->with('estilista',$user);
     }
 
     /**
@@ -92,7 +98,18 @@ class EstilistaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::where('id', $id)->FirstOrFail();
+
+        $user->nombre = $request->nombre;
+        $user->email = $request->email;
+        $user->apellidoPaterno = $request->apellidoPaterno;
+        $user->telefono = $request->telefono;
+
+        $user->save();
+
+        $estilistas = User::where('rol', 'estilista')->get();
+        return redirect(route('estilista'))->with("estilistaEditado",true)->with("estilistas",$estilistas);
+
     }
 
     /**

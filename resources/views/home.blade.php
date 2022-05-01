@@ -11,7 +11,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">{{ __('Panel') }}</div>
+                            <div class="card-header text-black" style="background-color: #FFDACC;">{{ __('Inicio sesión correctamente') }}</div>
 
                             <div class="card-body">
                                 @if (Auth::user()->rol == 'cliente')
@@ -25,16 +25,13 @@
                                     <a href="/estilista">
                                     </a>
                                     <center>
-                                    <h1>Bienvenido Estilista {{ Auth::user()->nombre }}</h1>
+                                        <h1>Bienvenido Estilista {{ Auth::user()->nombre }}</h1>
                                     </center>
                                 @endif
-
-                                @if (Auth::user()->rol == 'admin')
-                                    <a href="/admin">
-                                    </a>
+                                @if (Auth::user()->rol == 'administrador')
+                                    <h1>Bienvenido Administrador {{ Auth::user()->nombre }}</h1>
                                     <center>
-                                        <h1>Bienvenido Administrador {{ Auth::user()->nombre }}</h1>
-                                        <a href="/administrador" class="btn btn-success">Administrar Estilistas</a>
+                                    <a href="/administrador" class="btn btn-success">Administrar Estilistas</a>
                                     </center>
                                 @endif
                             </div>
@@ -45,7 +42,8 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">{{ __('Panel') }}</div>
+                            <div class="card-header text-black" style="background-color:#FFDACC;">
+                                {{ __('No se pudo iniciar sesión') }}</div>
 
                             <div class="card-body">
                                 <center>
