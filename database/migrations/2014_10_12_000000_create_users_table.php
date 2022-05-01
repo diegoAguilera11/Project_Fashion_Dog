@@ -23,8 +23,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('direccion');
             $table->string('password');
-            $table->string('rol')->nullable();
-            $table->string('estado')->nullable();
+            $table->enum('rol', ['cliente', 'estilista', 'administrador'])->default('cliente');
+            $table->enum('estado', ['habilitado', 'deshabilitado'])->default('habilitado');
             $table->rememberToken();
             $table->timestamps();
         });

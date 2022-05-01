@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EstilistaController;
 use Illuminate\Database\Schema\Blueprint;
 
 /*
@@ -40,7 +41,7 @@ Route::get('/cliente', function () {
     return view('cliente.index');
 });
 //METODOS QUE RETORNAN LAS VIEWS DE ADMINISTRADOR
-Route::get('/administrador/create', function () {
+/* Route::get('/administrador/create', function () {
     return view('administrador.create');
 });
 Route::get('/administrador/edit', function () {
@@ -49,7 +50,7 @@ Route::get('/administrador/edit', function () {
 Route::get('/administrador', function () {
     return view('administrador.index');
 });
-
+ */
 Route::resource('user', 'App\Http\Controllers\UserController');
 
 Route::get('/admin', [AdminController::class, 'index'])
@@ -57,6 +58,12 @@ Route::get('/admin', [AdminController::class, 'index'])
     ->name('admin.index');
 
 Route::resource('estilistas', 'App\Http\Controllers\EstilistaController');
+
+Route::get('/administrador', [EstilistaController::class,"index"])->name("estilista");
+Route::get('/administrador/create', [EstilistaController::class,"create"])->name("crear_estilista");
+Route::post('/create', [EstilistaController::class,"store"])->name("crear_estilista_post");
+Route::get('/administrador/edit/{id}', [EstilistaController::class,"edit"])->name("editar_estilista");
+Route::post("/administrador/edit/{id}",[EstilistaController::class,"update"])->name("editar_estilista_post");
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
