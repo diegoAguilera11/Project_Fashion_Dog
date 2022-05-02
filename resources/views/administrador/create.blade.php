@@ -6,14 +6,14 @@
         <div class="col-md-8">
             <br>
             <div class="card">
-                <div class="card-header">{{'Agregar Estilista' }}</div>
+                <div class="card-header text-black" style="background-color:#FFDACC ">{{'Agregar Estilista' }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('crear_estilista_post') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="rut" class="col-md-4 col-form-label text-md-end">{{ __('rut') }}</label>
+                            <label for="rut" class="col-md-4 col-form-label text-md-end">{{ __('Rut') }}</label>
 
                             <div class="col-md-6">
                                 <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror"
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="nombre" class="col-md-4 col-form-label text-md-end">{{ __('nombre') }}</label>
+                            <label for="nombre" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
                                 <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror"
@@ -94,6 +94,7 @@
                                 <button type="submit" class="btn btn-success">
                                     {{ __('Agregar Estilista') }}
                                 </button>
+                                <a href="/administrador" class="btn btn-danger">Cancelar</a>
                             </div>
                         </div>
                     </form>

@@ -50,6 +50,7 @@ class EstilistaController extends Controller
         //crear contraseña aleatoria
         $aleatorio = "123456";
         $request['rut'] = Rut::parse($request['rut'])->format(Rut::FORMAT_ESCAPED);
+
         User::create([
             'nombre' => $request['nombre'],
             'apellidoPaterno' => $request['apellidoPaterno'],
@@ -59,6 +60,7 @@ class EstilistaController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($aleatorio),
             'rol' => "estilista",
+            'estado' =>"habilitado",
         ]);
 
         $estilistas = User::where('rol', 'estilista')->get();
@@ -98,7 +100,18 @@ class EstilistaController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $user = User::where('id', $id)->FirstOrFail();
+
+
+        $request->validate([
+            'nombre' => ['required', 'string', 'min:2'],
+            'apellidoPaterno' => ['required', 'string', 'min:2'],
+            'telefono' => ['required', 'string', 'min:10','max:15'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            
+        ]);
 
         $user->nombre = $request->nombre;
         $user->email = $request->email;
