@@ -6,7 +6,7 @@
             <div class="col-md-8">
             <br>
                 <div class="card">
-                    <div class="card-header text-black" style="background-color:#FFDACC ">{{'Agregar Estilista' }}</div>
+                    <div class="card-header text-black" style="background-color:#FFDACC ">{{'Editar Estilista' }}</div>
 
                     <div class="card-body">
                         <form method="POST" action={{ route('editar_estilista_post', ['id'=>$estilista->id]) }}>
@@ -60,15 +60,18 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="telefono" class="col-md-4 col-form-label text-md-end">{{ __('Teléfono Movil') }}</label>
+                                <label for="telefono"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Telefono Movil') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror"
-                                        name="telefono" value="{{ $estilista->telefono }}" required autocomplete="telefono" autofocus>
+                                    <input id="telefono" type="text" id="telefono" name="telefono"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                        / class="form-control @error('telefono') is-invalid @enderror"
+                                        value="{{ old('telefono') }}" required autocomplete="telefono">
 
                                     @error('telefono')
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <strong>{{ 'El teléfono móvil ingresado no es válido (Entre 10 y 15 digitos)' }}</strong>
                                         </span>
                                     @enderror
                                 </div>
