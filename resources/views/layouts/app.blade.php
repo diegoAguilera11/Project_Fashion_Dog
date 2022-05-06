@@ -64,7 +64,7 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
-                                        <a class="dropdown-item" href="{{ route('NewPassword') }}" onclick="event.preventDefault();
+                                        <a class="dropdown-item" href="{{-- {{ route('NewPassword') }} --}}" onclick="event.preventDefault();
 
                                                     style=" color:#ffffff">Cambiar Contraseña</a>
 
@@ -83,7 +83,7 @@
                                 @endif
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
-                                    <a class="dropdown-item" href="{{ route('NewPassword') }}" onclick="event.preventDefault();
+                                    <a class="dropdown-item" href="{{-- {{ route('NewPassword') }} --}}" onclick="event.preventDefault();
                                                                         ">
                                         {{ __('Cambiar Contraseña') }}
                                     </a>

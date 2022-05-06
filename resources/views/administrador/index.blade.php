@@ -6,7 +6,8 @@
             <div class="table-title">
                 <div class="row justify-content-between">
                     <div class="col-sm-4">
-                        <h2>Administrar <b>Estilistas</b></h2>
+                        <br>
+                        <h2><b>Administrar Estilistas</b></h2>
                     </div>
                     <div class="col-sm-3">
                         <br>
