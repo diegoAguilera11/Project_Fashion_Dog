@@ -49,20 +49,21 @@
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" style="color:white"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                style="color:white" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                v-pre>
                                 {{ Auth::user()->nombre }}
                                 <!-- Muestra rut apartado superior derecho-->
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="{{ route('NewPassword') }}" onclick="event.preventDefault();
+                                            ">
                                     {{ __('Cambiar Contraseña') }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
+                                                                document.getElementById('logout-form').submit();">
                                     {{ __('Cerrar Sesión') }}
                                 </a>
 
