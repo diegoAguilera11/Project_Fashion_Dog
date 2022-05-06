@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EstilistaController;
+use App\Http\Controllers\UserController;
 use Illuminate\Database\Schema\Blueprint;
 
 /*
@@ -16,6 +17,9 @@ use Illuminate\Database\Schema\Blueprint;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/NewPassword', [UserController::class, 'NewPassword'])->name('NewPassword')->middleware('auth');
+Route::post('/change/password', [UserController::class, 'changePassword'])->name('changePassword');
 
 Route::get('/', function () {
     return view('mainScreen');
@@ -51,6 +55,9 @@ Route::get('/administrador', function () {
     return view('administrador.index');
 });
  */
+Route::get('/reset', function () {
+    return view('passwords.reset');
+});
 Route::resource('user', 'App\Http\Controllers\UserController');
 
 Route::get('/admin', [AdminController::class, 'index'])
@@ -59,11 +66,11 @@ Route::get('/admin', [AdminController::class, 'index'])
 
 Route::resource('estilistas', 'App\Http\Controllers\EstilistaController');
 
-Route::get('/administrador', [EstilistaController::class,"index"])->name("estilista");
-Route::get('/administrador/create', [EstilistaController::class,"create"])->name("crear_estilista");
-Route::post('/create', [EstilistaController::class,"store"])->name("crear_estilista_post");
-Route::get('/administrador/edit/{id}', [EstilistaController::class,"edit"])->name("editar_estilista");
-Route::post("/administrador/edit/{id}",[EstilistaController::class,"update"])->name("editar_estilista_post");
+Route::get('/administrador', [EstilistaController::class, "index"])->name("estilista");
+Route::get('/administrador/create', [EstilistaController::class, "create"])->name("crear_estilista");
+Route::post('/create', [EstilistaController::class, "store"])->name("crear_estilista_post");
+Route::get('/administrador/edit/{id}', [EstilistaController::class, "edit"])->name("editar_estilista");
+Route::post("/administrador/edit/{id}", [EstilistaController::class, "update"])->name("editar_estilista_post");
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
