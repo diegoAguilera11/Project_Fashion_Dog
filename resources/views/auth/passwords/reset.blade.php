@@ -16,11 +16,10 @@
                     @csrf
 
                     <div class="row mb-3">
-                        <label for="rut">RUT</label>
-
-                        <div class="form-group mt-3">
-                            <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror" name="rut"
-                                required autocomplete="rut" value={{ Auth::user()->rut }} autofocus disabled>
+                        <div class="from-group mb-3">
+                            <label for="password_actual">RUT</label>
+                            <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror"
+                                name="rut" required autocomplete="rut" value={{Auth::user()->rut}} autofocus disabled>
 
                             @error('rut')
                                 <span class="invalid-feedback" role="alert">
@@ -68,7 +67,7 @@
 
                     <div class="row text-center mb-4 mt-5">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary" id="formSubmit">Guardar Cambios</button>
+                            <button type="submit" class="btn btn-success" id="formSubmit">Guardar Cambios</button>
                             <a href="/home" class="btn btn-secondary">Cancelar</a>
                         </div>
                     </div>
