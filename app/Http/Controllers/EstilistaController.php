@@ -49,7 +49,6 @@ class EstilistaController extends Controller
 
         //crear contraseña aleatoria
         $aleatorio = "123456";
-        $request['rut'] = Rut::parse($request['rut'])->format(Rut::FORMAT_ESCAPED);
 
         User::create([
             'nombre' => $request['nombre'],

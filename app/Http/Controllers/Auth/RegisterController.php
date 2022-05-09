@@ -71,9 +71,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         //dd($data);// // Datos que se estan guardando.....
-
-        $data['rut'] = Rut::parse($data['rut'])->format(Rut::FORMAT_ESCAPED);
-
         return User::create([
             'rut' => $data['rut'],
             'nombre' => $data['nombre'],

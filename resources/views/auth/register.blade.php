@@ -8,9 +8,10 @@
                 <div class="col-md-8">
                     <div class="card">
                         <center>
-                            <div class="card-header" style="background-color:#FFDACC ">{{ __('Rellene los campos') }}</div>
+                            <div class="card-header text-black" style="background-color:#FFDACC ">
+                                <strong>{{ __('Rellene los campos') }}</strong></div>
                         </center>
-
+                        <strong>
                         <div class="card-body">
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
@@ -18,8 +19,10 @@
                                     <label for="rut" class="col-md-4 col-form-label text-md-end">{{ __('RUT') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror"
-                                            name="rut" value="{{ old('rut') }}" required autocomplete="rut" autofocus>
+                                        <input id="rut" type="text"
+                                            oninput="this.value = this.value.replace(/[^0-9\\K\\k]/g, '').replace(/(\..*)\./g, '$1');"
+                                            class="form-control @error('rut') is-invalid @enderror" name="rut"
+                                            value="{{ old('rut') }}" required autocomplete="rut" autofocus>
 
                                         @error('rut')
                                             <span class="invalid-feedback" role="alert">
@@ -66,12 +69,12 @@
 
                                 <div class="row mb-3">
                                     <label for="telefono"
-                                        class="col-md-4 col-form-label text-md-end">{{ __('Telefono Movil') }}</label>
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Teléfono Movil') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="telefono" type="text" id="telefono" name="telefono"
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                            / class="form-control @error('telefono') is-invalid @enderror"
+                                            class="form-control @error('telefono') is-invalid @enderror"
                                             value="{{ old('telefono') }}" required autocomplete="telefono">
 
                                         @error('telefono')
@@ -84,7 +87,7 @@
 
                                 <div class="row mb-3">
                                     <label for="email"
-                                        class="col-md-4 col-form-label text-md-end">{{ __('Correo Electronico') }}</label>
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Correo Electrónico') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="email" type="email"
@@ -156,6 +159,7 @@
                                 </div>
                             </form>
                         </div>
+                        </strong>
                     </div>
                 </div>
             </div>
