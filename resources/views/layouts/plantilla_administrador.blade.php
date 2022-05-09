@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>Fashion Dog</title>
@@ -28,8 +28,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
-                    <img src="images/logo_FashionDog.png" alt="" width="60" height="60"
-                        class="d-inline-block align-text-top">
+                    <img src="/images/logo_FashionDog.png" alt="" width="60" height="60"
+                        {{-- class="d-inline-block align-text-top" --}}>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
