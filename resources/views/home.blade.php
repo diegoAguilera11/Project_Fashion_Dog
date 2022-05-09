@@ -12,7 +12,7 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-header text-black" style="background-color: #FFDACC;">
-                                {{ __('Inicio sesión correctamente') }}</div>
+                                <strong>{{ __('Inicio sesión correctamente') }}</strong></div>
 
                             <div class="card-body">
                                 @if (Auth::user()->rol == 'cliente')

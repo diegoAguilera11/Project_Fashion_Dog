@@ -49,7 +49,7 @@
                         @guest
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <b>
+
                                         <a class="nav-link" href="/" style="color:#ffffff">Inicio</a>
                                 </li>
                             @endif
@@ -109,6 +109,7 @@
             @yield('content')
         </main>
     </div>
+
 </body>
 
 </html>
