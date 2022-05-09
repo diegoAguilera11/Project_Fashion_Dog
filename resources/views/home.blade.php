@@ -11,7 +11,8 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header text-black" style="background-color: #FFDACC;">{{ __('Inicio sesión correctamente') }}</div>
+                            <div class="card-header text-black" style="background-color: #FFDACC;">
+                                {{ __('Inicio sesión correctamente') }}</div>
 
                             <div class="card-body">
                                 @if (Auth::user()->rol == 'cliente')
@@ -29,9 +30,10 @@
                                     </center>
                                 @endif
                                 @if (Auth::user()->rol == 'administrador')
-                                    <h1>Bienvenido Administrador {{ Auth::user()->nombre }}</h1>
                                     <center>
-                                    <a href="/administrador" class="btn btn-success">Administrar Estilistas</a>
+                                        <h1>Bienvenido Administrador {{ Auth::user()->nombre }}</h1>
+
+                                        <a href="/administrador" class="btn btn-success">Administrar Estilistas</a>
                                     </center>
                                 @endif
                             </div>

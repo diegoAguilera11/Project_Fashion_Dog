@@ -8,7 +8,7 @@
                 <div class="col-md-8">
                     <div class="card">
                         <center>
-                            <div class="card-header">{{ __('Rellene los campos') }}</div>
+                            <div class="card-header" style="background-color:#FFDACC ">{{ __('Rellene los campos') }}</div>
                         </center>
 
                         <div class="card-body">

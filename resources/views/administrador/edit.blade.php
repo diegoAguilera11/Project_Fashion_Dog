@@ -1,15 +1,14 @@
 @extends('layouts.plantilla_administrador')
 @section('contenido')
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-            <br>
+                <br>
                 <div class="card">
-                    <div class="card-header text-black" style="background-color:#FFDACC ">{{'Editar Estilista' }}</div>
+                    <div class="card-header text-black" style="background-color:#FFDACC ">{{ 'Editar Estilista' }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action={{ route('editar_estilista_post', ['id'=>$estilista->id]) }}>
+                        <form method="POST" action={{ route('editar_estilista_post', ['id' => $estilista->id]) }}>
                             @csrf
 
                             <div class="row mb-3">
@@ -17,7 +16,8 @@
 
                                 <div class="col-md-6">
                                     <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror"
-                                        name="rut" required autocomplete="rut" value={{$estilista->rut}} autofocus disabled>
+                                        name="rut" required autocomplete="rut" value={{ $estilista->rut }} autofocus
+                                        disabled>
 
                                     @error('rut')
                                         <span class="invalid-feedback" role="alert">
@@ -31,8 +31,9 @@
                                 <label for="nombre" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror"
-                                        name="nombre" required autocomplete="nombre" value={{$estilista->nombre}} autofocus>
+                                    <input id="nombre" type="text"
+                                        class="form-control @error('nombre') is-invalid @enderror" name="nombre" required
+                                        autocomplete="nombre" value={{ $estilista->nombre }} autofocus>
 
                                     @error('nombre')
                                         <span class="invalid-feedback" role="alert">
@@ -45,11 +46,14 @@
 
 
                             <div class="row mb-3">
-                                <label for="apellidoPaterno" class="col-md-4 col-form-label text-md-end">{{ __('Apellido Paterno') }}</label>
+                                <label for="apellidoPaterno"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Apellido Paterno') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="apellidoPaterno" type="text" class="form-control @error('apellidoPaterno') is-invalid @enderror"
-                                        name="apellidoPaterno" value="{{ $estilista->apellidoPaterno }}" required autocomplete="apellidoPaterno" autofocus>
+                                    <input id="apellidoPaterno" type="text"
+                                        class="form-control @error('apellidoPaterno') is-invalid @enderror"
+                                        name="apellidoPaterno" value="{{ $estilista->apellidoPaterno }}" required
+                                        autocomplete="apellidoPaterno" autofocus>
 
                                     @error('apellidoPaterno')
                                         <span class="invalid-feedback" role="alert">
@@ -82,7 +86,8 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                                        name="email" value="{{ $estilista->email }}" required autocomplete="email" autofocus>
+                                        name="email" value="{{ $estilista->email }}" required autocomplete="email"
+                                        autofocus>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
