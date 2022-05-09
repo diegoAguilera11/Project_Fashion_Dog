@@ -22,6 +22,8 @@ class UserController extends Controller
     {
         $request->validate([
             'password' => ['required', 'string', 'confirmed', 'min:10'],
+            'new_password' => ['required', 'string', 'confirmed', 'min:10'],
+            'confirmar_password' => ['required', 'string', 'confirmed', 'min:10'],
         ]);
 
         $user           = Auth::user();
@@ -30,12 +32,12 @@ class UserController extends Controller
         $userPassword   = $user->password;
 
         if ($request->password_actual != "") {
-            $NuewPass   = $request->password;
-            $confirPass = $request->confirm_password;
+            $NewPass   = $request->password;
+            $confirPass = $request->confirmar_password;
 
             if (Hash::check($request->password_actual, $userPassword)) {
-                if ($NuewPass == $confirPass) {
-                    if (strlen($NuewPass) >= 10) {
+                if ($NewPass == $confirPass) {
+                    if (strlen($NewPass) > 9) {
                         $user->password = Hash::make($request->password);
                         $sqlBD = DB::table('users')
                             ->where('id', $user->id)
@@ -43,7 +45,7 @@ class UserController extends Controller
 
                         return redirect()->back()->with('updateClave', 'La clave fue cambiada correctamente.');
                     } else {
-                        return redirect()->back()->with('clavemenor', 'Recuerde la clave debe ser mayor a 6 digitos.');
+                        return redirect()->back()->with('clavemenor', 'Recuerde la clave debe ser mayor a 10 digitos.');
                     }
                 } else {
                     return redirect()->back()->with('claveIncorrecta', 'Por favor verifique las claves no coinciden.');
@@ -52,6 +54,7 @@ class UserController extends Controller
                 return back()->withErrors(['password_actual' => 'La Clave no Coinciden']);
             }
         } else {
+
             $name       = $request->name;
             $sqlBDUpdateName = DB::table('users')
                 ->where('id', $user->id);

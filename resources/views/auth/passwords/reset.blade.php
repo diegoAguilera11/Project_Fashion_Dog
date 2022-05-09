@@ -35,7 +35,7 @@
                                 class="form-control @error('password_actual') is-invalid @enderror" required autocomplete="password_actual" autofocus>
                             @error('password_actual')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>{{ "Contraseña incorrecta" }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -47,19 +47,19 @@
                                 class="form-control @error('password') is-invalid @enderror" required autocomplete="password" autofocus>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>{{"La contraseña debe tener minimo 10 caracteres"}}</strong>
                                 </span>
                             @enderror
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="form-group mt-3">
-                            <label for="confirm_password">Confirmar nueva Clave</label>
-                            <input type="password" name="confirm_password"
-                                class="form-control @error('confirm_password') is-invalid @enderror" required autocomplete="confirm_password" autofocus>
-                            @error('confirm_password')
+                            <label for="confirmar_password">Confirmar nueva Clave</label>
+                            <input type="password" name="confirmar_password"
+                                class="form-control @error('confirmar_password') is-invalid @enderror" required autocomplete="confirmar_password" autofocus>
+                            @error('confirmar_password')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>{{"Las contrasañes deben ser iguales" }}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -67,7 +67,7 @@
 
                     <div class="row text-center mb-4 mt-5">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-success" id="formSubmit">Guardar Cambios</button>
+                            <button type="submit" href="/home" class="btn btn-success" id="formSubmit">Guardar Cambios</button>
                             <a href="/home" class="btn btn-secondary">Cancelar</a>
                         </div>
                     </div>
