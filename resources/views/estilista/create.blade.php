@@ -2,7 +2,7 @@
 
 @section('contenido')
 
-    <body class style="background-color: #ffffff">
+   {{--  <body class style="background-color: #ffffff">
         <center>
         <h2>RELLENE LOS CAMPOS</h2>
         </center>
@@ -34,5 +34,5 @@
             <a href="/estilistas" class="btn btn-secondary" tabindex="5">Cancelar</a>
             <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
         </form>
-    </body>
+    </body> --}}
 @endsection

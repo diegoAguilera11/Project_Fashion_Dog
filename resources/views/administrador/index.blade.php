@@ -6,7 +6,8 @@
             <div class="table-title">
                 <div class="row justify-content-between">
                     <div class="col-sm-4">
-                        <h2>Administrar <b>Estilistas</b></h2>
+                        <br>
+                        <h2><b>Administrar Estilistas</b></h2>
                     </div>
                     <div class="col-sm-3">
                         <br>
@@ -19,11 +20,11 @@
                 <thead>
                     <tr>
 
-                        <th>Rut</th>
+                        <th>RUT</th>
                         <th>Nombre</th>
-                        <th>Apellido P.</th>
+                        <th>Apellido Paterno</th>
                         <th>Teléfono</th>
-                        <th>Email</th>
+                        <th>Correo Electrónico</th>
                         <th>Editar</th>
                     </tr>
                 </thead>
