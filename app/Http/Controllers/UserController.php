@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -16,9 +17,29 @@ class UserController extends Controller
     {
         return view('/auth/passwords/reset');
     }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+        
+            'new_password' => ['required', 'string', 'confirmed', 'min:10'],
+            'confirmar_password' => ['required', 'string', 'confirmed', 'min:10'],
+            
+        ]);
+    }
+
+    protected function changePassword($request)
+    {
+    
+        //dd($data);// // Datos que se estan guardando.....
+         return User::changePassword([
+        
+            'password' => Hash::make($request['new_password']),
+            
+        ]);
+    }
 
 
-    public function changePassword(Request $request)
+   /*  public function changePassword(Request $request)
     {
         $request->validate([
             'password' => ['required', 'string', 'confirmed', 'min:10'],
@@ -27,33 +48,22 @@ class UserController extends Controller
         ]);
 
         $user           = Auth::user();
-        
-        $userPassword   = $user->password;
 
-        if ($request->password_actual != "") {
-            $NewPass   = $request->password;
-            $confirPass = $request->confirmar_password;
-                if ($NewPass == $confirPass) {
-                    
-                    
-                        $user->password = Hash::make($request->password);
-                        $sqlBD = DB::table('users')
-                            ->where('id', $user->id)
-                            ->update(['password' => $user->password],);
-                        return redirect()->back()->with('updateClave', 'La clave fue cambiada correctamente.');
-
-                } else {
-                    return redirect()->back()->with('claveIncorrecta', 'Por favor verifique las claves no coinciden.');
-                }
+        $NewPass   = $request->password;
+        $confirPass = $request->confirmar_password;
+        if ($NewPass == $confirPass) {
+            $user->password=$NewPass;
+            $user->password = Hash::make($request->password);
             
+            /* $sqlBD = DB::table('users')
+                ->where('id', $user->id)
+                ->update(['password' => $user->password],); 
+            return redirect()->back()->with('updateClave', 'La clave fue cambiada correctamente.');
         } else {
-
-            $name       = $request->name;
-            $sqlBDUpdateName = DB::table('users')
-                ->where('id', $user->id);
+            return redirect()->back()->with('claveIncorrecta', 'Por favor verifique las claves no coinciden.');
         }
     }
-
+ */
     /**
      * Display a listing of the resource.
      *

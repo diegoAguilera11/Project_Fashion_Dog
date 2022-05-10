@@ -20,7 +20,7 @@
 
                                     <div class="col-md-6">
                                         <input id="rut" type="text"
-                                            oninput="this.value = this.value.replace(/[^0-9\\K\\k]/g, '').replace(/(\..*)\./g, '$1');"
+                                            oninput="this.value = this.value.replace(/[^0-9\\K]/g, '').replace(/(\..*)\./g, '$1');"
                                             class="form-control @error('rut') is-invalid @enderror" name="rut"
                                             value="{{ old('rut') }}" required autocomplete="rut" autofocus>
 
