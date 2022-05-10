@@ -6,14 +6,15 @@
                 <br>
                 <div class="card">
                     <div class="card-header text-black" style="background-color:#FFDACC ">
-                        <strong>{{ 'Editar Estilista' }}</strong></div>
+                        <strong>{{ 'Editar Estilista' }}</strong>
+                    </div>
 
                     <div class="card-body">
                         <form method="POST" action={{ route('editar_estilista_post', ['id' => $estilista->id]) }}>
                             @csrf
                             <strong>
                                 <div class="row mb-3">
-                                    <label for="rut" class="col-md-4 col-form-label text-md-end">{{ __('Rut') }}</label>
+                                    <label for="rut" class="col-md-4 col-form-label text-md-end">{{ __('RUT') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror"
@@ -34,6 +35,7 @@
 
                                     <div class="col-md-6">
                                         <input id="nombre" type="text"
+                                            oninput="this.value = this.value.replace(/[^A-Z\\a-z]/g, '').replace(/(\..*)\./g, '$1');"
                                             class="form-control @error('nombre') is-invalid @enderror" name="nombre"
                                             required autocomplete="nombre" value={{ $estilista->nombre }} autofocus>
 
@@ -53,6 +55,7 @@
 
                                     <div class="col-md-6">
                                         <input id="apellidoPaterno" type="text"
+                                            oninput="this.value = this.value.replace(/[^A-Z\\a-z]/g, '').replace(/(\..*)\./g, '$1');"
                                             class="form-control @error('apellidoPaterno') is-invalid @enderror"
                                             name="apellidoPaterno" value="{{ $estilista->apellidoPaterno }}" required
                                             autocomplete="apellidoPaterno" autofocus>

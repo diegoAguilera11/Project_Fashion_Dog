@@ -16,20 +16,21 @@
     <link rel="stylesheet" href="css/custom.css">
 
 <body class="antialiased" style="background-color: #ffffff">
-    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #FC623B" >
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #FC623B">
 
         <div style="height: 50px; background-color: #ffffff"></div>
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
-                    <img src="images/logo_FashionDog.png" alt="" width="60" height="60" class="d-inline-block align-text-top">
+                    <img src="images/logo_FashionDog.png" alt="" width="60" height="60"
+                        class="d-inline-block align-text-top">
                 </ul>
             </div>
         </div>
@@ -55,6 +56,7 @@
     </div>
     </div>
     </div>
+
 </body>
 
 </html>
