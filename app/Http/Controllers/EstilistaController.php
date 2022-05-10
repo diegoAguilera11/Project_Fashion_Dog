@@ -17,7 +17,7 @@ class EstilistaController extends Controller
      */
     public function index()
     {
-        $estilistas = User::where('rol', 'estilista')->get();
+        $estilistas = User::where('rol', 'estilista')->simplePaginate(5);
         return view("administrador.index")->with("estilistas",$estilistas);
     }
 
@@ -43,13 +43,13 @@ class EstilistaController extends Controller
             'nombre' => ['required', 'string', 'min:2'],
             'apellidoPaterno' => ['required', 'string', 'min:2'],
             'telefono' => ['required', 'string', 'min:10','max:15'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/(.*)@(.*)\.(.*)/i'],
             'rut' => ['required', 'string', 'unique:users','cl_rut'],
         ]);
 
         //crear contraseña aleatoria
-        $aleatorio = "123456";
-        $request['rut'] = Rut::parse($request['rut'])->format(Rut::FORMAT_ESCAPED);
+        $aleatorio = $request['rut'];
+
         User::create([
             'nombre' => $request['nombre'],
             'apellidoPaterno' => $request['apellidoPaterno'],
@@ -59,9 +59,10 @@ class EstilistaController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($aleatorio),
             'rol' => "estilista",
+            'estado' =>"habilitado",
         ]);
 
-        $estilistas = User::where('rol', 'estilista')->get();
+        $estilistas = User::where('rol', 'estilista')->paginate(5);
 
         return redirect(route('estilista'))->with("estilistaCreado",true)->with("estilistas",$estilistas);
     }
@@ -98,7 +99,18 @@ class EstilistaController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $user = User::where('id', $id)->FirstOrFail();
+
+
+        $request->validate([
+            'nombre' => ['required', 'string', 'min:2'],
+            'apellidoPaterno' => ['required', 'string', 'min:2'],
+            'telefono' => ['required', 'string', 'min:10','max:15'],
+            'email' => ['required', 'string', 'email', 'max:255', 'regex:/(.*)@(.*)\.(.*)/i'],
+
+        ]);
 
         $user->nombre = $request->nombre;
         $user->email = $request->email;
