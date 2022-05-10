@@ -2,7 +2,7 @@
 
 @section('contenido')
 
-    <body class style="background-color: #ffffff">
+   {{--  <body class style="background-color: #ffffff">
         <center>
         <h2>RELLENE LOS CAMPOS</h2>
         </center>
@@ -20,7 +20,7 @@
 
             <div class="mb-3">
                 <label for="" class="form-label">Apellido Paterno</label>
-                <input id="apellido_paterno" name="apellido_paterno" type="text" class="form-control" tabindex="3">
+                <input id="apellidoPaterno" name="apellidoPaterno" type="text" class="form-control" tabindex="3">
             </div>
 
             <div class="mb-3">
@@ -34,5 +34,5 @@
             <a href="/estilistas" class="btn btn-secondary" tabindex="5">Cancelar</a>
             <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
         </form>
-    </body>
+    </body> --}}
 @endsection
