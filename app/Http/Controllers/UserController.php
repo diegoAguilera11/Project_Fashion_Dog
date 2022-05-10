@@ -27,32 +27,25 @@ class UserController extends Controller
         ]);
 
         $user           = Auth::user();
-        $userId         = $user->id;
-        $userEmail      = $user->email;
+        
         $userPassword   = $user->password;
 
         if ($request->password_actual != "") {
             $NewPass   = $request->password;
             $confirPass = $request->confirmar_password;
-
-            if (Hash::check($request->password_actual, $userPassword)) {
                 if ($NewPass == $confirPass) {
-                    if (strlen($NewPass) > 9) {
+                    
+                    
                         $user->password = Hash::make($request->password);
                         $sqlBD = DB::table('users')
                             ->where('id', $user->id)
                             ->update(['password' => $user->password],);
-
                         return redirect()->back()->with('updateClave', 'La clave fue cambiada correctamente.');
-                    } else {
-                        return redirect()->back()->with('clavemenor', 'Recuerde la clave debe ser mayor a 10 digitos.');
-                    }
+
                 } else {
                     return redirect()->back()->with('claveIncorrecta', 'Por favor verifique las claves no coinciden.');
                 }
-            } else {
-                return back()->withErrors(['password_actual' => 'La Clave no Coinciden']);
-            }
+            
         } else {
 
             $name       = $request->name;

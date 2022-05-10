@@ -17,7 +17,7 @@
 
                     <div class="row mb-3">
                         <div class="from-group mb-3">
-                            <label for="password_actual">RUT</label>
+                            <label for="rut">RUT</label>
                             <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror"
                                 name="rut" required autocomplete="rut" value={{Auth::user()->rut}} autofocus disabled>
 
@@ -27,19 +27,9 @@
                                 </span>
                             @enderror
                         </div>
+                        
                     </div>
-                    <div class="row mb-3">
-                        <div class="form-group mt-3">
-                            <label for="password_actual">Clave Actual</label>
-                            <input type="password" name="password_actual"
-                                class="form-control @error('password_actual') is-invalid @enderror" required autocomplete="password_actual" autofocus>
-                            @error('password_actual')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ "Contraseña incorrecta" }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
+            
                     <div class="row mb-3">
                         <div class="form-group mt-3">
                             <label for="new_password ">Nueva Clave</label>
@@ -47,7 +37,7 @@
                                 class="form-control @error('password') is-invalid @enderror" required autocomplete="password" autofocus>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{"La contraseña debe tener minimo 10 caracteres"}}</strong>
+                                    <strong>{{"$message"}}</strong>
                                 </span>
                             @enderror
                         </div>
@@ -59,7 +49,7 @@
                                 class="form-control @error('confirmar_password') is-invalid @enderror" required autocomplete="confirmar_password" autofocus>
                             @error('confirmar_password')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{"Las contrasañes deben ser iguales" }}</strong>
+                                    <strong>{{"$message" }}</strong>
                                 </span>
                             @enderror
                         </div>
