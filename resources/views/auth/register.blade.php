@@ -77,13 +77,13 @@
 
                                         <div class="col-md-6">
                                             <input id="telefono" type="text" id="telefono" name="telefono"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
                                                 class="form-control @error('telefono') is-invalid @enderror"
                                                 value="{{ old('telefono') }}" required autocomplete="telefono">
 
                                             @error('telefono')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ 'El teléfono móvil ingresado no es válido (Entre 10 y 15 digitos)' }}</strong>
+                                                    <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
@@ -100,7 +100,7 @@
 
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ 'Su correo electrónico no es válido' }}</strong>
+                                                    <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>

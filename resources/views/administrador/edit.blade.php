@@ -47,8 +47,6 @@
                                     </div>
                                 </div>
 
-
-
                                 <div class="row mb-3">
                                     <label for="apellidoPaterno"
                                         class="col-md-4 col-form-label text-md-end">{{ __('Apellido Paterno') }}</label>
@@ -74,13 +72,13 @@
 
                                     <div class="col-md-6">
                                         <input id="telefono" type="text" id="telefono" name="telefono"
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
                                             / class="form-control @error('telefono') is-invalid @enderror"
-                                            value="{{ old('telefono') }}" required autocomplete="telefono">
+                                            value={{ $estilista->telefono }} autofocus required autocomplete="telefono">
 
                                         @error('telefono')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ 'El teléfono móvil ingresado no es válido (Entre 10 y 15 digitos)' }}</strong>
+                                                <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
