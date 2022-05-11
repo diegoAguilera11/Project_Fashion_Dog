@@ -49,18 +49,21 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'rut' => ['required', 'string', 'unique:users','cl_rut'],
+            'rut' => ['required', 'string', 'unique:users', 'cl_rut'],
             'nombre' => ['required', 'string', 'min:2'],
             'apellidoPaterno' =>['required', 'string', 'min:2'],
-            'telefono' =>['required', 'string', 'min:10','max:15'],
+            'telefono' =>['required', 'string','unique:users', 'min:10','max:15'],
             'direccion' =>['required'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'confirmed', 'min:10'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/(.*)@(.*)\.(.*)/i'],
+            'password' => ['required', 'string', 'confirmed', 'min:10', 'max:15'],
         ]);
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -71,9 +74,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         //dd($data);// // Datos que se estan guardando.....
-
-        $data['rut'] = Rut::parse($data['rut'])->format(Rut::FORMAT_ESCAPED);
-
         return User::create([
             'rut' => $data['rut'],
             'nombre' => $data['nombre'],
@@ -82,6 +82,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'direccion' => $data['direccion'],
             'password' => Hash::make($data['password']),
+            'rol' => "cliente",
+            'estado' => "habilitado",
         ]);
     }
 }
