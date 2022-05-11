@@ -20,11 +20,11 @@
                 <thead>
                     <tr>
 
-                        <th>Rut</th>
+                        <th>RUT</th>
                         <th>Nombre</th>
-                        <th>Apellido P.</th>
+                        <th>Apellido Paterno</th>
                         <th>Teléfono</th>
-                        <th>Email</th>
+                        <th>Correo Electrónico</th>
                         <th>Editar</th>
                     </tr>
                 </thead>

@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ Route::get('/NewPassword', [UserController::class, 'NewPassword'])->name('NewPas
 Route::post('/change/password', [UserController::class, 'changePassword'])->name('changePassword');
 
 Route::get('/', function () {
-    return view('mainScreen');
+    return view('auth.login');
 });
 //METODOS QUE RETORNAR LAS VIEWS DE ESTILISTA
 Route::get('/estilista', function () {
@@ -74,3 +75,4 @@ Route::post("/administrador/edit/{id}", [EstilistaController::class, "update"])-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

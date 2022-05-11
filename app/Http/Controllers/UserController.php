@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
-use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
@@ -39,31 +37,23 @@ class UserController extends Controller
     }
 
 
-   /*  public function changePassword(Request $request)
+
+    protected function changePassword(Request $request)
     {
-        $request->validate([
-            'password' => ['required', 'string', 'confirmed', 'min:10'],
-            'new_password' => ['required', 'string', 'confirmed', 'min:10'],
-            'confirmar_password' => ['required', 'string', 'confirmed', 'min:10'],
+         $request->validate([
+            'password' => ['required', 'string', 'confirmed', 'min:10', 'max:15'],
         ]);
-
-        $user           = Auth::user();
-
         $NewPass   = $request->password;
-        $confirPass = $request->confirmar_password;
-        if ($NewPass == $confirPass) {
+        $user = Auth::user();
+
             $user->password=$NewPass;
             $user->password = Hash::make($request->password);
-            
-            /* $sqlBD = DB::table('users')
-                ->where('id', $user->id)
-                ->update(['password' => $user->password],); 
-            return redirect()->back()->with('updateClave', 'La clave fue cambiada correctamente.');
-        } else {
-            return redirect()->back()->with('claveIncorrecta', 'Por favor verifique las claves no coinciden.');
-        }
-    }
- */
+            DB::table('users')->where('id', $user->id)->update(['password'=>$user->password], );
+            return redirect()->route('home')->with('password', 'updated');
+
+        //set de nueva contrasenia
+
+
     /**
      * Display a listing of the resource.
      *
