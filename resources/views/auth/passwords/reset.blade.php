@@ -20,6 +20,7 @@
                                     <label for="rut" class="col-md-4 col-form-label text-md-end"> <strong>
                                             {{ __('RUT') }} </strong></label>
 
+
                                     <div class="col-md-6">
                                         <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror"
                                             name="rut" required autocomplete="rut" value={{ Auth::user()->rut }} autofocus
@@ -72,7 +73,9 @@
                                 </div>
                             </div>
                         </div>
+
                 </div>
+
                 </form>
             </div>
     </div>

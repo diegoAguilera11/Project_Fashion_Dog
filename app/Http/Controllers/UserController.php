@@ -15,13 +15,33 @@ class UserController extends Controller
     {
         return view('/auth/passwords/reset');
     }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+        
+            'new_password' => ['required', 'string', 'confirmed', 'min:10'],
+            'confirmar_password' => ['required', 'string', 'confirmed', 'min:10'],
+            
+        ]);
+    }
+
+    protected function changePassword($request)
+    {
+    
+        //dd($data);// // Datos que se estan guardando.....
+         return User::changePassword([
+        
+            'password' => Hash::make($request['new_password']),
+            
+        ]);
+    }
+
 
 
     protected function changePassword(Request $request)
     {
          $request->validate([
             'password' => ['required', 'string', 'confirmed', 'min:10', 'max:15'],
-
         ]);
         $NewPass   = $request->password;
         $user = Auth::user();
@@ -32,9 +52,6 @@ class UserController extends Controller
             return redirect()->route('home')->with('password', 'updated');
 
         //set de nueva contrasenia
-
-
-    }
 
 
     /**

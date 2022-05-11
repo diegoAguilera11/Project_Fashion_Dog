@@ -66,6 +66,7 @@
                                 </li>
                             @endif
                         @else
+
                         <li class="nav-item dropdown">
                             @if (Auth::user()->estado == 'habilitado')
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -84,6 +85,7 @@
                                             document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </a>
+
                                 </div>
                             @else
                                 </a>
