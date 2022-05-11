@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
+
 
     public function NewPassword()
     {
@@ -16,47 +17,25 @@ class UserController extends Controller
     }
 
 
-    public function changePassword(Request $request)
+    protected function changePassword(Request $request)
     {
-        $request->validate([
-            'password' => ['required', 'string', 'confirmed', 'min:10'],
+         $request->validate([
+            'password' => ['required', 'string', 'confirmed', 'min:10', 'max:15'],
+
         ]);
+        $NewPass   = $request->password;
+        $user = Auth::user();
 
-        $user           = Auth::user();
-        $userId         = $user->id;
-        $userEmail      = $user->email;
-        $userPassword   = $user->password;
+            $user->password=$NewPass;
+            $user->password = Hash::make($request->password);
+            DB::table('users')->where('id', $user->id)->update(['password'=>$user->password], );
+            return redirect()->route('home')->with('password', 'updated');
 
-        if ($request->password_actual != "") {
-            $NuewPass   = $request->password;
-            $confirPass = $request->confirm_password;
-            $name       = $request->name;
-            if (Hash::check($request->password_actual, $userPassword)) {
-                if ($NuewPass == $confirPass) {
-                    if (strlen($NuewPass) >= 10) {
-                        $user->password = Hash::make($request->password);
-                        $sqlBD = DB::table('users')
-                            ->where('id', $user->id)
-                            ->update(['password' => $user->password], ['name' => $user->name]);
+        //set de nueva contrasenia
 
-                        return redirect()->back()->with('updateClave', 'La clave fue cambiada correctamente.');
-                    } else {
-                        return redirect()->back()->with('clavemenor', 'Recuerde la clave debe ser mayor a 6 digitos.');
-                    }
-                } else {
-                    return redirect()->back()->with('claveIncorrecta', 'Por favor verifique las claves no coinciden.');
-                }
-            } else {
-                return back()->withErrors(['password_actual' => 'La Clave no Coinciden']);
-            }
-        } else {
-            $name       = $request->name;
-            $sqlBDUpdateName = DB::table('users')
-                ->where('id', $user->id)
-                ->update(['name' => $name]);
-            return redirect()->back()->with('name', 'El nombre fue cambiado correctamente.');;
-        }
+
     }
+
 
     /**
      * Display a listing of the resource.
