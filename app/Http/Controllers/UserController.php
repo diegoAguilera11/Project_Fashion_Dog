@@ -29,7 +29,7 @@ class UserController extends Controller
             $user->password=$NewPass;
             $user->password = Hash::make($request->password);
             DB::table('users')->where('id', $user->id)->update(['password'=>$user->password], );
-            return redirect()->route('home')->with('password', 'updated');
+            return redirect()->route('home')->with('password', 'updated')->with('Su contraseña se a modificado');
 
         //set de nueva contrasenia
 
