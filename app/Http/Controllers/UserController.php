@@ -21,7 +21,7 @@ class UserController extends Controller
     protected function changePassword(Request $request)
     {
         $request->validate([
-            'password' => ['required', 'string', 'confirmed', 'min:10', 'max:15'],
+            'password' => ['required', 'string', 'confirmed', 'min:10'],
 
         ]);
         $NewPass   = $request->password;
@@ -30,7 +30,7 @@ class UserController extends Controller
         $user->password = $NewPass;
         $user->password = Hash::make($request->password);
         DB::table('users')->where('id', $user->id)->update(['password' => $user->password],);
-        return redirect()->route('home')->with('password', 'updated')->with('Su contraseña se a modificado');
+        return redirect()->route('home')->with('password', 'updated');
 
         //set de nueva contrasenia
 

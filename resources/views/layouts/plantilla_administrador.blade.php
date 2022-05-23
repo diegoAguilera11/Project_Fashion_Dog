@@ -49,51 +49,51 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                @if (Auth::user()->estado == 'habilitado')
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        style="color:#ffffff;" data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" v-pre>
-                                        {{ Auth::user()->nombre }}
-                                        <!-- Muestra rut apartado superior derecho-->
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
-                                        <a class="dropdown-item" href=" {{ route('NewPassword') }} " onclick="event.preventDefault();
-
-                                                        style=" color:#707070">Cambiar Contraseña</a>
-
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                            {{ __('Cerrar Sesión') }}
-                                        </a>
-                                    </div>
-                                @else
-                                    </a>
-                                    <a class="dropdown-item" style="color:#ffffff" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                                                        document.getElementById('logout-form').submit();">
-                                        {{ __('Cerrar Sesión') }}
-                                    </a>
-                                @endif
+                        <li class="nav-item dropdown">
+                            @if (Auth::user()->estado == 'habilitado')
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    style="color:#ffffff;" data-bs-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" v-pre>
+                                    {{ Auth::user()->nombre }}
+                                    <!-- Muestra rut apartado superior derecho-->
+                                </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
-                                    <a class="dropdown-item" href="{{-- {{ route('NewPassword') }} --}}" onclick="event.preventDefault();
-                                                                        ">
-                                        {{ __('Cambiar Contraseña') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                                                            document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href=" {{ route('NewPassword') }} " onclick="event.preventDefault();
+
+                                                    style=" color:#707070">Cambiar Contraseña</a>
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
                                 </div>
-                            </li>
+                            @else
+                                </a>
+                                <a class="dropdown-item" style="color:#ffffff" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Cerrar Sesión') }}
+                                </a>
+                            @endif
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
+                                <a class="dropdown-item" href="{{-- {{ route('NewPassword') }} --}}" onclick="event.preventDefault();
+                                                                    ">
+                                    {{ __('Cambiar Contraseña') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                                                        document.getElementById('logout-form').submit();">
+                                    {{ __('Cerrar Sesión') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>
