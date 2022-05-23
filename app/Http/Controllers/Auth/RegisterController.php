@@ -56,11 +56,11 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'rut' => ['required', 'string', 'unique:users', 'cl_rut'],
             'nombre' => ['required', 'string', 'min:2'],
-            'apellidoPaterno' => ['required', 'string', 'min:2'],
-            'telefono' => ['required', 'string', 'min:10', 'max:15'],
-            'direccion' => ['required'],
+            'apellidoPaterno' =>['required', 'string', 'min:2'],
+            'telefono' =>['required', 'string','unique:users', 'min:10','max:15'],
+            'direccion' =>['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/(.*)@(.*)\.(.*)/i'],
-            'password' => ['required', 'string', 'confirmed', 'min:10'],
+            'password' => ['required', 'string', 'confirmed', 'min:10', 'max:15'],
         ]);
     }
 
