@@ -13,6 +13,7 @@
                             </div>
                         </center>
                         <strong>
+
                             <div class="card-body">
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
@@ -32,6 +33,7 @@
                                                 </span>
                                             @enderror
                                         </div>
+
                                     </div>
 
                                     <div class="row mb-3">

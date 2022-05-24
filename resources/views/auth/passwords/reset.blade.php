@@ -17,8 +17,7 @@
 
 
                                 <div class="row mb-3">
-                                    <label for="rut" class="col-md-4 col-form-label text-md-end"> <strong>
-                                            {{ __('RUT') }} </strong></label>
+                                    <label for="rut" class="col-md-4 col-form-label text-md-end"> <strong> {{ __('RUT') }} </strong></label>
 
                                     <div class="col-md-6">
                                         <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror"
@@ -42,7 +41,7 @@
                                             autocomplete="password" autofocus>
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ 'El largo de la contraseña debe estar entre 10 y 15 caracteres, asegúrese que ambas contraseñas sean iguales ' }}</strong>
+                                                <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -66,8 +65,6 @@
                                         <button type="submit" class="btn btn-success">
                                             {{ __('Cambiar') }}
                                         </button>
-                                    </button>
-                                    <a href="/home" class="btn btn-danger">Cancelar</a>
                                     </div>
                                 </div>
                             </div>
