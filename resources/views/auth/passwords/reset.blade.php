@@ -6,7 +6,8 @@
         <body style="background-color: #ffffff">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <form action="{{ route('changePassword') }}" method="POST" class="needs-validation" novalidate>
+                    <form id="formChangePassword" action="{{ route('changePassword') }}" method="POST"
+                        class="needs-validation" novalidate>
                         @csrf
                         <div class="card">
                             <div class="card-header text-black" style="background-color:#FFDACC ">
@@ -17,7 +18,8 @@
 
 
                                 <div class="row mb-3">
-                                    <label for="rut" class="col-md-4 col-form-label text-md-end"> <strong> {{ __('RUT') }} </strong></label>
+                                    <label for="rut" class="col-md-4 col-form-label text-md-end"> <strong>
+                                            {{ __('RUT') }} </strong></label>
 
                                     <div class="col-md-6">
                                         <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror"
@@ -62,18 +64,37 @@
                                 </div>
                                 <div class="row mb-0">
                                     <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-success">
-                                            {{ __('Cambiar') }}
+                                        <button id="botonChange" type="text" class="btn btn-success">
+                                            Cambiar
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </form>
                 </div>
-                </form>
             </div>
-    </div>
-    </div>
-    </div>
-    </body>
-@endsection
+        </body>
+        <script>
+            const boton = document.getElementById("botonChange");
+            const form = document.getElementById("formChangePassword");
+
+            boton.addEventListener('click', (e) => {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Estas seguro que deseas actualizar tu contraseña?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4DD091',
+                    cancelButtonColor: '#FF5C77',
+                    confirmButtonText: 'Enviar',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                })
+            })
+        </script>
+    @endsection
