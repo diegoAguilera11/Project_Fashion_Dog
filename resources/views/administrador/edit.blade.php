@@ -8,11 +8,10 @@
                     <div class="card-header text-black" style="background-color:#FFDACC ">
                         <strong>{{ 'Editar Estilista' }}</strong>
                     </div>
-
-                    <div class="card-body">
-                        <form method="POST" action={{ route('editar_estilista_post', ['id' => $estilista->id]) }}>
-                            @csrf
-                            <strong>
+                        <div class="card-body">
+                            <form id="form" method="POST"
+                                action={{ route('editar_estilista_post', ['id' => $estilista->id]) }}>
+                                @csrf
                                 <div class="row mb-3">
                                     <label for="rut" class="col-md-4 col-form-label text-md-end">{{ __('RUT') }}</label>
 
@@ -23,7 +22,7 @@
 
                                         @error('rut')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                {{ $message }}
                                             </span>
                                         @enderror
                                     </div>
@@ -41,13 +40,11 @@
 
                                         @error('nombre')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                {{ $message }}
                                             </span>
                                         @enderror
                                     </div>
                                 </div>
-
-
 
                                 <div class="row mb-3">
                                     <label for="apellidoPaterno"
@@ -62,7 +59,7 @@
 
                                         @error('apellidoPaterno')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                {{ $message }}
                                             </span>
                                         @enderror
                                     </div>
@@ -74,13 +71,13 @@
 
                                     <div class="col-md-6">
                                         <input id="telefono" type="text" id="telefono" name="telefono"
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
                                             / class="form-control @error('telefono') is-invalid @enderror"
-                                            value="{{ old('telefono') }}" required autocomplete="telefono">
+                                            value={{ $estilista->telefono }} autofocus required autocomplete="telefono">
 
                                         @error('telefono')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ 'El teléfono móvil ingresado no es válido (Entre 10 y 15 digitos)' }}</strong>
+                                                {{ $message }}
                                             </span>
                                         @enderror
                                     </div>
@@ -91,31 +88,65 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Correo Electrónico') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="text"
+                                        <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ $estilista->email }}" required autocomplete="email" autofocus>
+                                            value="{{ $estilista->email }}" required autocomplete="email">
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                {{ $message }}
                                             </span>
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-success">
-                                            {{ __('Editar Estilista') }}
+                                        <button id="boton" type="submit" class="btn btn-success">
+                                            Editar
                                         </button>
                                         <a href="/administrador" class="btn btn-danger">Cancelar</a>
                                     </div>
                                 </div>
-                            </strong>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
+
                 </div>
             </div>
         </div>
+
+        <script>
+            const boton = document.getElementById("boton");
+            const form = document.getElementById("form");
+
+            boton.addEventListener('click', (e) => {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Estas seguro que desea editar estos datos?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4DD091',
+                    cancelButtonColor: '#FF5C77',
+                    confirmButtonText: 'Editar',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                })
+            })
+        </script>
     </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+
+    <script src="js/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+    </script>
 @endsection

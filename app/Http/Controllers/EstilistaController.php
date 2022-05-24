@@ -108,7 +108,7 @@ class EstilistaController extends Controller
             'nombre' => ['required', 'string', 'min:2'],
             'apellidoPaterno' => ['required', 'string', 'min:2'],
             'telefono' => ['required', 'string', 'min:10','max:15'],
-            'email' => ['required', 'string', 'email', 'max:255', 'regex:/(.*)@(.*)\.(.*)/i'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/(.*)@(.*)\.(.*)/i'],
 
         ]);
 
