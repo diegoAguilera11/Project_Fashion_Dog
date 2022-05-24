@@ -38,8 +38,8 @@
                             <td>{{ $estilista->email }}</td>
                             <td>
                                 <a href={{ route('editar_estilista', ['id' => $estilista->id]) }} class="edit"
-                                    data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
-                                        title="Edit">&#xE254;</i></a>
+                                    data-toggle="modal"><img src="images/lapiz.png" with="25" height="25"
+                                        class="d-inline-block align-text-top"></a>
                             </td>
                         </tr>
                     @empty
