@@ -2,42 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Servicio;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class ServicioController extends Controller
 {
-
-
-    public function NewPassword()
-    {
-        return view('/auth/passwords/reset');
-    }
-
-
-    protected function changePassword(Request $request)
-    {
-        $request->validate([
-            'password' => ['required', 'string', 'confirmed', 'min:10'],
-
-        ]);
-        $NewPass   = $request->password;
-        $user = Auth::user();
-        $user->password = $NewPass;
-        $user->password = Hash::make($request->password);
-        DB::table('users')->where('id', $user->id)->update(['password' => $user->password],);
-        return redirect()->route('home')->with('password', 'updated');
-
-
-        //set de nueva contrasenia
-
-
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -72,10 +41,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Servicio  $servicio
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Servicio $servicio)
     {
         //
     }
@@ -83,10 +52,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Servicio  $servicio
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Servicio $servicio)
     {
         //
     }
@@ -95,10 +64,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Servicio  $servicio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Servicio $servicio)
     {
         //
     }
@@ -106,10 +75,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Servicio  $servicio
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Servicio $servicio)
     {
         //
     }
