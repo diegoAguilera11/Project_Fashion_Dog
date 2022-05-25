@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Servicio;
+use App\Models\Solicitud;
 use Illuminate\Http\Request;
 
-class ServicioController extends Controller
+class SolicitudController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ServicioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Servicio  $servicio
+     * @param  \App\Models\Solicitud  $solicitud
      * @return \Illuminate\Http\Response
      */
-    public function show(Servicio $servicio)
+    public function show(Solicitud $solicitud)
     {
         //
     }
@@ -52,10 +52,10 @@ class ServicioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Servicio  $servicio
+     * @param  \App\Models\Solicitud  $solicitud
      * @return \Illuminate\Http\Response
      */
-    public function edit(Servicio $servicio)
+    public function edit(Solicitud $solicitud)
     {
         //
     }
@@ -64,10 +64,10 @@ class ServicioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Servicio  $servicio
+     * @param  \App\Models\Solicitud  $solicitud
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Servicio $servicio)
+    public function update(Request $request, Solicitud $solicitud)
     {
         //
     }
@@ -75,10 +75,10 @@ class ServicioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Servicio  $servicio
+     * @param  \App\Models\Solicitud  $solicitud
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Servicio $servicio)
+    public function destroy(Solicitud $solicitud)
     {
         //
     }
