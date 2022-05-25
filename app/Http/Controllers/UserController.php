@@ -26,11 +26,11 @@ class UserController extends Controller
         ]);
         $NewPass   = $request->password;
         $user = Auth::user();
-
         $user->password = $NewPass;
         $user->password = Hash::make($request->password);
         DB::table('users')->where('id', $user->id)->update(['password' => $user->password],);
         return redirect()->route('home')->with('password', 'updated');
+
 
         //set de nueva contrasenia
 

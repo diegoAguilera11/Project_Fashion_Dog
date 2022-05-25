@@ -12,7 +12,6 @@
                     <div class="card-body">
                         <form method="POST" action={{ route('editar_estilista_post', ['id' => $estilista->id]) }}>
                             @csrf
-                            <strong>
                                 <div class="row mb-3">
                                     <label for="rut" class="col-md-4 col-form-label text-md-end">{{ __('RUT') }}</label>
 
@@ -89,9 +88,9 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Correo Electrónico') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="text"
+                                        <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ $estilista->email }}" required autocomplete="email" autofocus>
+                                            value="{{ $estilista->email }}" required autocomplete="email">
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -100,16 +99,14 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-success">
-                                            {{ __('Editar Estilista') }}
+                                            {{ __('Editar') }}
                                         </button>
                                         <a href="/administrador" class="btn btn-danger">Cancelar</a>
                                     </div>
                                 </div>
-                            </strong>
                         </form>
                     </div>
                 </div>

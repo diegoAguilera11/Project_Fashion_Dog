@@ -93,9 +93,9 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Correo Electrónico') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="text"
+                                        <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                            value="{{ old('email') }}" required autocomplete="email">
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
