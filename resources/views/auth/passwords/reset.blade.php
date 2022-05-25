@@ -78,7 +78,6 @@
         <script>
             const boton = document.getElementById("botonChange");
             const form = document.getElementById("formChangePassword");
-
             boton.addEventListener('click', (e) => {
                 e.preventDefault();
                 Swal.fire({
