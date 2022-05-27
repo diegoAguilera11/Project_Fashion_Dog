@@ -7,14 +7,17 @@
                 <div class="row justify-content-between">
                     <div class="col-xl-12">
                         <h2>Estado de <b>Usuarios</b></h2>
-
                         <form action="{{ route('usuario') }}">
                             <div class="form-row">
                                 <div class="col-sm-4 my-1">
-                                    <input type="text" class="form-control" name="texto">
+                                    <input id="texto" type="text"
+                                        oninput="this.value = this.value.replace(/[^0-9\\K\\k]/g, '').replace(/[k]/g, 'K').replace(/(\..*)\./g, '$1');"
+                                        class="form-control @error('texto') is-invalid @enderror" name="texto"
+                                        value="{{ old('texto') }}" required autocomplete="text" autofocus>
                                 </div>
                                 <div class="col-auto my-1">
                                     <input type="submit" class="btn btn-success" value="Buscar">
+                                    <!--<a href="home" class="btn btn-danger" data-toggle="modal"><span>Volver</span></a>-->
                                 </div>
                             </div>
                         </form>
