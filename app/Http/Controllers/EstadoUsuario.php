@@ -2,50 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-
-class UserController extends Controller
+use App\Models\User;
+class EstadoUsuario extends Controller
 {
-
-
-    public function NewPassword()
-    {
-        return view('/auth/passwords/reset');
-    }
-
-
-    protected function changePassword(Request $request)
-    {
-        $request->validate([
-            'password' => ['required', 'string', 'confirmed', 'min:10'],
-
-        ]);
-        $NewPass   = $request->password;
-        $user = Auth::user();
-        $user->password = $NewPass;
-        $user->password = Hash::make($request->password);
-        DB::table('users')->where('id', $user->id)->update(['password' => $user->password],);
-        return redirect()->route('home')->with('password', 'updated');
-
-
-        //set de nueva contrasenia
-
-
-    }
-
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->texto == null)
+        {
+            $usuarios = User::where('rol',"!=", 'administrador')->simplePaginate(5);
+        return view('administrador.usuario.index')->with('users',$usuarios);
+        }else{
+            $usuarios = User::where('rol',"!=", 'administrador')->where('rut', $request->texto)->simplePaginate(5);
+            return view('administrador.usuario.index')->with('users',$usuarios);
+        }
+
+    }
+
+    public function updateStatus($request)
+    {
+        $usuario = User::where('id', $request)->get()->first();
+        if($usuario->estado == 'deshabilitado'){
+            $usuario->estado = 'habilitado';
+            $usuario->save();
+            return redirect('/usuario');
+        }else{
+            $usuario->estado = 'deshabilitado';
+            $usuario->save();
+            return redirect('/usuario');
+        }
     }
 
     /**

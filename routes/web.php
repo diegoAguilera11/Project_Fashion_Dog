@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EstadoUsuario;
 use App\Http\Controllers\EstilistaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Database\Schema\Blueprint;
@@ -72,6 +73,9 @@ Route::get('/administrador/create', [EstilistaController::class, "create"])->nam
 Route::post('/create', [EstilistaController::class, "store"])->name("crear_estilista_post");
 Route::get('/administrador/edit/{id}', [EstilistaController::class, "edit"])->name("editar_estilista");
 Route::post("/administrador/edit/{id}", [EstilistaController::class, "update"])->name("editar_estilista_post");
+Route::get('/usuario', [EstadoUsuario::class,'index'])->name('usuario');
+Route::get('/usuario/{id}',[EstadoUsuario::class,'updateStatus'])->name('cambiarEstado');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
