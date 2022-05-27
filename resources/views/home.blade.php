@@ -32,7 +32,7 @@
                                     <br>
 
                                     <a href="/administrador" style="margin-right: 20px" class="btn btn-success">Administrar Estilistas</a>
-                                    <a href="/home" class="btn btn-success">Deshabilitar y/o Habilitar Usuario</a>
+                                    <a href="/usuario" class="btn btn-success">Deshabilitar y/o Habilitar Usuario</a>
                                 </center>
                             @endif
                         </div>

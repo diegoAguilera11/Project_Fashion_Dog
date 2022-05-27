@@ -17,6 +17,7 @@
     <script src="sweetalert2.all.min.js"></script>
 
 
+
     <script src="js/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -40,7 +41,7 @@
 </head>
 
 <body>
-    <div id="app" style="background-color: #ffffff">
+    <div id="app">
 
         <nav class="navbar navbar-expand-md navbar-light" style="background-color: #FC623B">
 
@@ -93,12 +94,13 @@
                                     <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
                                     <a class="dropdown-item" href=" {{ route('NewPassword') }} " onclick="event.preventDefault();
 
-                                                                                    style=" color:#707070">Cambiar
+                                                                                                    style="
+                                        color:#707070">Cambiar
                                         Contraseña</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                            document.getElementById('logout-form').submit();">
+                                                                                            document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </a>
 

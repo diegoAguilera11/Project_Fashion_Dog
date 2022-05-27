@@ -11,8 +11,12 @@
                     </div>
                     <div class="col-sm-3">
                         <br>
-                        <a href="administrador/create" class="btn btn-success" data-toggle="modal"><i
-                                class="material-icons">&#xE147;</i> <span>Agregar estilista</span></a>
+                        <a href="administrador/create" class="btn btn-success" data-toggle="modal"><img
+                                src="images/agregar.png" with="25" height="25" style="margin-right: 10px"
+                                class="d-inline-block align-text-top"><span>Agregar estilista</span></a>
+
+                        <a href="home" class="btn btn-danger" data-toggle="modal"><span>Volver</span></a>
+
                     </div>
                 </div>
             </div>
@@ -38,10 +42,12 @@
                             <td>{{ $estilista->email }}</td>
                             <td>
                                 <a href={{ route('editar_estilista', ['id' => $estilista->id]) }} class="edit"
-                                    data-toggle="modal"><img src="images/lapiz.png" with="25" height="25"
+                                    data-toggle="tooltip" data-placement="top" title="Edita al Estilista"><img
+                                        src="images/lapiz.png" with="25" height="25"
                                         class="d-inline-block align-text-top"></a>
                             </td>
                         </tr>
+
                     @empty
                         <tr>
                             <td colspan="6" class="text-center">No hay estilistas en la base de datos</td>
