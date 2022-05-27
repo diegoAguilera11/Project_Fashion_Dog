@@ -67,7 +67,7 @@
 
                                 <div class="row mb-3">
                                     <label for="telefono"
-                                        class="col-md-4 col-form-label text-md-end">{{ __('Teléfono Movil') }}</label>
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Teléfono Móvil') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="telefono" type="text" id="telefono" name="telefono"
@@ -102,7 +102,7 @@
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button id="boton" type="text" class="btn btn-success">
-                                            Editar
+                                            Guardar cambios
                                         </button>
                                         <a href="/administrador" class="btn btn-danger">Cancelar</a>
                                     </div>
@@ -121,12 +121,12 @@
             boton.addEventListener('click', (e) => {
                 e.preventDefault();
                 Swal.fire({
-                    title: 'Estas seguro que desea editar estos datos?',
+                    title: '¿Estas seguro que deseas editar estos datos?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',
                     cancelButtonColor: '#FF5C77',
-                    confirmButtonText: 'Editar',
+                    confirmButtonText: 'Guardar',
                     cancelButtonText: 'Cancelar',
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
