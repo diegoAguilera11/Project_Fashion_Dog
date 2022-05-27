@@ -73,7 +73,7 @@
 
                                 <div class="row mb-3">
                                     <label for="telefono"
-                                        class="col-md-4 col-form-label text-md-end">{{ __('Teléfono Movil') }}</label>
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Teléfono Móvil') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="telefono" type="text" id="telefono" name="telefono"
@@ -134,7 +134,7 @@
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
-                                                {{ 'El largo de la contraseña debe estar entre 10 y 15 caracteres, asegúrese que ambas contraseñas sean iguales ' }}
+                                                {{ 'El largo de la contraseña debe estar entre 10 y 15 caracteres, asegúrese que ambas contraseñas sean iguales.' }}
                                             </span>
                                         @enderror
                                     </div>
@@ -174,7 +174,7 @@
             boton.addEventListener('click', (e) => {
                 e.preventDefault();
                 Swal.fire({
-                    title: 'Estas seguro que quieres enviar estos datos?',
+                    title: '¿Estás seguro que quieres enviar estos datos?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',
@@ -188,6 +188,11 @@
                     }
                 })
             })
+        </script>
+        <script>
+            $(function() {
+                $("#datepicker").datepicker();
+            });
         </script>
     </div>
 @endsection
