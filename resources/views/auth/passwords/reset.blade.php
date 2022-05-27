@@ -67,6 +67,7 @@
                                         <button id="botonChange" type="text" class="btn btn-success">
                                             Cambiar
                                         </button>
+                                        <a href="/home" class="btn btn-danger"><span>Volver</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +79,6 @@
         <script>
             const boton = document.getElementById("botonChange");
             const form = document.getElementById("formChangePassword");
-
             boton.addEventListener('click', (e) => {
                 e.preventDefault();
                 Swal.fire({

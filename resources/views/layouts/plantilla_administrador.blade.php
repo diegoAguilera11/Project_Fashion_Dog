@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <div style="background-color: #ffffff">
+    <div>
         <nav class="navbar navbar-expand-md navbar-light" style="background-color: #FC623B">
             <div style="height: 50px; background-color: #FC623B "></div>
 

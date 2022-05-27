@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">
-                                        <button id="boton" type="submit" class="btn btn-success">
+                                        <button id="boton" type="text" class="btn btn-success">
                                             Editar
                                         </button>
                                         <a href="/administrador" class="btn btn-danger">Cancelar</a>

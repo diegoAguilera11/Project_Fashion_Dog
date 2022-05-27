@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    <div id="app" style="background-color: #ffffff">
+    <div id="app">
 
         <nav class="navbar navbar-expand-md navbar-light" style="background-color: #FC623B">
 
