@@ -71,7 +71,7 @@
 
                             <div class="row mb-3">
                                 <label for="telefono"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Teléfono Movil') }}</label>
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Teléfono Móvil') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="telefono" type="text" id="telefono" name="telefono"
@@ -124,12 +124,12 @@
         boton.addEventListener('click', (e) => {
             e.preventDefault();
             Swal.fire({
-                title: 'Estas seguro que desea registrar a un estilista con estos datos?',
+                title: '¿Estás seguro que deseas registrar a un estilista con estos datos?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#4DD091',
                 cancelButtonColor: '#FF5C77',
-                confirmButtonText: 'Editar',
+                confirmButtonText: 'Agregar',
                 cancelButtonText: 'Cancelar',
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
