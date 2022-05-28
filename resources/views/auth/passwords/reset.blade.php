@@ -67,6 +67,7 @@
                                         <button id="botonChange" type="text" class="btn btn-success">
                                             Cambiar
                                         </button>
+                                        <a href="/home" class="btn btn-danger"><span>Cancelar</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -78,16 +79,15 @@
         <script>
             const boton = document.getElementById("botonChange");
             const form = document.getElementById("formChangePassword");
-
             boton.addEventListener('click', (e) => {
                 e.preventDefault();
                 Swal.fire({
-                    title: 'Estas seguro que deseas actualizar tu contraseña?',
+                    title: '¿Estás seguro que deseas actualizar tu contraseña?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',
                     cancelButtonColor: '#FF5C77',
-                    confirmButtonText: 'Enviar',
+                    confirmButtonText: 'Confirmar',
                     cancelButtonText: 'Cancelar',
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
