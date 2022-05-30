@@ -17,7 +17,9 @@
                                 </div>
                                 <div class="col-auto my-1">
                                     <input type="submit" class="btn btn-success" value="Buscar">
+
                                     <a href="home" class="btn btn-danger"><span>Volver</span></a>
+
                                 </div>
                             </div>
                         </form>
@@ -78,6 +80,7 @@
 
                 </tbody>
             </table>
+
         </div>
     </div>
     @if ($users->links())
