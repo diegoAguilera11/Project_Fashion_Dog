@@ -15,6 +15,10 @@ class SolicitudController extends Controller
     public function index()
     {
         //
+
+        /** _-_ Inicio*/
+        /**return view('cliente.index');*/
+        /** _-_ Fin*/
     }
 
     /**

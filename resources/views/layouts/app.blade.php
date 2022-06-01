@@ -36,6 +36,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
+
+
+    <!-- _-_ Inicio - Incluir los archivos para FULLCALENDAR-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.js"></script>
+    <!-- _-_  fin-->
+
+
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -115,6 +125,12 @@
                 </div>
             </div>
         </nav>
+
+
+    <!-- _-_ Inicio-->
+    <script src="{{ asset('js/agenda.js') }}" defer></script>
+    <!-- _-_  fin-->
+
 
         <main class="py-4">
             @yield('content')
