@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EstadoUsuario;
 use App\Http\Controllers\EstilistaController;
+use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UserController;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -19,6 +20,9 @@ use Illuminate\Database\Schema\Blueprint;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
 
 Route::get('/NewPassword', [UserController::class, 'NewPassword'])->name('NewPassword')->middleware('auth');
 Route::post('/change/password', [UserController::class, 'changePassword'])->name('changePassword');
@@ -37,6 +41,10 @@ Route::get('/estilista/edit', function () {
     return view('estilista.edit');
 });
 //METODOS QUE RETORNAN LAS VIEWS DE CLIENTE
+
+Route::get('/GenerateRequest', [SolicitudController::class, 'GenerateRequest'])->name('GenerateRequest')->middleware('auth');
+Route::post('/cliente/create', [SolicitudController::class, 'requestService'])->name('requestService');
+
 Route::get('/cliente/create', function () {
     return view('cliente.create');
 });
@@ -73,10 +81,9 @@ Route::get('/administrador/create', [EstilistaController::class, "create"])->nam
 Route::post('/create', [EstilistaController::class, "store"])->name("crear_estilista_post");
 Route::get('/administrador/edit/{id}', [EstilistaController::class, "edit"])->name("editar_estilista");
 Route::post("/administrador/edit/{id}", [EstilistaController::class, "update"])->name("editar_estilista_post");
-Route::get('/usuario', [EstadoUsuario::class,'index'])->name('usuario');
-Route::get('/usuario/{id}',[EstadoUsuario::class,'updateStatus'])->name('cambiarEstado');
+Route::get('/usuario', [EstadoUsuario::class, 'index'])->name('usuario');
+Route::get('/usuario/{id}', [EstadoUsuario::class, 'updateStatus'])->name('cambiarEstado');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
