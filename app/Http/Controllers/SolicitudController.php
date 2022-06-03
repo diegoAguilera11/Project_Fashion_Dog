@@ -4,9 +4,40 @@ namespace App\Http\Controllers;
 
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class SolicitudController extends Controller
 {
+
+
+    public function GenerateRequest()
+    {
+        return view('/cliente/create');
+    }
+
+
+    protected function requestService(Request $request)
+    {
+
+        $DateRequest = $request->dateRequest;
+        $user = Auth::user();
+
+        $cliente_id = $user->id;
+
+
+        DB::table('solicituds')->where('id', $cliente_id) /*->update(['password' => $user->password],)*/;
+        return redirect()->route('home')->with('password', 'updated');
+
+
+
+        //set de nueva contrasenia
+
+
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
