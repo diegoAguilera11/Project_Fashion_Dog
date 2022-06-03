@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                             </div>
-                            x|
+
                             {{-- _-_ Fin [caudro] --}}
 
 
