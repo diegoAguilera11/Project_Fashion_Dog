@@ -2,6 +2,12 @@
 {{-- _-_ Inicio --}}
 {{-- _-_ Inicio --}} @extends('layouts.app')
 {{-- _-_ Fin --}}
+
+{{-- _-_22 Inicio --}}
+
+{{-- _-_22 Fin --}}
+
+
 @section('contenido')
     <div class="container">
 
@@ -50,6 +56,66 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- __________________(0)_________________ --}}
+
+                            <br><br>
+                            {{--<input id="datetimepicker" type="text" >--}}
+
+
+                            <div class="row mb-3">
+                                <label for="date"
+                                    class="col-md-4 col-form-label text-md-end"><strong>{{ __('Indique fecha:') }}</strong></label>
+                                <form class="row">
+
+
+                                    <div class="col-md-6">
+
+                                        aquiiii <br>
+                                        <input type="text" id="datetimepicke" name="published_at" class="form-control" />
+
+
+
+
+
+                                        <div class="col-5">
+
+                                            {{--_-_22 --}}
+
+                                            <div class="input-group date datepicker">
+
+                                                <input type="text" id="datetimepicke" name="published_at" class="form-control" />
+
+
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text bg-light d-block">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                </form>
+
+                                <br>
+                                <br>
+                                <div class="row mb-0">
+                                    <div class="col-md-8 offset-md-4">
+                                        <button type="submit" class="btn btn-success">
+                                            {{ __('Enviar') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- __________________(0)_________________ --}}
+
+
+
 
                             {{-- __________________(1)_________________ --}}
                             <br>
@@ -146,6 +212,39 @@
                             <br> <br>
                             {{-- __________________(1)_________________ --}}
 
+
+    <br><br>
+    <input id="datetimepicker" type="text" class="form-control"name="published_at" >
+
+
+    <link rel="stylesheet" type="text/css" href="/datetimepicker/jquery.datetimepicker.css" >
+    <script src="/datetimepicker/jquery.js"></script>
+    <script src="/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+
+    <script>
+
+
+        jQuery.datetimepicker.setLocale('es');//Idioma Español
+
+        jQuery('#datetimepicker').datetimepicker({
+            i18n:{
+                es:{
+                    dayOfWeekShort:[" Dom ", " Lun ", " Mar ", " Mie ", " Jue ", " Vie "," Sab ",]
+                }
+            },
+            format: 'd/m/Y H:i',
+            minDate: '+1970/01/02',  //desde mañana es el dia minimo
+        });
+
+        $('#input').datetimepicker();
+        $('button.somebutton').on('click', function () {
+            var d = $('#input').datetimepicker('getValue');
+            console.log(d.getFullYear());
+        });
+
+    </script>
+
+
                         </div>
                 </div>
                 </form>
@@ -155,4 +254,7 @@
     </div>
     </div>
     </body>
+
+
 @endsection
+
