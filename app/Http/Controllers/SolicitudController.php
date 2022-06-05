@@ -26,12 +26,9 @@ class SolicitudController extends Controller
         $cliente_id = $user->id;
 
 
-        DB::table('solicituds')->where('id', $cliente_id) /*->update(['password' => $user->password],)*/;
+        DB::table('solicituds')->where('id', $cliente_id);
         return redirect()->route('home')->with('password', 'updated');
 
-
-
-        //set de nueva contrasenia
 
 
     }

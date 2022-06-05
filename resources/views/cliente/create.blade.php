@@ -20,17 +20,13 @@
                             </div>
                             <br>
                             <div class="row mb-3">
-                            <form>
+                            <form class="mx-4">
 
-                                    <label for="date" class="col-sm-1 col-form-label">Indique fecha</label>
+                                    <label for="date" class="col-sm-2 mx-4 col-form-label">Indique horario:</label>
                                     <div class="col-sm-4">
                                         <div class="input-group date" id="datepicker">
-                                            <input type="text" class="form-control">
-                                            <span class="input-group-append">
-                                                <span class="input-group-text bg-white">
-                                                    <i class="fa fa-calendar"></i>
-                                                </span>
-                                            </span>
+                                            <input type="datetime-local" class="form-control">
+
                                         </div>
                                     </div>
 
