@@ -57,5 +57,5 @@
     </div>
     </div>
     </body>
-    /**/
+
 @endsection
