@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class SolicitudController extends Controller
 {
-
-
     public function GenerateRequest()
     {
         return view('/cliente/create');
@@ -28,21 +26,14 @@ class SolicitudController extends Controller
 
         DB::table('solicituds')->where('id', $cliente_id);
         return redirect()->route('home')->with('password', 'updated');
-
-
-
     }
 
 
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $solicitudes = Auth::user()->solicitudesCliente()->orderBy('fecha_solicitud')/*->orderBy('hora_solicitud')*/->simplePaginate(10);
+
+        return view('cliente.index')->with('solicitudes', $solicitudes);
     }
 
     /**
@@ -52,19 +43,9 @@ class SolicitudController extends Controller
      */
     public function create()
     {
-        //
+        return view('cliente.servicio');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -109,5 +90,27 @@ class SolicitudController extends Controller
     public function destroy(Solicitud $solicitud)
     {
         //
+    }
+
+    public function store(Request $request)
+    {
+
+        $date = date($request->fecha_solicitud);
+        $time = date($request->hora_solicitud);
+        $solicitudes = Auth::user()->solicitudesCliente()->get('fecha_solicitud');
+
+        foreach ($solicitudes as $solicitud) {
+            if ($solicitud->fecha_solicitud == $date) {
+                throw ValidationException::withMessages(['fecha_solicitud' => 'Ya existe solicitud para la fecha ' . $date]);
+            }
+        }
+
+        Solicitud::create([
+            'fecha_solicitud' => $date,
+            'estado' => "INGRESADA",
+            'cliente_id' => Auth::user()->id,
+        ]);
+
+        return redirect(route('home'));
     }
 }

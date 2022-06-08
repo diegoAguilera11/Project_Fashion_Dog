@@ -8,6 +8,7 @@ use App\Http\Controllers\EstadoUsuario;
 use App\Http\Controllers\EstilistaController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UserController;
+use App\Models\Solicitud;
 use Illuminate\Database\Schema\Blueprint;
 
 /*
@@ -43,7 +44,7 @@ Route::get('/estilista/edit', function () {
 //METODOS QUE RETORNAN LAS VIEWS DE CLIENTE
 
 Route::get('/GenerateRequest', [SolicitudController::class, 'GenerateRequest'])->name('GenerateRequest')->middleware('auth');
-Route::post('/cliente/create', [SolicitudController::class, 'requestService'])->name('requestService');
+//Route::post('/cliente/create', [SolicitudController::class, 'requestService'])->name('requestService');
 
 Route::get('/cliente/create', function () {
     return view('cliente.create');
@@ -87,3 +88,8 @@ Route::get('/usuario/{id}', [EstadoUsuario::class, 'updateStatus'])->name('cambi
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/cliente', [SolicitudController::class, 'index'])->name('solicitud');
+Route::get('/cliente/create', [SolicitudController::class, 'create'])->name('crear_solicitud');
+Route::post('/cliente/create', [SolicitudController::class, 'store'])->name('crear_solicitud_post');
