@@ -4,11 +4,12 @@
 @section('contenido')
     <div class="container">
 
+        <br>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">{{ 'Solicitar Servicio' }}</div>
+                        <div class="card-header" style="background-color: #FFDACC;">{{ 'Solicitar Servicio' }}</div>
 
                         <div class="card-body">
                             <form id="form" method="POST" action="{{ route('crear_solicitud_post') }}">
@@ -71,7 +72,7 @@
 
 
                                 <div class="row mb-0">
-                                    <div class="col-md-8 offset-md-4">
+                                    <div class="col-md-8 offset-md-4" style="background-color :" ;>
                                         <button id="boton" type="submit" class="btn btn-success">
                                             {{ __('Enviar') }}
                                         </button>
@@ -83,85 +84,55 @@
                     </div>
                 </div>
             </div>
+
             <script>
                 const boton = document.getElementById("boton");
                 const form = document.getElementById("form");
+                var today = new Date();
+                today.setDate(today.getDate() + 1);
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+                var yyyy = today.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd
+                }
+                if (mm < 10) {
+                    mm = '0' + mm
+                }
+                today = yyyy + '-' + mm + '-' + dd;
 
+
+
+                document.getElementById("fecha_solicitud").setAttribute("min", today);
                 boton.addEventListener('click', (e) => {
                     e.preventDefault();
                     Swal.fire({
                         title: '¿Estás seguro que deseas solicitar el servicio para esa fecha?',
                         icon: 'warning',
+                        showDenyButton: false,
                         showCancelButton: true,
+                        confirmButtonText: 'Guardar',
+                        denyButtonText: 'No guardar',
                         confirmButtonColor: '#4DD091',
                         cancelButtonColor: '#FF5C77',
-                        confirmButtonText: 'Agregar',
-                        cancelButtonText: 'Cancelar',
                     }).then((result) => {
                         /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {
                             form.submit();
+                        } else if (result.isDenied) {
+                            Swal.fire('Los cambios no se han guardado', '', 'info')
                         }
                     })
                 })
-            </script>
-            <script>
-                const boton = document.getElementById("boton");
-                const form = document.getElementById("form");
 
-                boton.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    Swal.fire({
-                        title: 'Numero de solicitud:',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#4DD091',
-                        cancelButtonColor: '#FF5C77',
-                        confirmButtonText: 'Continuar',
-                    }).then((result) => {
-                        /* Read more about isConfirmed, isDenied below */
-                        if (result.isConfirmed) {
-                            form.submit();
-                        }
-                    })
-                })
+
             </script>
+
+
+
 
         </div>
-        <script>
-            const boton = document.getElementById("boton");
-            const form = document.getElementById("form");
-            var today = new Date();
-            today.setDate(today.getDate() + 1);
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-            var yyyy = today.getFullYear();
-            if (dd < 10) {
-                dd = '0' + dd
-            }
-            if (mm < 10) {
-                mm = '0' + mm
-            }
-            today = yyyy + '-' + mm + '-' + dd;
-            document.getElementById("fecha_solicitud").setAttribute("min", today);
-            boton.addEventListener('click', (e) => {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Do you want to save the changes?',
-                    showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: 'Save',
-                    denyButtonText: `Don't save`,
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        form.submit();
-                    } else if (result.isDenied) {
-                        Swal.fire('Changes are not saved', '', 'info')
-                    }
-                })
-            })
-        </script>
+
 
 
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
