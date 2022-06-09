@@ -43,7 +43,7 @@ Route::get('/estilista/edit', function () {
 });
 //METODOS QUE RETORNAN LAS VIEWS DE CLIENTE
 
-Route::get('/GenerateRequest', [SolicitudController::class, 'GenerateRequest'])->name('GenerateRequest')->middleware('auth');
+//Route::get('/GenerateRequest', [SolicitudController::class, 'GenerateRequest'])->name('GenerateRequest')->middleware('auth');
 //Route::post('/cliente/create', [SolicitudController::class, 'requestService'])->name('requestService');
 
 Route::get('/cliente/create', function () {
@@ -91,5 +91,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/cliente', [SolicitudController::class, 'index'])->name('solicitud');
+Route::post('/cliente/edit', [SolicitudController::class, 'store'])->name('editar_solicitud_post');
 Route::get('/cliente/create', [SolicitudController::class, 'create'])->name('crear_solicitud');
 Route::post('/cliente/create', [SolicitudController::class, 'store'])->name('crear_solicitud_post');

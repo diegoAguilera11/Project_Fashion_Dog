@@ -6,6 +6,8 @@ use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+
 
 class SolicitudController extends Controller
 {
@@ -31,9 +33,9 @@ class SolicitudController extends Controller
 
     public function index()
     {
-        $solicitudes = Auth::user()->solicitudesCliente()->orderBy('fecha_solicitud')/*->orderBy('hora_solicitud')*/->simplePaginate(10);
+        $solicituds = Auth::user()->solicitudesCliente()->orderBy('fecha_solicitud')->orderBy('hora_solicitud')->simplePaginate(10);
 
-        return view('cliente.index')->with('solicitudes', $solicitudes);
+        return view('cliente.edit')->with('solicituds', $solicituds);
     }
 
     /**
@@ -43,7 +45,7 @@ class SolicitudController extends Controller
      */
     public function create()
     {
-        return view('cliente.servicio');
+        return view('cliente.create');
     }
 
 
@@ -97,19 +99,27 @@ class SolicitudController extends Controller
 
         $date = date($request->fecha_solicitud);
         $time = date($request->hora_solicitud);
-        $solicitudes = Auth::user()->solicitudesCliente()->get('fecha_solicitud');
+        $solicituds = Auth::user()->solicitudesCliente()->get('fecha_solicitud');
+        $numero_solicitud = rand(100000, 999999);
 
-        foreach ($solicitudes as $solicitud) {
+
+
+        foreach ($solicituds as $solicitud) {
             if ($solicitud->fecha_solicitud == $date) {
                 throw ValidationException::withMessages(['fecha_solicitud' => 'Ya existe solicitud para la fecha ' . $date]);
+            } elseif ($date < date("Y-m-d")) {
+                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha siempre debe ser mayor a la fecha actual ' . date("Y-m-d")]);
             }
         }
 
         Solicitud::create([
             'fecha_solicitud' => $date,
+            'hora_solicitud' => $time,
             'estado' => "INGRESADA",
             'cliente_id' => Auth::user()->id,
+            'numero_solicitud' => $numero_solicitud,
         ]);
+
 
         return redirect(route('home'));
     }

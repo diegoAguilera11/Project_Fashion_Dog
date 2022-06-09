@@ -39,14 +39,24 @@
                                     <div class="col-md-6">
                                         <select id="hora_solicitud" name="hora_solicitud"
                                             class="form-select @error('hora_solicitud') is-invalid @enderror"
-                                            aria-label="Default select example" value="{{ old('hora_solicitud') }}" required
-                                            autocomplete="hora_solicitud" autofocus>
+                                            aria-label="Default select example" value="{{ old('hora_solicitud') }}"
+                                            required autocomplete="hora_solicitud" autofocus>
                                             <option selected disabled>Seleccione Hora</option>
-                                            <option value="14:00">14:00</option>
-                                            <option value="15:00">15:00</option>
-                                            <option value="16:00">16:00</option>
-                                            <option value="17:00">17:00</option>
-                                            <option value="18:00">18:00</option>
+                                            <option value="14:00">8:00</option>
+                                            <option value="15:00">9:00</option>
+                                            <option value="16:00">10:00</option>
+                                            <option value="17:00">11:00</option>
+                                            <option value="18:00">12:00</option>
+                                            <option value="14:00">13:00</option>
+                                            <option value="15:00">14:00</option>
+                                            <option value="16:00">15:00</option>
+                                            <option value="17:00">16:00</option>
+                                            <option value="18:00">17:00</option>
+                                            <option value="14:00">18:00</option>
+                                            <option value="15:00">19:00</option>
+                                            <option value="16:00">20:00</option>
+                                            <option value="17:00">21:00</option>
+                                            <option value="18:00">22:00</option>
                                         </select>
 
                                         @error('hora_solicitud')
@@ -62,7 +72,7 @@
 
                                 <div class="row mb-0">
                                     <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-success">
+                                        <button id="boton" type="submit" class="btn btn-success">
                                             {{ __('Enviar') }}
                                         </button>
                                     </div>
@@ -73,6 +83,50 @@
                     </div>
                 </div>
             </div>
+            <script>
+                const boton = document.getElementById("boton");
+                const form = document.getElementById("form");
+
+                boton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    Swal.fire({
+                        title: '¿Estás seguro que deseas solicitar el servicio para esa fecha?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#4DD091',
+                        cancelButtonColor: '#FF5C77',
+                        confirmButtonText: 'Agregar',
+                        cancelButtonText: 'Cancelar',
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    })
+                })
+            </script>
+            <script>
+                const boton = document.getElementById("boton");
+                const form = document.getElementById("form");
+
+                boton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    Swal.fire({
+                        title: 'Numero de solicitud:',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#4DD091',
+                        cancelButtonColor: '#FF5C77',
+                        confirmButtonText: 'Continuar',
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    })
+                })
+            </script>
+
         </div>
         <script>
             const boton = document.getElementById("boton");
@@ -109,4 +163,15 @@
             })
         </script>
 
-@endsection
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="sweetalert2.all.min.js"></script>
+
+        <script src="js/main.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+        </script>
+    @endsection

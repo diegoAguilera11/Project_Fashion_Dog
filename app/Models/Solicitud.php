@@ -11,14 +11,13 @@ class Solicitud extends Model
 
     public $timestamps = false;
 
-    protected $filliable = [
-        'fecha_solicitud',
+    protected $fillable = [
         'fecha_solicitud',
         'hora_solicitud',
         'estado',
         'comentario',
         'cliente_id',
-        'estatilista_id'
-
+        'estilista_id',
+        'numero_solicitud',
     ];
 }
