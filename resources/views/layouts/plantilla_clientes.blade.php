@@ -1,11 +1,7 @@
 <!doctype html>
-
+<html lang="es">
 
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
-
     <title>Fashion Dog</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -77,57 +73,53 @@
                                 </li>
                             @endif
                         @else
-                        <li class="nav-item dropdown">
-                            @if (Auth::user()->estado == 'habilitado')
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    style="color:#ffffff;" data-bs-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false" v-pre>
-                                    {{ Auth::user()->nombre }}
-                                    <!-- Muestra rut apartado superior derecho-->
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
-                                    <a class="dropdown-item" href=" {{ route('NewPassword') }} " onclick="event.preventDefault();
-
-                                                    style=" color:#707070">Cambiar Contraseña</a>
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
+                            <li class="nav-item dropdown">
+                                @if (Auth::user()->estado == 'habilitado')
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        style="color:#ffffff;" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" v-pre>
+                                        {{ Auth::user()->nombre }}
+                                        <!-- Muestra rut apartado superior derecho-->
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
+                                        <a class="dropdown-item" href=" {{ route('NewPassword') }} " onclick="event.preventDefault();
+                                                                style=" color:#707070">Cambiar Contraseña</a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Cerrar Sesión') }}
+                                        </a>
+                                    </div>
+                                @else
+                                    </a>
+                                    <a class="dropdown-item" style="color:#ffffff" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </a>
+                                @endif
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
+                                    <a class="dropdown-item" href="{{-- {{ route('NewPassword') }} --}}" onclick="event.preventDefault();
+                                                                                ">
+                                        {{ __('Cambiar Contraseña') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                                                    document.getElementById('logout-form').submit();">
+                                        {{ __('Cerrar Sesión') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
-                            @else
-                                </a>
-                                <a class="dropdown-item" style="color:#ffffff" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Cerrar Sesión') }}
-                                </a>
-                            @endif
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
-                                <a class="dropdown-item" href="{{-- {{ route('NewPassword') }} --}}" onclick="event.preventDefault();
-                                                                    ">
-                                    {{ __('Cambiar Contraseña') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                                                                        document.getElementById('logout-form').submit();">
-                                    {{ __('Cerrar Sesión') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                            </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-
         <div class="container">
             @yield('contenido')
         </div>

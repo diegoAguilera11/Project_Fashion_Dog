@@ -108,7 +108,7 @@
                                     <button id="boton" type="submit" class="btn btn-success">
                                         Agregar Estilista
                                     </button>
-                                    <a href="/administrador" class="btn btn-danger">Cancelar</a>
+                                    <a href="/administrador" class="btn btn-example">Volver</a>
                                 </div>
                             </div>
                         </form>
