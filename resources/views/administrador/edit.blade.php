@@ -121,7 +121,7 @@
             boton.addEventListener('click', (e) => {
                 e.preventDefault();
                 Swal.fire({
-                    title: '¿Estas seguro que deseas editar estos datos?',
+                    title: '¿Estás seguro que deseas editar estos datos?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',
