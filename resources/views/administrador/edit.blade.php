@@ -102,7 +102,7 @@
                                 <div class="row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button id="boton" type="text" class="btn btn-success">
-                                            Guardar cambios
+
                                         </button>
                                         <a href="/administrador" class="btn btn-danger">Cancelar</a>
                                     </div>
