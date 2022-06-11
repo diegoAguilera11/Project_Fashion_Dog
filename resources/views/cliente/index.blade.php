@@ -11,6 +11,7 @@
 @section('contenido')
     <div class="container">
 
+
         <br>
         <br>
 
@@ -26,6 +27,45 @@
                                 </center>
                             </div>
                             <br>
+
+
+                            {{--_-_ []--}}
+
+                            <br>
+                            <input id="datetimepicker" type="text" class="form-control"name="published_at" >
+
+
+                            <link rel="stylesheet" type="text/css" href="/datetimepicker/jquery.datetimepicker.css" >
+                            <script src="/datetimepicker/jquery.js"></script>
+                            <script src="/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+
+                            <script>
+
+
+                                jQuery.datetimepicker.setLocale('es');//Idioma Español
+
+                                jQuery('#datetimepicker').datetimepicker({
+                                    i18n:{
+                                        es:{
+                                            dayOfWeekShort:[" Dom ", " Lun ", " Mar ", " Mie ", " Jue ", " Vie "," Sab ",]
+                                        }
+                                    },
+                                    format: 'd/m/Y H:i',
+                                    minDate: '+1970/01/02',  //desde mañana es el dia minimo
+                                });
+
+                                $('#input').datetimepicker();
+                                $('button.somebutton').on('click', function () {
+                                    var d = $('#input').datetimepicker('getValue');
+                                    console.log(d.getFullYear());
+                                });
+
+                            </script>
+                            {{--_-_ []--}}
+
+
+
+                            {{--
                             <div class="row mb-3">
                                 <label for="date"
                                     class="col-md-4 col-form-label text-md-end"><strong>{{ __('Indique fecha:') }}</strong></label>
@@ -55,13 +95,13 @@
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </div>--}}
                             {{-- __________________(0)_________________ --}}
 
                             <br><br>
                             {{--<input id="datetimepicker" type="text" >--}}
 
-
+                            {{--
                             <div class="row mb-3">
                                 <label for="date"
                                     class="col-md-4 col-form-label text-md-end"><strong>{{ __('Indique fecha:') }}</strong></label>
@@ -78,9 +118,9 @@
 
 
                                         <div class="col-5">
-
+                            --}}
                                             {{--_-_22 --}}
-
+                            {{--
                                             <div class="input-group date datepicker">
 
                                                 <input type="text" id="datetimepicke" name="published_at" class="form-control" />
@@ -111,7 +151,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            --}}
                             {{-- __________________(0)_________________ --}}
 
 
@@ -213,36 +253,7 @@
                             {{-- __________________(1)_________________ --}}
 
 
-    <br><br>
-    <input id="datetimepicker" type="text" class="form-control"name="published_at" >
 
-
-    <link rel="stylesheet" type="text/css" href="/datetimepicker/jquery.datetimepicker.css" >
-    <script src="/datetimepicker/jquery.js"></script>
-    <script src="/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
-
-    <script>
-
-
-        jQuery.datetimepicker.setLocale('es');//Idioma Español
-
-        jQuery('#datetimepicker').datetimepicker({
-            i18n:{
-                es:{
-                    dayOfWeekShort:[" Dom ", " Lun ", " Mar ", " Mie ", " Jue ", " Vie "," Sab ",]
-                }
-            },
-            format: 'd/m/Y H:i',
-            minDate: '+1970/01/02',  //desde mañana es el dia minimo
-        });
-
-        $('#input').datetimepicker();
-        $('button.somebutton').on('click', function () {
-            var d = $('#input').datetimepicker('getValue');
-            console.log(d.getFullYear());
-        });
-
-    </script>
 
 
                         </div>

@@ -17,10 +17,13 @@ return new class extends Migration
 
             $table->id();
             $table->dateTime('fecha_solicitud');
+            $table->date('fecha_solicitud');
+            $table->time('hora_solicitud');
             $table->enum('estado', ['INGRESADA', 'ATENDIDA A TIEMPO', 'ATENDIDA CON RETRASO', 'ANULADA']);
             $table->string('comentario')->nullable();
 
             $table->unsignedBigInteger('cliente_id');
+            $table->unsignedBigInteger('cliente_id')->nullable();
             $table->unsignedBigInteger('estilista_id')->nullable();
 
             $table->foreign('cliente_id')->references('id')->on('users');
