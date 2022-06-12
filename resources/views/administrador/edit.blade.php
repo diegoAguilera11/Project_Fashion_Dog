@@ -96,6 +96,7 @@
                                         </span>
                                     @enderror
                                 </div>
+
                             </div>
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
@@ -103,6 +104,7 @@
                                         Guardar cambios
                                     </button>
                                     <a href="/administrador" class="btn btn-danger">Cancelar</a>
+
                                 </div>
                             </div>
                         </form>

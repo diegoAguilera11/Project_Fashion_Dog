@@ -18,12 +18,14 @@
                                 </div>
                                 <div class="col-auto my-1">
                                     <input type="submit" class="btn btn-success" value="Buscar">
+
                                     <a href="home" class="btn btn-return"><span>Volver</span></a>
                                     <a href="/usuario" class="btn btn-warning" data-toggle="tooltip" data-placement="top"
                                         title="Refresca el Listado de Usuarios"><span>
                                             <center><img src="images/refrescar.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
                                         </span></a>
+
                                 </div>
                             </div>
                         </form>
@@ -89,6 +91,7 @@
 
                 </tbody>
             </table>
+
         </div>
 
     </div>
