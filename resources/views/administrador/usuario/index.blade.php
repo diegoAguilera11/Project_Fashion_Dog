@@ -6,19 +6,25 @@
             <div class="table-title">
                 <div class="row justify-content-between">
                     <div class="col-xl-12">
-                        <h2>Estado de <b>Usuarios</b></h2>
+                        <h2>Listado de <b>Usuarios</b></h2>
                         <form action="{{ route('usuario') }}">
                             <div class="form-row">
                                 <div class="col-sm-4 my-1">
                                     <input id="texto" type="text"
                                         oninput="this.value = this.value.replace(/[^0-9\\K\\k]/g, '').replace(/[k]/g, 'K').replace(/(\..*)\./g, '$1');"
                                         class="form-control @error('texto') is-invalid @enderror" name="texto"
-                                        value="{{ old('texto') }}" required autocomplete="text" autofocus>
+                                        value="{{ old('texto') }}" required autocomplete="text" autofocus
+                                        placeholder="Ingresa el RUT a buscar">
                                 </div>
                                 <div class="col-auto my-1">
                                     <input type="submit" class="btn btn-success" value="Buscar">
 
-                                    <a href="home" class="btn btn-danger"><span>Volver</span></a>
+                                    <a href="home" class="btn btn-return"><span>Volver</span></a>
+                                    <a href="/usuario" class="btn btn-warning" data-toggle="tooltip" data-placement="top"
+                                        title="Refresca el Listado de Usuarios"><span>
+                                            <center><img src="images/refrescar.png" with="20" height="20"
+                                                    class="d-inline-block align-text-top"></center>
+                                        </span></a>
 
                                 </div>
                             </div>
@@ -51,22 +57,27 @@
 
 
                             @if ($user->estado == 'habilitado')
-                                <td><a class="btn btn-success" type="text" data-toggle="tooltip" data-placement="top"
+                                <td>
+                                    <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
                                         title="Deshabilita al usuario"
-                                        href={{ route('cambiarEstado', ['id' => $user->id]) }}><i
-                                            class="fas fa-check"></i>
-                                        <center><img src="images/check.png" with="20" height="20"
-                                                class="d-inline-block align-text-top"></center>
-                                    </a>
+                                        action="{{ route('cambiarEstado', ['id' => $user->id]) }}">
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>
+                                            <center><img src="images/check.png" with="20" height="20"
+                                                    class="d-inline-block align-text-top"></center>
+                                        </button>
+                                    </form>
                                 </td>
                             @else
-                                <td><a class="btn btn-danger" data-toggle="tooltip" data-placement="top"
+                                <td>
+                                    <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
                                         title="Habilita al usuario"
-                                        href={{ route('cambiarEstado', ['id' => $user->id]) }}><i
-                                            class="fas fa-ban"></i>
-                                        <center><img src="images/x.png" with="20" height="20"
-                                                class="d-inline-block align-text-top"></center>
-                                    </a>
+                                        action="{{ route('cambiarEstado', ['id' => $user->id]) }}">
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-ban"></i>
+                                            <center><img src="images/x.png" with="20" height="20"
+                                                    class="d-inline-block align-text-top"></center>
+                                        </button>
+
+                                    </form>
                                 </td>
                             @endif
 
@@ -82,10 +93,42 @@
             </table>
 
         </div>
+
     </div>
     @if ($users->links())
         <div class="d-flex justify-content-center">
             {!! $users->links() !!}
         </div>
     @endif
+    <script>
+        const formularios = document.getElementsByClassName("formulario");
+
+        for (const form of formularios) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                Swal.fire({
+                    title: '¿Estás seguro que quieres habilitar/deshabilitar a este usuario?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4DD091',
+                    cancelButtonColor: '#FF5C77',
+                    confirmButtonText: 'Confirmar',
+                    cancelButtonText: 'Cancelar',
+
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'La acción se ha realizado con exito!',
+                            showConfirmButton: false,
+                            timer: 999,
+                        })
+                        form.submit();
+                    }
+                })
+            })
+        }
+    </script>
 @endsection
