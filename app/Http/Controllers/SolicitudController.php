@@ -124,7 +124,7 @@ class SolicitudController extends Controller
         foreach ($solicituds as $solicitud) {
 
             if ($solicitud->fecha_solicitud == $date) {
-                throw ValidationException::withMessages(['fecha_solicitud' => 'Ya existe solicitud para la fecha.' . $date]);
+                throw ValidationException::withMessages(['fecha_solicitud' => 'Ya existe solicitud para la fecha:' . $date]);
             }
         }
 
