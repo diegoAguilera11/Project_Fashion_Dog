@@ -101,17 +101,7 @@ class SolicitudController extends Controller
 
         $date = date($request->fecha_solicitud);
         $time = date($request->hora_solicitud);
-
-
-
-
-
         $solicituds = Auth::user()->solicitudesCliente()->get('fecha_solicitud');
-
-        /* if ($anio > 9999) {
-            throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha indicada no es válida, debe seguir el formato: DD/MM/YYYY.']);
-        }
-        */
 
         switch ($date) {
             case null:
@@ -123,10 +113,6 @@ class SolicitudController extends Controller
                 break;
 
             case ($date >= "9999-12-31"):
-                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha indicada no es válida, debe seguir el formato: DD/MM/YYYY.']);
-                break;
-
-            default:
                 throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha indicada no es válida, debe seguir el formato: DD/MM/YYYY.']);
                 break;
         }
