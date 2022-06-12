@@ -101,17 +101,47 @@ class SolicitudController extends Controller
 
         $date = date($request->fecha_solicitud);
         $time = date($request->hora_solicitud);
+
+
+
+
+
         $solicituds = Auth::user()->solicitudesCliente()->get('fecha_solicitud');
 
+        /* if ($anio > 9999) {
+            throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha indicada no es válida, debe seguir el formato: DD/MM/YYYY.']);
+        }
+        */
+
+        switch ($date) {
+            case null:
+                throw ValidationException::withMessages(['fecha_solicitud' => 'Debe seleccionar una fecha.']);
+                break;
+
+            case ($date < date("Y-m-d")):
+                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha siempre debe ser mayor a la fecha actual ' . date("d-m-Y")]);
+                break;
+
+            case ($date >= "9999-12-31"):
+                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha indicada no es válida, debe seguir el formato: DD/MM/YYYY.']);
+                break;
+
+            default:
+                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha indicada no es válida, debe seguir el formato: DD/MM/YYYY.']);
+                break;
+        }
+        if ($time == null) {
+            throw ValidationException::withMessages(['hora_solicitud' => 'Debe seleccionar una hora.']);
+        }
+
+
         foreach ($solicituds as $solicitud) {
+
             if ($solicitud->fecha_solicitud == $date) {
                 throw ValidationException::withMessages(['fecha_solicitud' => 'Ya existe solicitud para la fecha.' . $date]);
-            } elseif ($date < date("Y-m-d")) {
-                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha siempre debe ser mayor a la fecha actual.' . date("Y-m-d")]);
-            } elseif ($time == null) {
-                throw ValidationException::withMessages(['hora_solicitud' => 'Debe seleccionar una hora.']);
             }
         }
+
 
         Solicitud::create([
             'fecha_solicitud' => $date,

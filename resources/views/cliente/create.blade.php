@@ -21,16 +21,16 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Fecha Servicio') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="fecha_solicitud" type="date"
-                                            class="form-control @error('fecha_solicitud') is-invalid @enderror"
-                                            name="fecha_solicitud" value="{{ old('fecha_solicitud') }}" required
-                                            autocomplete="fecha_solicitud" autofocus>
+                                        <input id="fecha_solicitud" type="date" min="1970-01-01" max="9999-12-31"
+                                        class="form-control @error('fecha_solicitud') is-invalid @enderror"
+                                        name="fecha_solicitud" value="{{ old('fecha_solicitud') }}" required
+                                        autocomplete="fecha_solicitud" autofocus>
 
-                                        @error('fecha_solicitud')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                    @error('fecha_solicitud')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     </div>
                                 </div>
 
