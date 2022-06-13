@@ -18,6 +18,6 @@ class Solicitud extends Model
         'comentario',
         'cliente_id',
         'estilista_id',
-        'numero_solicitud',
+
     ];
 }
