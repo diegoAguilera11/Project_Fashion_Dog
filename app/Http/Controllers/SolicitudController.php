@@ -100,7 +100,6 @@ class SolicitudController extends Controller
         $date = date($request->fecha_solicitud);
         $time = date($request->hora_solicitud);
         $solicituds = Auth::user()->solicitudesCliente()->get('fecha_solicitud');
-        $numero_solicitud = rand(100000, 999999);
 
 
 
@@ -117,7 +116,6 @@ class SolicitudController extends Controller
             'hora_solicitud' => $time,
             'estado' => "INGRESADA",
             'cliente_id' => Auth::user()->id,
-            'numero_solicitud' => $numero_solicitud,
         ]);
 
 

@@ -37,10 +37,10 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Hora Servicio') }}</label>
 
                                     <div class="col-md-6">
-                                        <select id="hora_solicitud" name="hora_solicitud"
+                                        <select id="hora_solicitud" name="hora_solicitud" type="hora_solicitud"
                                             class="form-select @error('hora_solicitud') is-invalid @enderror"
-                                            aria-label="Default select example" value="{{ old('hora_solicitud') }}"
-                                            required autocomplete="hora_solicitud" autofocus>
+                                            name="hora_solicitud" value="{{ old('hora_solicitud') }}" required
+                                            autocomplete="hora_solicitud" autofocus>
                                             <option selected disabled>Seleccione Hora</option>
                                             <option value="14:00">8:00</option>
                                             <option value="15:00">9:00</option>
@@ -60,21 +60,18 @@
                                         </select>
 
                                         @error('hora_solicitud')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     </div>
                                 </div>
-
-
-
-
                                 <div class="row mb-0">
                                     <div class="col-md-8 offset-md-4">
-                                        <button id="boton" type="submit" class="btn btn-success">
-                                            {{ __('Enviar') }}
+                                        <button id="boton" type="button" class="btn btn-success">
+                                            Enviar
                                         </button>
+                                        <a href="/home" class="btn btn-return"><span>Volver</span></a>
                                     </div>
                                 </div>
 
@@ -169,9 +166,9 @@
 
         <script src="js/main.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+                integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
         </script>
     @endsection

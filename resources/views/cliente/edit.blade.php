@@ -15,7 +15,7 @@
 
 
                     <div class="col-sm-3">
-                        <a href="home" class="btn btn-danger" data-toggle="modal"><span>Volver</span></a>
+                        <a href="/home" class="btn btn-return"><span>Volver</span></a>
                     </div>
 
                 </div>

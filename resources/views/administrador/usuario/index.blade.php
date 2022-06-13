@@ -114,14 +114,16 @@
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
-                        form.submit();
+
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
                             title: 'La acción se ha realizado con exito!',
                             showConfirmButton: false,
-                            timer: 5000
+                            timer: 1500
                         })
+                        form.submit();
+
                     }
                 })
             })

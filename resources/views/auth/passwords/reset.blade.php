@@ -67,7 +67,7 @@
                                         <button id="botonChange" type="text" class="btn btn-success">
                                             Cambiar
                                         </button>
-                                        <a href="/home" class="btn btn-danger"><span>Cancelar</span></a>
+                                        <a href="/home" class="btn btn-return"><span>Volver</span></a>
                                     </div>
                                 </div>
                             </div>
