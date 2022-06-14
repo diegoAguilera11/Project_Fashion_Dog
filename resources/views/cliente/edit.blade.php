@@ -15,7 +15,7 @@
 
 
                     <div class="col-sm-3">
-                        <a href="home" class="btn btn-danger" data-toggle="modal"><span>Volver</span></a>
+                        <a href="/home" class="btn btn-danger" data-toggle="modal"><span>Volver</span></a>
                     </div>
 
                 </div>
@@ -35,7 +35,7 @@
 
                     @forelse ($solicituds as $solicitud)
                         <tr>
-                            <td>{{ $solicitud->numero_solicitud }}</td>
+                            <td>{{ $solicitud->id}}</td>
                             <td>{{ $solicitud->fecha_solicitud }} - {{ $solicitud->hora_solicitud }}</td>
                             <td>{{ $solicitud->estado }}</td>
                             @if ($solicitud->estilista_id)
