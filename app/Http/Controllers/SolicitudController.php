@@ -6,7 +6,9 @@ use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Exists;
 use Illuminate\Validation\ValidationException;
+
 
 
 class SolicitudController extends Controller
@@ -100,24 +102,39 @@ class SolicitudController extends Controller
         $date = date($request->fecha_solicitud);
         $time = date($request->hora_solicitud);
         $solicituds = Auth::user()->solicitudesCliente()->get('fecha_solicitud');
-        $numero_solicitud = rand(100000, 999999);
 
+        switch ($date) {
+            case null:
+                throw ValidationException::withMessages(['fecha_solicitud' => 'Debe seleccionar una fecha.']);
+                break;
+
+            case ($date < date("Y-m-d")):
+                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha siempre debe ser mayor a la fecha actual ' . date("d-m-Y")]);
+                break;
+
+            case ($date >= "9999-12-31"):
+                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha indicada no es válida, debe seguir el formato: DD/MM/YYYY.']);
+                break;
+        }
+        if ($time == null) {
+            throw ValidationException::withMessages(['hora_solicitud' => 'Debe seleccionar una hora.']);
+        }
 
 
         foreach ($solicituds as $solicitud) {
+
             if ($solicitud->fecha_solicitud == $date) {
-                throw ValidationException::withMessages(['fecha_solicitud' => 'Ya existe solicitud para la fecha ' . $date]);
-            } elseif ($date < date("Y-m-d")) {
-                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha siempre debe ser mayor a la fecha actual ' . date("Y-m-d")]);
+                throw ValidationException::withMessages(['fecha_solicitud' => 'Ya existe solicitud para la fecha:' . $date]);
             }
         }
+
 
         Solicitud::create([
             'fecha_solicitud' => $date,
             'hora_solicitud' => $time,
             'estado' => "INGRESADA",
             'cliente_id' => Auth::user()->id,
-            'numero_solicitud' => $numero_solicitud,
+
         ]);
 
 

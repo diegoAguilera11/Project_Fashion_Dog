@@ -3351,6 +3351,12 @@ fieldset:disabled .btn {
     border-color: #6c757d;
 }
 
+.btn-return {
+    color: rgb(255, 255, 255);
+    background-color: #74737A;
+    border-color: #73727a;
+}
+
 .btn-success {
     color: #fff;
     background-color: #4DD091;

@@ -15,7 +15,7 @@
                                 src="images/agregar.png" with="25" height="25" style="margin-right: 10px"
                                 class="d-inline-block align-text-top"><span>Agregar estilista</span></a>
 
-                        <a href="home" class="btn btn-danger" data-toggle="modal"><span>Volver</span></a>
+                        <a href="home" class="btn btn-return" data-toggle="modal"><span>Volver</span></a>
 
                     </div>
                 </div>
