@@ -18,6 +18,7 @@
                                 <center>
                                     <h1>Bienvenido Cliente {{ Auth::user()->nombre }}</h1>
 
+
                                     <a href="/cliente/create" class="btn btn-success">Solicitar servicio a domicilio</a>
                                     <a href="/cliente" class="btn btn-success">Administrar solicitud/es</a>
                                 </center>

@@ -18,6 +18,12 @@ class Solicitud extends Model
         'comentario',
         'cliente_id',
         'estilista_id',
-        'numero_solicitud',
+
     ];
+
+    public function obtenerCliente()
+    {
+        return $this->hasMany(User::class, "id");
+    }
+
 }

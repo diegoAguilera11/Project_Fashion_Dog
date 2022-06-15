@@ -7,9 +7,11 @@
         <br>
         <br>
 
-        <body style="background-color: #ffffff">
             <div class="row justify-content-center">
                 <div class="col-md-8">
+                    <div class="col-sm-3">
+                        <a href="home" class="btn btn-danger" data-toggle="modal"><span>Volver</span></a>
+                    </div>
                     <form action="{{ route('changePassword') }}" method="POST" class="needs-validation" novalidate>
                         @csrf
                         <div class="card">

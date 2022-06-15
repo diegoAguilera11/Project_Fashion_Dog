@@ -5,12 +5,14 @@
     <div class="container">
 
         <div class="container">
+            <br>
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">{{ 'Solicitar Servicio' }}</div>
 
                         <div class="card-body">
+
                             <form id="form" method="POST" action="{{ route('crear_solicitud_post') }}">
                                 @csrf
 
@@ -19,16 +21,16 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Fecha Servicio') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="fecha_solicitud" type="date"
-                                            class="form-control @error('fecha_solicitud') is-invalid @enderror"
-                                            name="fecha_solicitud" value="{{ old('fecha_solicitud') }}" required
-                                            autocomplete="fecha_solicitud" autofocus>
+                                        <input id="fecha_solicitud" type="date" min="1970-01-01" max="9999-12-31"
+                                        class="form-control @error('fecha_solicitud') is-invalid @enderror"
+                                        name="fecha_solicitud" value="{{ old('fecha_solicitud') }}" required
+                                        autocomplete="fecha_solicitud" autofocus>
 
-                                        @error('fecha_solicitud')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                    @error('fecha_solicitud')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     </div>
                                 </div>
 
@@ -37,26 +39,27 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Hora Servicio') }}</label>
 
                                     <div class="col-md-6">
-                                        <select id="hora_solicitud" name="hora_solicitud" type="hora_solicitud"
+                                        <select id="hora_solicitud" name="hora_solicitud"required
                                             class="form-select @error('hora_solicitud') is-invalid @enderror"
-                                            name="hora_solicitud" value="{{ old('hora_solicitud') }}" required
-                                            autocomplete="hora_solicitud" autofocus>
+                                            aria-label="Default select example" value="{{ old('hora_solicitud') }}"
+                                            required autocomplete="hora_solicitud" autofocus required >
                                             <option selected disabled>Seleccione Hora</option>
-                                            <option value="14:00">8:00</option>
-                                            <option value="15:00">9:00</option>
-                                            <option value="16:00">10:00</option>
-                                            <option value="17:00">11:00</option>
-                                            <option value="18:00">12:00</option>
-                                            <option value="14:00">13:00</option>
-                                            <option value="15:00">14:00</option>
-                                            <option value="16:00">15:00</option>
-                                            <option value="17:00">16:00</option>
-                                            <option value="18:00">17:00</option>
-                                            <option value="14:00">18:00</option>
-                                            <option value="15:00">19:00</option>
-                                            <option value="16:00">20:00</option>
-                                            <option value="17:00">21:00</option>
-                                            <option value="18:00">22:00</option>
+                                            <option value="8:00">8:00</option>
+                                            <option value="9:00">9:00</option>
+                                            <option value="10:00">10:00</option>
+                                            <option value="11:00">11:00</option>
+                                            <option value="12:00">12:00</option>
+                                            <option value="13:00">13:00</option>
+                                            <option value="14:00">14:00</option>
+                                            <option value="15:00">15:00</option>
+                                            <option value="16:00">16:00</option>
+                                            <option value="17:00">17:00</option>
+                                            <option value="18:00">18:00</option>
+                                            <option value="19:00">19:00</option>
+                                            <option value="20:00">20:00</option>
+                                            <option value="21:00">21:00</option>
+                                            <option value="22:00">22:00</option>
+
                                         </select>
 
                                         @error('hora_solicitud')
@@ -67,6 +70,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-0">
+
                                     <div class="col-md-8 offset-md-4">
                                         <button id="boton" type="button" class="btn btn-success">
                                             Enviar
