@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
 
 class HomeTest extends TestCase
 {
@@ -35,7 +36,7 @@ class HomeTest extends TestCase
     {
         $credentials = [
             "rut" => "209083973",
-            "password" => "diego12345",
+            "password" => "ejemplo",
         ];
 
         $this->post(route('login'),$credentials)
