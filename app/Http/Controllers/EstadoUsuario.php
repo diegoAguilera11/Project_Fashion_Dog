@@ -13,9 +13,6 @@ class EstadoUsuario extends Controller
      */
     public function index(Request $request)
     {
-        /*$request->validate([
-            'texto' => ['required'],
-        ]);*/
         if($request->texto == null)
         {
             $usuarios = User::where('rol',"!=", 'administrador')->simplePaginate(5);

@@ -18,7 +18,6 @@
                                 @csrf
                                 <div class="row mb-3">
                                     <label for="rut" class="col-md-4 col-form-label text-md-end">{{ __('RUT') }}</label>
-
                                     <div class="col-md-6">
                                         <input id="rut" type="text"
                                             oninput="this.value = this.value.replace(/[^0-9\\K\\k]/g, '').replace(/[k]/g, 'K').replace(/(\..*)\./g, '$1');"

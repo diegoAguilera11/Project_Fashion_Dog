@@ -40,6 +40,28 @@ class SolicitudController extends Controller
         return view('cliente.edit')->with('solicituds', $solicituds);
     }
 
+    public function agregarComentario(Request $request, $id)
+    {
+
+        $solicitud = Solicitud::where('id', $id)->FirstOrFail();
+
+        $solicitud->comentario = $request->texto;
+
+        $solicitud->save();
+
+        return redirect('/cliente');
+
+    }
+
+
+
+    public function cancelStatusSolicitud($request)
+    {
+        $solicitud = Solicitud::where('id', $request)->get()->first();
+            $solicitud->estado = 'ANULADA';
+            $solicitud->save();
+            return redirect('/cliente');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -103,6 +125,10 @@ class SolicitudController extends Controller
         $time = date($request->hora_solicitud);
         $solicituds = Auth::user()->solicitudesCliente()->get('fecha_solicitud');
 
+        // $request->validate([
+        //     'fecha_solicitud' => ['required', 'date', 'regex:'],
+        // ]);
+
         switch ($date) {
             case null:
                 throw ValidationException::withMessages(['fecha_solicitud' => 'Debe seleccionar una fecha.']);
@@ -134,7 +160,6 @@ class SolicitudController extends Controller
             'hora_solicitud' => $time,
             'estado' => "INGRESADA",
             'cliente_id' => Auth::user()->id,
-
         ]);
 
 

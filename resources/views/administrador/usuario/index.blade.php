@@ -76,7 +76,6 @@
                                             <center><img src="images/x.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
                                         </button>
-
                                     </form>
                                 </td>
                             @endif
