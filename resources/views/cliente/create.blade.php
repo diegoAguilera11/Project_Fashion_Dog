@@ -10,12 +10,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-<<<<<<< HEAD
-                        <div class="card-header text-black" style="background-color: #FFDACC; "><strong>{{ 'Solicitar Servicio' }}</strong>
-                        </div>
-=======
-                        <div class="card-header" style="background-color: #FFDACC;">{{ 'Solicitar Servicio' }}</div>
->>>>>>> c9222a880bcedf2ce74832db09e8a414b00e4e4b
+                        <div class="card-header" style="background-color: #FFDACC;"><strong>{{ 'Solicitar Servicio' }}</strong></div>
 
                         <div class="card-body">
 
@@ -123,6 +118,7 @@
                         denyButtonText: 'No guardar',
                         confirmButtonColor: '#4DD091',
                         cancelButtonColor: '#FF5C77',
+                        allowOutsideClick: false,
                     }).then((result) => {
                         /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {

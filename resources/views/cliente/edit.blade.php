@@ -62,6 +62,7 @@
                                         <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
                                             title="Agrega un Comentario"
                                             action="{{ route('agregar_comentario', ['id' => $solicitud->id]) }}">
+                                            <input class="comentario" name="comentario" hidden />
                                             <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>
                                                 <center><img src="images/comment.png" with="20" height="20"
                                                         class="d-inline-block align-text-top"></center>
@@ -96,13 +97,14 @@
 
     <script>
         const formularios = document.getElementsByClassName("formulario");
+        let comentario = "";
 
         for (const form of formularios) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 Swal.fire({
                     title: 'Comparte tu opinión sobre el Servicio',
-                    input: 'textarea',
+                    html: '<textarea rows="4" cols="40" placeholder="Tu comentario puede tener un máximo de 100 caracteres."></textarea>',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',
                     cancelButtonColor: '#FF5C77',
@@ -110,9 +112,12 @@
                     cancelButtonText: 'Cancelar',
                     allowOutsideClick: false,
 
+
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
+                        comentario = Swal.getHtmlContainer().querySelector('textarea').value;
+                        form.firstElementChild.value = comentario;
                         form.submit();
                     }
                 })
@@ -146,13 +151,4 @@
             })
         }
     </script>
-
-    {{-- <script>
-    $(function() {
-
-        $('#nuevoComentario').modal({
-            backdrop = 'static'
-        });
-    });
-</script> --}}
 @endsection
