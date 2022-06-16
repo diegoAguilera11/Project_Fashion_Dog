@@ -18,8 +18,8 @@
 
 
                                 <div class="row mb-3">
-                                    <label for="rut" class="col-md-4 col-form-label text-md-end"> <strong>
-                                            {{ __('RUT') }} </strong></label>
+                                    <label for="rut" class="col-md-4 col-form-label text-md-end">
+                                        {{ __('RUT') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="rut" type="text" class="form-control @error('rut') is-invalid @enderror"
@@ -36,7 +36,7 @@
 
                                 <div class="row mb-3">
                                     <label for="new_password "
-                                        class="col-md-4 col-form-label text-md-end"><strong>{{ __('Nueva Contraseña') }}</strong></label>
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Nueva Contraseña') }}</label>
                                     <div class="col-md-6">
                                         <input type="password" name="password"
                                             class="form-control @error('password') is-invalid @enderror" required
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="row mb-3">
                                     <label for="confirm_password"
-                                        class="col-md-4 col-form-label text-md-end"><strong>{{ __('Confirmar Nueva Contraseña') }}</strong></label>
+                                        class="col-md-4 col-form-label text-md-end">{{ __('Confirmar Nueva Contraseña') }}</label>
                                     <div class="col-md-6">
                                         <input type="password" name="password_confirmation"
                                             class="form-control @error('confirm_password') is-invalid @enderror" required
@@ -68,7 +68,7 @@
                                             Cambiar
                                         </button>
 
-                                        <a href="/home" class="btn btn-danger"><span>Cancelar</span></a>
+                                        <a href="/home" class="btn btn-return"><span>Volver</span></a>
 
                                     </div>
                                 </div>
@@ -91,6 +91,7 @@
                     cancelButtonColor: '#FF5C77',
                     confirmButtonText: 'Confirmar',
                     cancelButtonText: 'Cancelar',
+                    allowOutsideClick: false,
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {

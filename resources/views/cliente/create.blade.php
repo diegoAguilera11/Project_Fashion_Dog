@@ -9,7 +9,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">{{ 'Solicitar Servicio' }}</div>
+                        <div class="card-header text-black" style="background-color: #FFDACC; "><strong>{{ 'Solicitar Servicio' }}</strong>
+                        </div>
 
                         <div class="card-body">
 
@@ -22,15 +23,15 @@
 
                                     <div class="col-md-6">
                                         <input id="fecha_solicitud" type="date" min="1970-01-01" max="9999-12-31"
-                                        class="form-control @error('fecha_solicitud') is-invalid @enderror"
-                                        name="fecha_solicitud" value="{{ old('fecha_solicitud') }}" required
-                                        autocomplete="fecha_solicitud" autofocus>
+                                            class="form-control @error('fecha_solicitud') is-invalid @enderror"
+                                            name="fecha_solicitud" value="{{ old('fecha_solicitud') }}" required
+                                            autocomplete="fecha_solicitud" autofocus>
 
-                                    @error('fecha_solicitud')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @error('fecha_solicitud')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -39,10 +40,10 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Hora Servicio') }}</label>
 
                                     <div class="col-md-6">
-                                        <select id="hora_solicitud" name="hora_solicitud"required
+                                        <select id="hora_solicitud" name="hora_solicitud" required
                                             class="form-select @error('hora_solicitud') is-invalid @enderror"
                                             aria-label="Default select example" value="{{ old('hora_solicitud') }}"
-                                            required autocomplete="hora_solicitud" autofocus required >
+                                            required autocomplete="hora_solicitud" autofocus required>
                                             <option selected disabled>Seleccione Hora</option>
                                             <option value="8:00">8:00</option>
                                             <option value="9:00">9:00</option>
@@ -63,10 +64,10 @@
                                         </select>
 
                                         @error('hora_solicitud')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row mb-0">
@@ -96,8 +97,9 @@
                         showCancelButton: true,
                         confirmButtonColor: '#4DD091',
                         cancelButtonColor: '#FF5C77',
-                        confirmButtonText: 'Agregar',
+                        confirmButtonText: 'Confirmar',
                         cancelButtonText: 'Cancelar',
+                        allowOutsideClick: false,
                     }).then((result) => {
                         /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {

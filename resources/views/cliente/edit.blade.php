@@ -9,7 +9,9 @@
                 <div class="row justify-content-between">
 
                     <div class="col-sm-4">
-                        <h2>Administrar <b>Solicitudes</b><a href="/home" class="btn btn-return"><span>Volver</span></a></h2>
+                        <h2>Administrar <b>Solicitudes</b>
+                            <a href="/home" class="btn btn-return"><span>Volver</span></a>
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -47,7 +49,7 @@
                                     <form class="formularioAnular" method="GET" data-toggle="tooltip" data-placement="top"
                                         title="Anula la Solicitud"
                                         action="{{ route('anularSolicitud', ['id' => $solicitud->id]) }}">
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-check"></i>
                                             <center><img src="images/trash.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
                                         </button>
@@ -99,14 +101,14 @@
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 Swal.fire({
-                    title: 'Agrega un Comentario',
+                    title: 'Comparte tu opinión sobre el Servicio',
                     input: 'textarea',
-                    icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',
                     cancelButtonColor: '#FF5C77',
-                    confirmButtonText: 'Confirmar',
+                    confirmButtonText: 'Publicar',
                     cancelButtonText: 'Cancelar',
+                    allowOutsideClick: false,
 
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
@@ -133,6 +135,7 @@
                     cancelButtonColor: '#FF5C77',
                     confirmButtonText: 'Confirmar',
                     cancelButtonText: 'Cancelar',
+                    allowOutsideClick: false,
 
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
