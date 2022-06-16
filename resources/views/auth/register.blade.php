@@ -9,7 +9,7 @@
                     <div class="card">
                         <center>
                             <div class="card-header text-black" style="background-color:#FFDACC ">
-                                <strong>{{ __('Rellene los campos') }}</strong>
+                                <strong>{{ __('Registro Cliente') }}</strong>
                             </div>
                         </center>
 
@@ -180,6 +180,7 @@
                     cancelButtonColor: '#FF5C77',
                     confirmButtonText: 'Enviar',
                     cancelButtonText: 'Cancelar',
+                    allowOutsideClick: false,
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
