@@ -41,11 +41,14 @@ Route::get('/estilista/create', function () {
 Route::get('/estilista/edit', function () {
     return view('estilista.edit');
 });
+<<<<<<< HEAD
 
 //METODOS QUE RETORNAN LAS VIEWS DE CLIENTE
 
 //Route::get('/GenerateRequest', [SolicitudController::class, 'GenerateRequest'])->name('GenerateRequest')->middleware('auth');
 //Route::post('/cliente/create', [SolicitudController::class, 'requestService'])->name('requestService');
+=======
+>>>>>>> 81d0a4db27eea5e39f1d18f5ad3e69c0136fd5ab
 
 Route::get('/cliente/create', function () {
     return view('cliente.create');
@@ -56,17 +59,6 @@ Route::get('/cliente/edit', function () {
 Route::get('/cliente', function () {
     return view('cliente.index');
 });
-//METODOS QUE RETORNAN LAS VIEWS DE ADMINISTRADOR
-/* Route::get('/administrador/create', function () {
-    return view('administrador.create');
-});
-Route::get('/administrador/edit', function () {
-    return view('administrador.edit');
-});
-Route::get('/administrador', function () {
-    return view('administrador.index');
-});
- */
 Route::get('/reset', function () {
     return view('passwords.reset');
 });
@@ -96,7 +88,14 @@ Route::post('/cliente/edit', [SolicitudController::class, 'store'])->name('edita
 Route::get('/cliente/create', [SolicitudController::class, 'create'])->name('crear_solicitud');
 Route::post('/cliente/create', [SolicitudController::class, 'store'])->name('crear_solicitud_post');
 
+<<<<<<< HEAD
 Route::get('buscar-fecha', function(){return view('buscar-fecha.index');})->name('buscarFecha');
 Route::get('/ClienteEncontrado', function () {   return view('ClienteEncontrado.index');});
 Route::post('ClienteEncontrado',[BuscarSolicitudController::class, 'devolverSolicitudPorFecha'])->name('postBuscarFecha');
 Route::get('ClienteEncontrado/{id}', [BuscarSolicitudController::class,'mostrarCliente'])->name('mostrarCliente');
+=======
+Route::get('/cliente/{id}', [SolicitudController::class, 'cancelStatusSolicitud'])->name('anularSolicitud');
+
+Route::get('/cliente-comentario/{id}', [SolicitudController::class, 'agregarComentario'])->name('agregar_comentario');
+
+>>>>>>> 81d0a4db27eea5e39f1d18f5ad3e69c0136fd5ab

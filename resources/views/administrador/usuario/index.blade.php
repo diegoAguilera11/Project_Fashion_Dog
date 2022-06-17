@@ -76,7 +76,6 @@
                                             <center><img src="images/x.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
                                         </button>
-
                                     </form>
                                 </td>
                             @endif
@@ -114,6 +113,7 @@
                     cancelButtonColor: '#FF5C77',
                     confirmButtonText: 'Confirmar',
                     cancelButtonText: 'Cancelar',
+                    allowOutsideClick: false,
 
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
@@ -123,7 +123,7 @@
                             icon: 'success',
                             title: 'La acción se ha realizado con exito!',
                             showConfirmButton: false,
-                            timer: 999,
+                            timer: 1500,
                         })
                         form.submit();
                     }
@@ -131,4 +131,5 @@
             })
         }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 @endsection

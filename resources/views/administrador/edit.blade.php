@@ -126,6 +126,7 @@
                     cancelButtonColor: '#FF5C77',
                     confirmButtonText: 'Guardar',
                     cancelButtonText: 'Cancelar',
+                    allowOutsideClick: false,
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
