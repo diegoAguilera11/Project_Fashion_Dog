@@ -4,12 +4,13 @@
 @section('contenido')
     <div class="container">
 
+        <br>
         <div class="container">
             <br>
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">{{ 'Solicitar Servicio' }}</div>
+                        <div class="card-header" style="background-color: #FFDACC;"><strong>{{ 'Solicitar Servicio' }}</strong></div>
 
                         <div class="card-body">
 
@@ -22,15 +23,15 @@
 
                                     <div class="col-md-6">
                                         <input id="fecha_solicitud" type="date" min="1970-01-01" max="9999-12-31"
-                                        class="form-control @error('fecha_solicitud') is-invalid @enderror"
-                                        name="fecha_solicitud" value="{{ old('fecha_solicitud') }}" required
-                                        autocomplete="fecha_solicitud" autofocus>
+                                            class="form-control @error('fecha_solicitud') is-invalid @enderror"
+                                            name="fecha_solicitud" value="{{ old('fecha_solicitud') }}" required
+                                            autocomplete="fecha_solicitud" autofocus>
 
-                                    @error('fecha_solicitud')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        @error('fecha_solicitud')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -39,10 +40,10 @@
                                         class="col-md-4 col-form-label text-md-end">{{ __('Hora Servicio') }}</label>
 
                                     <div class="col-md-6">
-                                        <select id="hora_solicitud" name="hora_solicitud"required
+                                        <select id="hora_solicitud" name="hora_solicitud" required
                                             class="form-select @error('hora_solicitud') is-invalid @enderror"
                                             aria-label="Default select example" value="{{ old('hora_solicitud') }}"
-                                            required autocomplete="hora_solicitud" autofocus required >
+                                            required autocomplete="hora_solicitud" autofocus required>
                                             <option selected disabled>Seleccione Hora</option>
                                             <option value="8:00">8:00</option>
                                             <option value="9:00">9:00</option>
@@ -69,13 +70,11 @@
                                         @enderror
                                     </div>
                                 </div>
-
-
-
-
                                 <div class="row mb-0">
 
+
                                     <div class="col-md-8 offset-md-4">
+
                                         <button id="boton" type="submit" class="btn btn-success">
                                             {{ __('Enviar') }}
                                         </button>
@@ -88,85 +87,56 @@
                     </div>
                 </div>
             </div>
+
             <script>
                 const boton = document.getElementById("boton");
                 const form = document.getElementById("form");
+                var today = new Date();
+                today.setDate(today.getDate() + 1);
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+                var yyyy = today.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd
+                }
+                if (mm < 10) {
+                    mm = '0' + mm
+                }
+                today = yyyy + '-' + mm + '-' + dd;
 
+
+
+                document.getElementById("fecha_solicitud").setAttribute("min", today);
                 boton.addEventListener('click', (e) => {
                     e.preventDefault();
                     Swal.fire({
                         title: '¿Estás seguro que deseas solicitar el servicio para esa fecha?',
                         icon: 'warning',
+                        showDenyButton: false,
                         showCancelButton: true,
+                        confirmButtonText: 'Guardar',
+                        denyButtonText: 'No guardar',
                         confirmButtonColor: '#4DD091',
                         cancelButtonColor: '#FF5C77',
-                        confirmButtonText: 'Agregar',
-                        cancelButtonText: 'Cancelar',
+                        allowOutsideClick: false,
                     }).then((result) => {
                         /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {
                             form.submit();
+                        } else if (result.isDenied) {
+                            Swal.fire('Los cambios no se han guardado', '', 'info')
                         }
                     })
                 })
-            </script>
-            <script>
-                const boton = document.getElementById("boton");
-                const form = document.getElementById("form");
 
-                boton.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    Swal.fire({
-                        title: 'Numero de solicitud:',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#4DD091',
-                        cancelButtonColor: '#FF5C77',
-                        confirmButtonText: 'Continuar',
-                    }).then((result) => {
-                        /* Read more about isConfirmed, isDenied below */
-                        if (result.isConfirmed) {
-                            form.submit();
-                        }
-                    })
-                })
+
             </script>
+
+
+
 
         </div>
-        <script>
-            const boton = document.getElementById("boton");
-            const form = document.getElementById("form");
-            var today = new Date();
-            today.setDate(today.getDate() + 1);
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-            var yyyy = today.getFullYear();
-            if (dd < 10) {
-                dd = '0' + dd
-            }
-            if (mm < 10) {
-                mm = '0' + mm
-            }
-            today = yyyy + '-' + mm + '-' + dd;
-            document.getElementById("fecha_solicitud").setAttribute("min", today);
-            boton.addEventListener('click', (e) => {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Do you want to save the changes?',
-                    showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: 'Save',
-                    denyButtonText: `Don't save`,
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        form.submit();
-                    } else if (result.isDenied) {
-                        Swal.fire('Changes are not saved', '', 'info')
-                    }
-                })
-            })
-        </script>
+
 
 
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -174,9 +144,9 @@
 
         <script src="js/main.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+                integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
         </script>
     @endsection

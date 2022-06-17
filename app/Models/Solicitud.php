@@ -20,4 +20,10 @@ class Solicitud extends Model
         'estilista_id',
 
     ];
+
+    public function obtenerCliente()
+    {
+        return $this->hasMany(User::class, "id");
+    }
+
 }
