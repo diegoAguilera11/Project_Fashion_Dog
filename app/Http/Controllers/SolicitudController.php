@@ -45,7 +45,7 @@ class SolicitudController extends Controller
 
         $solicitud = Solicitud::where('id', $id)->FirstOrFail();
 
-        $solicitud->comentario = $request->texto;
+        $solicitud->comentario = $request->comentario;
 
         $solicitud->save();
 
