@@ -13,7 +13,7 @@ class HomeTest extends TestCase
      * @test
      * @return void
      */
-    public function cargar_pagina_inicio():void
+    public function cargar_pagina_inicio(): void
     {
         $response = $this->get('/');
 
@@ -23,25 +23,28 @@ class HomeTest extends TestCase
     /**
      * @test
      */
-    public function acceso_sin_datos():void
+    public function acceso_sin_datos(): void
     {
 
-        $this->post(route('login'),[])->assertSessionHasErrors('rut');
+        $this->post(route('login'), [])->assertSessionHasErrors('rut');
     }
 
     /**
      * @test
      */
-    public function login_sesion_exito():void
+
+    /*
+    public function login_sesion_exito(): void
     {
         $credentials = [
             "rut" => "209083973",
             "password" => "ejemplo",
         ];
 
-        $this->post(route('login'),$credentials)
-        ->assertRedirect('/home');
+        $this->post(route('login'), $credentials)
+            ->assertRedirect('/home');
         $this->assertCredentials($credentials);
     }
 
+    */
 }
