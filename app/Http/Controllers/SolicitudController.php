@@ -156,7 +156,6 @@ class SolicitudController extends Controller
             'hora_solicitud' => $time,
             'estado' => "INGRESADA",
             'cliente_id' => Auth::user()->id,
-            'numero_solicitud' => $numero_solicitud,
         ]);
 
 
