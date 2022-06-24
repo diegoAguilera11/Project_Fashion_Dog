@@ -124,29 +124,6 @@ class SolicitudController extends Controller
         $solicituds = Auth::user()->solicitudesCliente()->get('fecha_solicitud');
         $numero_solicitud = rand(100000, 999999);
 
-<<<<<<< HEAD
-=======
-        // $request->validate([
-        //     'fecha_solicitud' => ['required', 'date', 'regex:'],
-        // ]);
-
-        switch ($date) {
-            case null:
-                throw ValidationException::withMessages(['fecha_solicitud' => 'Debe seleccionar una fecha.']);
-                break;
-
-            case ($date < date("Y-m-d")):
-                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha siempre debe ser mayor a la fecha actual ' . date("d-m-Y")]);
-                break;
-
-            case ($date >= "9999-12-31"):
-                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha indicada no es válida, debe seguir el formato: DD/MM/YYYY.']);
-                break;
-        }
-        if ($time == null) {
-            throw ValidationException::withMessages(['hora_solicitud' => 'Debe seleccionar una hora.']);
-        }
->>>>>>> 81d0a4db27eea5e39f1d18f5ad3e69c0136fd5ab
 
 
         foreach ($solicituds as $solicitud) {
@@ -162,10 +139,7 @@ class SolicitudController extends Controller
             'hora_solicitud' => $time,
             'estado' => "INGRESADA",
             'cliente_id' => Auth::user()->id,
-<<<<<<< HEAD
             'numero_solicitud' => $numero_solicitud,
-=======
->>>>>>> 81d0a4db27eea5e39f1d18f5ad3e69c0136fd5ab
         ]);
 
 
