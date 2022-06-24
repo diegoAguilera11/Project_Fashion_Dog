@@ -115,7 +115,7 @@
                         showDenyButton: false,
                         showCancelButton: true,
                         confirmButtonText: 'Guardar',
-                        denyButtonText: 'No guardar',
+                        cancelButtonText: 'Cancelar',
                         confirmButtonColor: '#4DD091',
                         cancelButtonColor: '#FF5C77',
                         allowOutsideClick: false,
@@ -123,8 +123,6 @@
                         /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {
                             form.submit();
-                        } else if (result.isDenied) {
-                            Swal.fire('Los cambios no se han guardado', '', 'info')
                         }
                     })
                 })
