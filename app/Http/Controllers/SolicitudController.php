@@ -50,7 +50,6 @@ class SolicitudController extends Controller
         $solicitud->save();
 
         return redirect('/cliente');
-
     }
 
 
@@ -123,7 +122,7 @@ class SolicitudController extends Controller
 
         $date = date($request->fecha_solicitud);
         $time = date($request->hora_solicitud);
-        $solicituds = Auth::user()->solicitudesCliente()->get('fecha_solicitud');
+        $solicituds = Auth::user()->solicitudesCliente()->get();
 
         // $request->validate([
         //     'fecha_solicitud' => ['required', 'date', 'regex:'],
@@ -135,7 +134,7 @@ class SolicitudController extends Controller
                 break;
 
             case ($date < date("Y-m-d")):
-                throw ValidationException::withMessages(['fecha_solicitud' => 'La fecha siempre debe ser mayor a la fecha actual ' . date("d-m-Y")]);
+                throw ValidationException::withMessages(['fecha_solicitud' => 'Las solicitudes se pueden realizar desde: ' . date("d-m-Y")]);
                 break;
 
             case ($date >= "9999-12-31"):
@@ -149,7 +148,7 @@ class SolicitudController extends Controller
 
         foreach ($solicituds as $solicitud) {
 
-            if ($solicitud->fecha_solicitud == $date) {
+            if ($solicitud->fecha_solicitud == $date && $solicitud->estado == "INGRESADA") {
                 throw ValidationException::withMessages(['fecha_solicitud' => 'Ya existe solicitud para la fecha:' . $date]);
             }
         }
