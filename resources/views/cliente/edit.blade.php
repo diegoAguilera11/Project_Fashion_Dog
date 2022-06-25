@@ -35,42 +35,48 @@
 
                             @if ($solicitud->estilista_id)
                                 <td>{{ App\Models\User::getUserNameById($solicitud->estilista_id) }}</td>
-                                {{-- <td>
-                                    <a href="" class="edit"><i class="fa-solid fa-comment-dots"></i></a>
-                                </td> --}}
+                                <td>
+
+                                </td>
                             @else
                                 <td>-</td>
-                                <a href="" class="edit"><i class="fa-solid fa-trash-can"></i></a>
-                                </td>
                             @endif
 
                             @if ($solicitud->estado == 'INGRESADA')
-                                <td>
-                                    <form class="formularioAnular" method="GET" data-toggle="tooltip" data-placement="top"
-                                        title="Anula la Solicitud"
-                                        action="{{ route('anularSolicitud', ['id' => $solicitud->id]) }}">
+                                <form class="formularioAnular" method="GET" data-toggle="tooltip" data-placement="top"
+                                    title="Anula la Solicitud"
+                                    action="{{ route('anularSolicitud', ['id' => $solicitud->id]) }}">
+                                    <td>
                                         <button type="submit" class="btn btn-danger"><i class="fas fa-check"></i>
                                             <center><img src="images/trash.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
                                         </button>
-                                    </form>
-                                </td>
+                                    </td>
+                                </form>
                             @endif
                             @if ($solicitud->estado == 'ATENDIDA A TIEMPO' || $solicitud->estado == 'ATENDIDA CON RETRASO')
-                                <td>
-                                    @if ($solicitud->comentario == '')
+                                @if ($solicitud->comentario == '')
+                                    <td>
+
                                         <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
                                             title="Agrega un Comentario"
                                             action="{{ route('agregar_comentario', ['id' => $solicitud->id]) }}">
-                                            <input class="comentario" name="comentario" hidden />
+                                            <input id="comentario" class="comentario" name="comentario" hidden />
                                             <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>
                                                 <center><img src="images/comment.png" with="20" height="20"
                                                         class="d-inline-block align-text-top"></center>
                                             </button>
                                         </form>
-                                    @endif
-                                </td>
+                                    </td>
+                                @else
+                                    <td></td>
+                                @endif
                             @endif
+                            @if ($solicitud->estado == 'ANULADA')
+                                <td></td>
+                            @endif
+
+
 
                         </tr>
                     @empty
@@ -103,8 +109,8 @@
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 Swal.fire({
-                    title: 'Comparte tu opinión sobre el Servicio',
-                    html: '<textarea rows="4" cols="40" placeholder="Tu comentario puede tener un máximo de 100 caracteres."></textarea>',
+                    title: 'Comparte tu opinión sobre el Servicio de ' ,
+                    html: '<textarea rows="4" cols="40" placeholder="Ingrese un comentario." minlength="1" maxlength="100"></textarea>',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',
                     cancelButtonColor: '#FF5C77',
@@ -112,12 +118,13 @@
                     cancelButtonText: 'Cancelar',
                     allowOutsideClick: false,
 
-
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
+
                         comentario = Swal.getHtmlContainer().querySelector('textarea').value;
                         form.firstElementChild.value = comentario;
+
                         form.submit();
                     }
                 })
@@ -145,6 +152,7 @@
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
+
                         form.submit();
                     }
                 })
