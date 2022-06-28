@@ -60,6 +60,7 @@ Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
 
+
 Route::resource('estilistas', 'App\Http\Controllers\EstilistaController');
 
 Route::get('/administrador', [EstilistaController::class, "index"])->name("estilista");
@@ -69,6 +70,9 @@ Route::get('/administrador/edit/{id}', [EstilistaController::class, "edit"])->na
 Route::post("/administrador/edit/{id}", [EstilistaController::class, "update"])->name("editar_estilista_post");
 Route::get('/usuario', [EstadoUsuario::class, 'index'])->name('usuario');
 Route::get('/usuario/{id}', [EstadoUsuario::class, 'updateStatus'])->name('cambiarEstado');
+
+//Me _-_
+Route::get('/administrarSolicitud', [EstadoUsuario::class, 'create'])->name('administrar_Solicitudes');
 
 Auth::routes();
 
@@ -83,4 +87,3 @@ Route::post('/cliente/create', [SolicitudController::class, 'store'])->name('cre
 Route::get('/cliente/{id}', [SolicitudController::class, 'cancelStatusSolicitud'])->name('anularSolicitud');
 
 Route::get('/cliente-comentario/{id}', [SolicitudController::class, 'agregarComentario'])->name('agregar_comentario');
-
