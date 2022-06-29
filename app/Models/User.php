@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return User::where('id', $id)->pluck('nombre')->first();
     }
+
+    public static function getUserApellidoById($id)
+    {
+        return User::where('id', $id)->pluck('apellidoPaterno')->first();
+    }
 }

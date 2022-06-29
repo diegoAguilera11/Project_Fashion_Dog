@@ -71,8 +71,10 @@ Route::post("/administrador/edit/{id}", [EstilistaController::class, "update"])-
 Route::get('/usuario', [EstadoUsuario::class, 'index'])->name('usuario');
 Route::get('/usuario/{id}', [EstadoUsuario::class, 'updateStatus'])->name('cambiarEstado');
 
-//Me _-_
+
 Route::get('/administrarSolicitud', [EstadoUsuario::class, 'create'])->name('administrar_Solicitudes');
+//Route::get('/x/{id}', [SolicitudController::class, 'desplegarContenido'])->name('desplegar_Contenido');
+
 
 Auth::routes();
 
