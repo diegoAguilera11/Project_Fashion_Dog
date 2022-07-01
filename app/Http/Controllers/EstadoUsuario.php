@@ -13,15 +13,12 @@ class EstadoUsuario extends Controller
      */
     public function index(Request $request)
     {
-        /*$request->validate([
-            'texto' => ['required'],
-        ]);*/
         if($request->texto == null)
         {
-            $usuarios = User::where('rol',"!=", 'administrador')->simplePaginate(5);
+            $usuarios = User::where('rol',"!=", 'administrador')->simplePaginate(10);
         return view('administrador.usuario.index')->with('users',$usuarios);
         }else{
-            $usuarios = User::where('rol',"!=", 'administrador')->where('rut', $request->texto)->simplePaginate(5);
+            $usuarios = User::where('rol',"!=", 'administrador')->where('rut', $request->texto)->simplePaginate(10);
             return view('administrador.usuario.index')->with('users',$usuarios);
         }
 

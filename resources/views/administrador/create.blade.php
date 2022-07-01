@@ -108,7 +108,7 @@
                                     <button id="boton" type="submit" class="btn btn-success">
                                         Agregar Estilista
                                     </button>
-                                    <a href="/administrador" class="btn btn-example">Volver</a>
+                                    <a href="/administrador" class="btn btn-return">Volver</a>
                                 </div>
                             </div>
                         </form>
@@ -131,6 +131,7 @@
                 cancelButtonColor: '#FF5C77',
                 confirmButtonText: 'Agregar',
                 cancelButtonText: 'Cancelar',
+                allowOutsideClick: false,
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {

@@ -96,7 +96,6 @@
                                         </span>
                                     @enderror
                                 </div>
-
                             </div>
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
@@ -104,7 +103,6 @@
                                         Guardar cambios
                                     </button>
                                     <a href="/administrador" class="btn btn-danger">Cancelar</a>
-
                                 </div>
                             </div>
                         </form>
@@ -128,6 +126,7 @@
                     cancelButtonColor: '#FF5C77',
                     confirmButtonText: 'Guardar',
                     cancelButtonText: 'Cancelar',
+                    allowOutsideClick: false,
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
