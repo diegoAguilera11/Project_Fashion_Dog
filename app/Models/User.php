@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return User::where('id', $id)->pluck('nombre')->first();
     }
+
+    public static function getUserDireccionById($id)
+    {
+        return User::where('id', $id)->pluck('direccion')->first();
+    }
 }

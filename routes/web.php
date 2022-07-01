@@ -38,9 +38,7 @@ Route::get('/estilista', function () {
 Route::get('/estilista/create', function () {
     return view('estilista.create');
 });
-Route::get('/estilista/edit', function () {
-    return view('estilista.edit');
-});
+
 
 Route::get('/cliente/create', function () {
     return view('cliente.create');
@@ -48,9 +46,9 @@ Route::get('/cliente/create', function () {
 Route::get('/cliente/edit', function () {
     return view('cliente.edit');
 });
-Route::get('/cliente', function () {
-    return view('cliente.index');
-});
+// Route::get('/cliente', function () {
+//     return view('cliente.index');
+// });
 Route::get('/reset', function () {
     return view('passwords.reset');
 });
@@ -85,4 +83,6 @@ Route::post('/cliente/create', [SolicitudController::class, 'store'])->name('cre
 Route::get('/cliente/{id}', [SolicitudController::class, 'cancelStatusSolicitud'])->name('anularSolicitud');
 
 Route::get('/cliente-comentario/{id}', [SolicitudController::class, 'agregarComentario'])->name('agregar_comentario');
+
+Route::get('/estilista',[SolicitudController::class,'indexEstilista'])->name('solicitudEstilista');
 

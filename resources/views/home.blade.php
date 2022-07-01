@@ -36,6 +36,8 @@
                                 </a>
                                 <center>
                                     <h1>Bienvenido Estilista {{ Auth::user()->nombre }}</h1>
+
+                                    <a href="/estilista" class="btn btn-success">Administrar solicitud/es</a>
                                 </center>
                             @endif
                             @if (Auth::user()->rol == 'administrador')

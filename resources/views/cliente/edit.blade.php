@@ -8,13 +8,13 @@
                 <br>
                 <div class="row justify-content-between">
                     @if (session('anular'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <center>La Solicitud fue anulada con exito!</center>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <center>La Solicitud fue anulada con exito!</center>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
 
                     <div class="col-sm-4">
                         <h2>Administrar <b>Solicitudes</b>

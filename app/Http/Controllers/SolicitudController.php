@@ -40,6 +40,13 @@ class SolicitudController extends Controller
         return view('cliente.edit')->with('solicituds', $solicituds);
     }
 
+    public function indexEstilista()
+    {
+        $solicituds = Auth::user()->solicitudesEstilista()->orderBy('fecha_solicitud')->orderBy('hora_solicitud')->simplePaginate(10);
+
+        return view('estilista.edit')->with('solicituds', $solicituds);
+    }
+
     public function agregarComentario(Request $request, $id)
     {
 
