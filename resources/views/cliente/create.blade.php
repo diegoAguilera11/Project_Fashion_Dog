@@ -83,6 +83,7 @@
                                         @error('hora_solicitud')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
+                                                sss
                                             </span>
                                         @enderror
                                     </div>
