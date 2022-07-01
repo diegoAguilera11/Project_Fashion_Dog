@@ -73,8 +73,7 @@
                                                 <a class="nav-link" href="/" style="color:#ffffff">Inicio</a>
                                             </div>
                                             <div class="col-sm">
-                                                <a class="nav-link" href="/register"
-                                                    style="color:#ffffff">Registrar</a>
+                                                <a class="nav-link" href="/register" style="color:#ffffff">Registrar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -92,7 +91,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
-                                    <a class="dropdown-item" href=" {{ route('NewPassword') }} " onclick="event.preventDefault();
+                                    <a class="dropdown-item" href=" {{ route('NewPassword') }} "
+                                        onclick="event.preventDefault();
 
                                         style="
                                         color:#707070">Cambiar
@@ -104,8 +104,7 @@
                                         {{ __('Cerrar Sesión') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
@@ -120,7 +119,6 @@
             @yield('content')
         </main>
     </div>
-
 </body>
 
 </html>

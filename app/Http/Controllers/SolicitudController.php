@@ -59,6 +59,7 @@ class SolicitudController extends Controller
         $solicitud = Solicitud::where('id', $request)->get()->first();
             $solicitud->estado = 'ANULADA';
             $solicitud->save();
+            session()->flash('anular', 'La Solicitud fue anulada con exito!');
             return redirect('/cliente');
     }
     /**
@@ -161,7 +162,7 @@ class SolicitudController extends Controller
             'cliente_id' => Auth::user()->id,
         ]);
 
-
+        session()->flash('exito', 'El servicio fue solicitado con exito!');
         return redirect(route('home'));
     }
 }

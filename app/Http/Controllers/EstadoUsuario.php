@@ -15,10 +15,10 @@ class EstadoUsuario extends Controller
     {
         if($request->texto == null)
         {
-            $usuarios = User::where('rol',"!=", 'administrador')->simplePaginate(5);
+            $usuarios = User::where('rol',"!=", 'administrador')->simplePaginate(10);
         return view('administrador.usuario.index')->with('users',$usuarios);
         }else{
-            $usuarios = User::where('rol',"!=", 'administrador')->where('rut', $request->texto)->simplePaginate(5);
+            $usuarios = User::where('rol',"!=", 'administrador')->where('rut', $request->texto)->simplePaginate(10);
             return view('administrador.usuario.index')->with('users',$usuarios);
         }
 

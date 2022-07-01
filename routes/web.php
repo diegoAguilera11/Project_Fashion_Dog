@@ -74,6 +74,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/notFound',[UserController::class, 'index']);
+
 
 Route::get('/cliente', [SolicitudController::class, 'index'])->name('solicitud');
 Route::post('/cliente/edit', [SolicitudController::class, 'store'])->name('editar_solicitud_post');

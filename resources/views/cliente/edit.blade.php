@@ -7,6 +7,14 @@
             <div class="table-title">
                 <br>
                 <div class="row justify-content-between">
+                    @if (session('anular'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <center>La Solicitud fue anulada con exito!</center>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
 
                     <div class="col-sm-4">
                         <h2>Administrar <b>Solicitudes</b>
@@ -29,6 +37,7 @@
 
                     @forelse ($solicituds as $solicitud)
                         <tr>
+
                             <td>{{ $solicitud->id }}</td>
                             <td>{{ $solicitud->fecha_solicitud }} - {{ $solicitud->hora_solicitud }}</td>
                             <td>{{ $solicitud->estado }}</td>
@@ -109,7 +118,7 @@
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 Swal.fire({
-                    title: 'Comparte tu opinión sobre el Servicio de ' ,
+                    title: 'Comparte tu opinión sobre el Servicio de ',
                     html: '<textarea rows="4" cols="40" placeholder="Ingrese un comentario." minlength="1" maxlength="100"></textarea>',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',
