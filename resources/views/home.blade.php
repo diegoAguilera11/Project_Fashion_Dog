@@ -28,7 +28,7 @@
                                 </a>
                                 <center>
                                     <h1>Bienvenido Estilista {{ Auth::user()->nombre }}</h1>
-                                    <a href="/estilista/create" style="margin-right: 20px" class="btn btn-success">Ver Solicitudes</a>
+                                    <a href="/estilista" style="margin-right: 20px" class="btn btn-success">Ver Solicitudes</a>
                                     <!--<a href="/ClienteEncontrado" class="btn btn-success">Deshabilitar y/o Habilitar Usuario</a> Estaba probando la vista-->
                                 </center>
                             @endif

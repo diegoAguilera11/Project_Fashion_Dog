@@ -42,6 +42,10 @@ Route::get('/estilista/edit', function () {
     return view('estilista.edit');
 });
 
+Route::get('ClienteEncontrado', function () {
+    return view('ClienteEncontrado.index');
+});
+
 //METODOS QUE RETORNAN LAS VIEWS DE CLIENTE
 
 //Route::get('/GenerateRequest', [SolicitudController::class, 'GenerateRequest'])->name('GenerateRequest')->middleware('auth');
@@ -84,8 +88,14 @@ Route::get('/cliente', [SolicitudController::class, 'index'])->name('solicitud')
 Route::post('/cliente/edit', [SolicitudController::class, 'store'])->name('editar_solicitud_post');
 Route::get('/cliente/create', [SolicitudController::class, 'create'])->name('crear_solicitud');
 Route::post('/cliente/create', [SolicitudController::class, 'store'])->name('crear_solicitud_post');
+Route::get('/cliente/{id}', [SolicitudController::class, 'cancelStatusSolicitud'])->name('anularSolicitud');
+Route::get('/cliente-comentario/{id}', [SolicitudController::class, 'agregarComentario'])->name('agregar_comentario');
 
-Route::get('buscar-fecha', function(){return view('buscar-fecha.index');})->name('buscarFecha');
-Route::get('/ClienteEncontrado', function () {   return view('ClienteEncontrado.index');});
-Route::post('ClienteEncontrado',[BuscarSolicitudController::class, 'devolverSolicitudPorFecha'])->name('postBuscarFecha');
-Route::get('ClienteEncontrado/{id}', [BuscarSolicitudController::class,'mostrarCliente'])->name('mostrarCliente');
+
+
+
+
+Route::get('/estilista-buscar', [SolicitudController::class, 'BuscarPorFecha'])->name('BuscarPorFecha');
+Route::get('/estilista', [SolicitudController::class, 'VerSolicitudes'])->name('VerSolicitudes');
+Route::get('/estilista/create/{id}',[SolicitudController::class, 'AceptarServicio'])->name('AceptarServicio');
+

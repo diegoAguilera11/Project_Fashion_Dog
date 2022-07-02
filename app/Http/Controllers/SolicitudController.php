@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,7 @@ class SolicitudController extends Controller
     }
 
 
-    protected function requestService(Request $request)
+    public function requestService(Request $request)
     {
 
         $DateRequest = $request->dateRequest;
@@ -55,9 +56,9 @@ class SolicitudController extends Controller
     public function cancelStatusSolicitud($request)
     {
         $solicitud = Solicitud::where('id', $request)->get()->first();
-            $solicitud->estado = 'ANULADA';
-            $solicitud->save();
-            return redirect('/cliente');
+        $solicitud->estado = 'ANULADA';
+        $solicitud->save();
+        return redirect('/cliente');
     }
     /**
      * Show the form for creating a new resource.
@@ -101,7 +102,13 @@ class SolicitudController extends Controller
      */
     public function update(Request $request, Solicitud $solicitud)
     {
-        //
+        Solicitud::create([
+
+            'cliente_id' => Auth::user()->id,
+        ]);
+
+
+        return redirect(route('home'));
     }
 
     /**
@@ -161,4 +168,59 @@ class SolicitudController extends Controller
 
         return redirect(route('home'));
     }
+
+
+    public function AceptarServicio(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        $solicitud = Solicitud::where('id', $id)->get()->first();
+
+        $solicitud->estilista_id = $user->id;
+
+        $date = date($solicitud->fecha_solicitud);
+        $time = date($solicitud->hora_solicitud);
+
+        if (date("Y-m-d") <= $date && date("H:i:s") < $time) {
+            $solicitud->estado = 'ATENDIDA A TIEMPO';
+            $solicitud->save();
+            return redirect(route('home'));
+        }else{
+            $solicitud->estado = 'ATENDIDA CON RETRASO';
+            $solicitud->save();
+
+            return redirect(route('home'));
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function VerSolicitudes()
+    {
+        $solicituds = solicitud::where('estado', 'INGRESADA')->simplePaginate(5);
+        return view("estilista.index")->with('solicituds', $solicituds);
+    }
+
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function BuscarPorFecha(Request $request)
+    {
+        $date = date($request->fecha_solicitud);
+
+        if($date == null){
+            $solicitudes = Solicitud::where('estado',"=", 'INGRESADA')->simplePaginate(10);
+            return view('estilista.index')->with('solicituds',$solicitudes);
+        }else{
+            $solicitudes = Solicitud::where('estado',"=", 'INGRESADA')->where('fecha_solicitud', $date)->simplePaginate(10);
+            return view('estilista.index')->with('solicituds',$solicitudes);
+        }
+    }
+
+
 }
