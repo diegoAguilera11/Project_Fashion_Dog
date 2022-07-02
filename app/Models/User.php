@@ -68,4 +68,22 @@ class User extends Authenticatable
     {
         return User::where('id', $id)->pluck('apellidoPaterno')->first();
     }
+
+    public static function getUserRut($id)
+    {
+        return User::where('id', $id)->pluck('rut')->first();
+    }
+
+    public static function getUserEmail($id)
+    {
+        return User::where('id', $id)->pluck('email')->first();
+    }
+    public static function getUserDireccion($id)
+    {
+        return User::where('id', $id)->pluck('direccion')->first();
+    }
+    public static function getUserTelefono($id)
+    {
+        return User::where('id', $id)->pluck('telefono')->first();
+    }
 }
