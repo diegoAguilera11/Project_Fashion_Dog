@@ -6,17 +6,41 @@ use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\Exists;
-use Illuminate\Validation\ValidationException;
-
-
 
 class SolicitudController extends Controller
 {
+
+
     public function GenerateRequest()
     {
         return view('/cliente/create');
     }
+
+
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
+    protected function create(array $data)
+    {
+        //dd($data);// // Datos que se estan guardando.....
+        return Solicitud::create([
+
+           'fecha_solicitud'=>$data[],
+            'nombre' => $data['nombre'],
+            'apellidoPaterno' => $data['apellidoPaterno'],
+            'telefono' => $data['telefono'],
+            'email' => $data['email'],
+            'direccion' => $data['direccion'],
+            //'password' => Hash::make($data['password']),
+            'rol' => "cliente",
+            'estado' => "habilitado",
+        ]);
+    }
+
 
 
     protected function requestService(Request $request)
@@ -30,14 +54,21 @@ class SolicitudController extends Controller
 
         DB::table('solicituds')->where('id', $cliente_id);
         return redirect()->route('home')->with('password', 'updated');
+
+
+
     }
 
 
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $solicituds = Auth::user()->solicitudesCliente()->orderBy('fecha_solicitud')->orderBy('hora_solicitud')->simplePaginate(10);
-
-        return view('cliente.edit')->with('solicituds', $solicituds);
+        //
     }
 
     public function indexEstilista()
@@ -76,9 +107,19 @@ class SolicitudController extends Controller
      */
     public function create()
     {
-        return view('cliente.create');
+        //
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
      * Display the specified resource.
@@ -124,6 +165,7 @@ class SolicitudController extends Controller
     {
         //
     }
+
 
     public function store(Request $request)
     {
@@ -172,4 +214,5 @@ class SolicitudController extends Controller
         session()->flash('exito', 'El servicio fue solicitado con exito!');
         return redirect(route('home'));
     }
+
 }
