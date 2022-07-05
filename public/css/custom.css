@@ -4,3 +4,7 @@
 .button{
     background-color: #03b000; /* Cambiar color fuera de la paleta de bootstrap */
 }
+
+.modal-backdrop {
+    background-color: #FFDACC;;
+ }

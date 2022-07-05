@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 text-center">
-                    <h1 style="font-size:162px;"><img src="images/logo_FashionDog.png"></h1>
+                    <h1 style="font-size:162px;"><img src="/images/logo_FashionDog.png"></h1>
                     <h2>Esta Página no se encuentra disponible</h2>
                     <h5>Intenta Buscar otra cosa.</h5>
                     <a href="/notFound" class="btn btn-success">Volver al Inicio</a>

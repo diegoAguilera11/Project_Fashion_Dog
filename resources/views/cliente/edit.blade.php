@@ -34,12 +34,11 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @forelse ($solicituds as $solicitud)
                         <tr>
 
                             <td>{{ $solicitud->id }}</td>
-                            <td>{{ $solicitud->fecha_solicitud }} - {{ $solicitud->hora_solicitud }}</td>
+                            <td>{{ date('d-m-Y', strtotime($solicitud->fecha_solicitud) ) }} - {{ $solicitud->hora_solicitud }}</td>
                             <td>{{ $solicitud->estado }}</td>
 
                             @if ($solicitud->estilista_id)
@@ -77,24 +76,17 @@
                                             </button>
                                         </form>
                                     </td>
-                                @else
-                                    <td></td>
                                 @endif
                             @endif
                             @if ($solicitud->estado == 'ANULADA')
                                 <td></td>
                             @endif
-
-
-
                         </tr>
                     @empty
-
                         <tr>
                             <td colspan="6" class="text-center">No hay solicitudes por mostrar</td>
                         </tr>
                     @endforelse
-
                 </tbody>
             </table>
         </div>

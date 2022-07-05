@@ -22,6 +22,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <title>Administrador - Fashion Dog</title>
+
+    <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </head>
 
 <body>

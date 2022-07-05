@@ -8,15 +8,6 @@
             <div class="table-title">
                 <br>
                 <div class="row justify-content-between">
-                    @if (session('anular'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <center>La Solicitud fue anulada con exito!</center>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
-
                     <div class="col-sm-4">
                         <h2>Administrar <b>Solicitudes</b>
                             <a href="/home" class="btn btn-return"><span>Volver</span></a>
@@ -40,52 +31,51 @@
                         <tr>
 
                             <td>{{ $solicitud->id }}</td>
-                            <td>{{ $solicitud->fecha_solicitud }} - {{ $solicitud->hora_solicitud }}</td>
+                            <td>{{ date('d-m-Y', strtotime($solicitud->fecha_solicitud)) }} -
+                                {{ $solicitud->hora_solicitud }}</td>
 
                             @if ($solicitud->cliente_id)
                                 <td>{{ App\Models\User::getUserNameById($solicitud->cliente_id) }}</td>
 
                                 <td>{{ App\Models\User::getUserDireccionById($solicitud->cliente_id) }}</td>
 
-                                <td>{{Str::substr($solicitud->comentario, 0, 30) }}</td>
-                            @endif
-
-                            {{-- @if ($solicitud->estado == 'INGRESADA')
-                                <form class="formularioAnular" method="GET" data-toggle="tooltip" data-placement="top"
-                                    title="Anula la Solicitud"
-                                    action="{{ route('anularSolicitud', ['id' => $solicitud->id]) }}">
-                                    <td>
-                                        <button type="submit" class="btn btn-danger"><i class="fas fa-check"></i>
-                                            <center><img src="images/trash.png" with="20" height="20"
-                                                    class="d-inline-block align-text-top"></center>
-                                        </button>
-                                    </td>
-                                </form>
-                            @endif
-                            @if ($solicitud->estado == 'ATENDIDA A TIEMPO' || $solicitud->estado == 'ATENDIDA CON RETRASO')
-                                @if ($solicitud->comentario == '')
-                                    <td>
-
-                                        <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
-                                            title="Agrega un Comentario"
-                                            action="{{ route('agregar_comentario', ['id' => $solicitud->id]) }}">
-                                            <input id="comentario" class="comentario" name="comentario" hidden />
-                                            <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>
-                                                <center><img src="images/comment.png" with="20" height="20"
-                                                        class="d-inline-block align-text-top"></center>
-                                            </button>
-                                        </form>
-                                    </td>
+                                @if (strlen($solicitud->comentario) > 30)
+                                    <td>{{ Str::substr($solicitud->comentario, 0, 30) }}<button type="button"
+                                            title="Ver comentario Completo del Cliente" class=" ml-3 btn btn-success"
+                                            data-toggle="modal" data-backdrop="static"
+                                            data-target="#Modal-{{ $solicitud->id }}">
+                                            <center><img src="images/comment.png" with="20" height="20"
+                                                    class="d-inline-block align-text-top" tool></center>
+                                        </button></td>
                                 @else
-                                    <td></td>
+                                    <td>{{ Str::substr($solicitud->comentario, 0, 30) }}
                                 @endif
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="Modal-{{ $solicitud->id }}" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Comentario Cliente
+                                                    {{ App\Models\User::getUserNameById($solicitud->cliente_id) }}
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>{{ $solicitud->comentario }}</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-center align-content-center">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar
+                                                    Comentario</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             @endif
-                            @if ($solicitud->estado == 'ANULADA')
-                                <td></td>
-                            @endif --}}
-
-
-
                         </tr>
                     @empty
 
@@ -108,63 +98,4 @@
             {!! $solicituds->links() !!}
         </div>
     @endif
-
-    <script>
-        const formularios = document.getElementsByClassName("formulario");
-        let comentario = "";
-
-        for (const form of formularios) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Comparte tu opinión sobre el Servicio de ',
-                    html: '<textarea rows="4" cols="40" placeholder="Ingrese un comentario." minlength="1" maxlength="100"></textarea>',
-                    showCancelButton: true,
-                    confirmButtonColor: '#4DD091',
-                    cancelButtonColor: '#FF5C77',
-                    confirmButtonText: 'Publicar',
-                    cancelButtonText: 'Cancelar',
-                    allowOutsideClick: false,
-
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-
-                        comentario = Swal.getHtmlContainer().querySelector('textarea').value;
-                        form.firstElementChild.value = comentario;
-
-                        form.submit();
-                    }
-                })
-            })
-        }
-    </script>
-
-
-    <script>
-        const formulariosPlus = document.getElementsByClassName("formularioAnular");
-
-        for (const form of formulariosPlus) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                Swal.fire({
-                    title: '¿Estás seguro que quieres Anular la solicitud?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#4DD091',
-                    cancelButtonColor: '#FF5C77',
-                    confirmButtonText: 'Confirmar',
-                    cancelButtonText: 'Cancelar',
-                    allowOutsideClick: false,
-
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-
-                        form.submit();
-                    }
-                })
-            })
-        }
-    </script>
 @endsection
