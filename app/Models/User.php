@@ -68,4 +68,11 @@ class User extends Authenticatable
     {
         return User::where('id', $id)->pluck('direccion')->first();
     }
+
+    public static function getUserDates($id)
+    {
+        $user = (object)array('rut'=>User::where('id', $id)->pluck('rut')->first(),'nombre'=>User::where('id', $id)->pluck('nombre')->first(),'apellidoPaterno'=>User::where('id', $id)->pluck('apellidoPaterno')->first(),'telefono'=>User::where('id', $id)->pluck('telefono')->first(),'email'=>User::where('id', $id)->pluck('email')->first(),'direccion'=>User::where('id', $id)->pluck('direccion')->first());
+        return $user;
+    }
+
 }

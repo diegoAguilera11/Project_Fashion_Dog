@@ -6,6 +6,7 @@ use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class SolicitudController extends Controller
 {
@@ -17,30 +18,10 @@ class SolicitudController extends Controller
     }
 
 
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    protected function create(array $data)
+    public function create()
     {
-        //dd($data);// // Datos que se estan guardando.....
-        return Solicitud::create([
-
-           'fecha_solicitud'=>$data[],
-            'nombre' => $data['nombre'],
-            'apellidoPaterno' => $data['apellidoPaterno'],
-            'telefono' => $data['telefono'],
-            'email' => $data['email'],
-            'direccion' => $data['direccion'],
-            //'password' => Hash::make($data['password']),
-            'rol' => "cliente",
-            'estado' => "habilitado",
-        ]);
+        return view('cliente.create');
     }
-
 
 
     protected function requestService(Request $request)
@@ -68,7 +49,9 @@ class SolicitudController extends Controller
      */
     public function index()
     {
-        //
+        $solicituds = Auth::user()->solicitudesCliente()->orderBy('fecha_solicitud')->orderBy('hora_solicitud')->simplePaginate(10);
+
+        return view('cliente.edit')->with('solicituds', $solicituds);
     }
 
     public function indexEstilista()
@@ -80,7 +63,7 @@ class SolicitudController extends Controller
 
     public function agregarComentario(Request $request, $id)
     {
-
+        dd($request);
         $solicitud = Solicitud::where('id', $id)->FirstOrFail();
 
         $solicitud->comentario = $request->comentario;
@@ -100,27 +83,6 @@ class SolicitudController extends Controller
             session()->flash('anular', 'La Solicitud fue anulada con exito!');
             return redirect('/cliente');
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
     /**
      * Display the specified resource.
      *
@@ -172,11 +134,9 @@ class SolicitudController extends Controller
 
         $date = date($request->fecha_solicitud);
         $time = date($request->hora_solicitud);
-        $solicituds = Auth::user()->solicitudesCliente()->get();
+        $today = date("d-m-Y");
 
-        // $request->validate([
-        //     'fecha_solicitud' => ['required', 'date', 'regex:'],
-        // ]);
+        $solicituds = Auth::user()->solicitudesCliente()->get();
 
         switch ($date) {
             case null:
@@ -184,7 +144,7 @@ class SolicitudController extends Controller
                 break;
 
             case ($date < date("Y-m-d")):
-                throw ValidationException::withMessages(['fecha_solicitud' => 'Las solicitudes se pueden realizar desde: ' . date("d-m-Y")]);
+                throw ValidationException::withMessages(['fecha_solicitud' => 'Las solicitudes se pueden realizar desde: ' .date("d-m-Y", strtotime($today . ' +1 day')) ]);
                 break;
 
             case ($date >= "9999-12-31"):
@@ -213,6 +173,50 @@ class SolicitudController extends Controller
 
         session()->flash('exito', 'El servicio fue solicitado con exito!');
         return redirect(route('home'));
+    }
+
+
+    public function AceptarServicio(Request $request, $id)
+    {
+        $user = Auth::user();
+
+        $solicitud = Solicitud::where('id', $id)->get()->first();
+
+        $solicitud->estilista_id = $user->id;
+
+        $date = date($solicitud->fecha_solicitud);
+        $time = date($solicitud->hora_solicitud);
+
+        if (date("Y-m-d") <= $date && date("H:i:s") < $time) {
+            $solicitud->estado = 'ATENDIDA A TIEMPO';
+            $solicitud->save();
+            return redirect(route('home'));
+        }else{
+            $solicitud->estado = 'ATENDIDA CON RETRASO';
+            $solicitud->save();
+
+            session()->flash('atender', 'La Solicitud fue atenidda con exito!');
+            return redirect(route('home'));
+        }
+    }
+
+    public function VerSolicitudes()
+    {
+        $solicituds = solicitud::where('estado', 'INGRESADA')->simplePaginate(5);
+        return view("estilista.index")->with('solicituds', $solicituds);
+    }
+
+    public function BuscarPorFecha(Request $request)
+    {
+        $date = date($request->fecha_solicitud);
+
+        if($date == null){
+            $solicitudes = Solicitud::where('estado',"=", 'INGRESADA')->simplePaginate(10);
+            return view('estilista.index')->with('solicituds',$solicitudes);
+        }else{
+            $solicitudes = Solicitud::where('estado',"=", 'INGRESADA')->where('fecha_solicitud', $date)->simplePaginate(10);
+            return view('estilista.index')->with('solicituds',$solicitudes);
+        }
     }
 
 }

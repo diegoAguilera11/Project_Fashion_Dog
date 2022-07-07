@@ -84,5 +84,10 @@ Route::get('/cliente/{id}', [SolicitudController::class, 'cancelStatusSolicitud'
 
 Route::get('/cliente-comentario/{id}', [SolicitudController::class, 'agregarComentario'])->name('agregar_comentario');
 
+
+
+Route::get('/estilista-buscar', [SolicitudController::class, 'BuscarPorFecha'])->name('BuscarPorFecha');
+Route::get('/estilista', [SolicitudController::class, 'VerSolicitudes'])->name('VerSolicitudes');
+Route::get('/estilista/create/{id}',[SolicitudController::class, 'AceptarServicio'])->name('AceptarServicio');
 Route::get('/estilista-administrar-solicitudes',[SolicitudController::class,'indexEstilista'])->name('solicitudEstilista');
 

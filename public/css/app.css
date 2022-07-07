@@ -382,10 +382,14 @@ button,
 select,
 optgroup,
 textarea {
+    display: block;
     margin: 0;
+    margin-left: auto;
+    margin-right: auto;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    resize: none;
 }
 
 button,
@@ -429,7 +433,7 @@ button:not(:disabled),
 }
 
 textarea {
-    resize: vertical;
+    resize: none;
 }
 
 fieldset {

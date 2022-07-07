@@ -38,13 +38,12 @@
                         <tr>
 
                             <td>{{ $solicitud->id }}</td>
-                            <td>{{ date('d-m-Y', strtotime($solicitud->fecha_solicitud) ) }} - {{ $solicitud->hora_solicitud }}</td>
+                            <td>{{ date('d-m-Y', strtotime($solicitud->fecha_solicitud)) }} -
+                                {{ $solicitud->hora_solicitud }}</td>
                             <td>{{ $solicitud->estado }}</td>
 
                             @if ($solicitud->estilista_id)
-                                <td>{{ App\Models\User::getUserNameById($solicitud->estilista_id) }}</td>
-                                <td>
-
+                                <td class="estilista">{{ App\Models\User::getUserNameById($solicitud->estilista_id) }}
                                 </td>
                             @else
                                 <td>-</td>
@@ -66,7 +65,7 @@
                                 @if ($solicitud->comentario == '')
                                     <td>
 
-                                        <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
+                                        {{-- <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
                                             title="Agrega un Comentario"
                                             action="{{ route('agregar_comentario', ['id' => $solicitud->id]) }}">
                                             <input id="comentario" class="comentario" name="comentario" hidden />
@@ -74,22 +73,75 @@
                                                 <center><img src="images/comment.png" with="20" height="20"
                                                         class="d-inline-block align-text-top"></center>
                                             </button>
-                                        </form>
+
+
+
+                                        </form> --}}
+
+                                        <button type="button" title="Agrega un Comentario" class=" ml-3 btn btn-success"
+                                            data-toggle="modal" data-backdrop="static"
+                                            data-target="#ModalComentario-{{ $solicitud->id }}">
+                                            <center><img src="images/comment.png" with="20" height="20"
+                                                    class="d-inline-block align-text-top" tool></center>
+                                        </button>
                                     </td>
-                                @endif
-                            @endif
-                            @if ($solicitud->estado == 'ANULADA')
-                                <td></td>
-                            @endif
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6" class="text-center">No hay solicitudes por mostrar</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+
+
+
+
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="ModalComentario-{{ $solicitud->id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <form method="GET" id="formComentario"
+                                                    action="{{ route('agregar_comentario', ['id' => $solicitud->id]) }}">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Comparte tu
+                                                            opinión
+                                                            sobre el Servicio de
+                                                            {{ App\Models\User::getUserDates($solicitud->estilista_id)->nombre }}
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <input name="comentario" class="text" rows="5" cols="50" placeholder="Ingrese un comentario."
+                                                            minlength="1" maxlength="100"/>
+
+                                                        <div
+                                                            class="modal-footer justify-content-center align-content-center">
+                                                            <button type="submit" class="btn btn-success" id="btnGuardar">
+                                                                Publicar
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Cerrar
+                                                                Comentario</button>
+                                                        </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
         </div>
+        @endif
+        @endif
+        @if ($solicitud->estado == 'ANULADA')
+            <td></td>
+        @endif
+        </tr>
+    @empty
+        <tr>
+            <td colspan="6" class="text-center">No hay solicitudes por mostrar</td>
+        </tr>
+        @endforelse
+        </tbody>
+        </table>
+    </div>
 
 
 
@@ -104,6 +156,7 @@
 
     <script>
         const formularios = document.getElementsByClassName("formulario");
+        const estilistas = document.getElementsByClassName("estilista");
         let comentario = "";
 
         for (const form of formularios) {

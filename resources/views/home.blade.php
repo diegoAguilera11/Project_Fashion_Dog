@@ -13,6 +13,17 @@
                         </button>
                     </div>
                 @endif
+
+                @if (session('atender'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <center>
+                            <h2> La Solicitud fue atendida con exito!</h2>
+                        </center>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header text-black" style="background-color: #FFDACC;">
@@ -37,7 +48,10 @@
                                 <center>
                                     <h1>Bienvenido Estilista {{ Auth::user()->nombre }}</h1>
 
-                                    <a href="/estilista-administrar-solicitudes" class="btn btn-success">Administrar solicitud/es</a>
+                                    <a href="/estilista" style="margin-right: 20px" class="btn btn-success">Ver
+                                        Solicitudes</a>
+                                    <a href="/estilista-administrar-solicitudes" class="btn btn-success">Administrar
+                                        solicitud/es</a>
                                 </center>
                             @endif
                             @if (Auth::user()->rol == 'administrador')

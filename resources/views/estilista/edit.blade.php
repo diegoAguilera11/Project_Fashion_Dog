@@ -40,7 +40,7 @@
                                 <td>{{ App\Models\User::getUserDireccionById($solicitud->cliente_id) }}</td>
 
                                 @if (strlen($solicitud->comentario) > 30)
-                                    <td>{{ Str::substr($solicitud->comentario, 0, 30) }}<button type="button"
+                                    <td>{{ Str::substr($solicitud->comentario, 0, 30) }}...<button type="button"
                                             title="Ver comentario Completo del Cliente" class=" ml-3 btn btn-success"
                                             data-toggle="modal" data-backdrop="static"
                                             data-target="#Modal-{{ $solicitud->id }}">
@@ -58,7 +58,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLongTitle">Comentario Cliente
-                                                    {{ App\Models\User::getUserNameById($solicitud->cliente_id) }}
+                                                    {{App\Models\User::getUserDates($solicitud->cliente_id)->nombre}}
                                                 </h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
