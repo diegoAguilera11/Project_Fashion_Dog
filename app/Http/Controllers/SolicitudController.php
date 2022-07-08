@@ -63,7 +63,7 @@ class SolicitudController extends Controller
 
     public function agregarComentario(Request $request, $id)
     {
-        dd($request);
+
         $solicitud = Solicitud::where('id', $id)->FirstOrFail();
 
         $solicitud->comentario = $request->comentario;

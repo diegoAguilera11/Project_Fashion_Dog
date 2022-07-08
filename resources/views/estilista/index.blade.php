@@ -43,7 +43,8 @@
                     @forelse ($solicituds as $solicitud)
                         <tr>
                             <td>{{ $solicitud->id }}</td>
-                            <td>{{ date('d-m-Y', strtotime($solicitud->fecha_solicitud)) }} - {{ $solicitud->hora_solicitud }}</td>
+                            <td>{{ date('d-m-Y', strtotime($solicitud->fecha_solicitud)) }} -
+                                {{ $solicitud->hora_solicitud }}</td>
                             <td>{{ $solicitud->estado }}</td>
                             <td>
                                 <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
@@ -61,30 +62,90 @@
                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
-                                                <form  method="GET" action="{{ route('AceptarServicio', ['id' => $solicitud->id]) }}">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Datos Cliente
-                                                    </h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    {{App\Models\User::getUserDates($solicitud->cliente_id)->rut}}
-                                                    {{App\Models\User::getUserDates($solicitud->cliente_id)->nombre}}
-                                                    {{App\Models\User::getUserDates($solicitud->cliente_id)->direccion}}
-                                                    {{App\Models\User::getUserDates($solicitud->cliente_id)->apellidoPaterno}}
-                                                    {{App\Models\User::getUserDates($solicitud->cliente_id)->telefono}}
-                                                </div>
-                                                <div class="modal-footer justify-content-center align-content-center">
-                                                    <button type="submit" class="btn btn-success"
-                                                        >Atender Solicitud
+                                                <form method="GET"
+                                                    action="{{ route('AceptarServicio', ['id' => $solicitud->id]) }}">
+                                                    <div class="modal-header" style="background-color: #FC623B">
+                                                        <h5 class="modal-title " style="color:#ffffff" id="exampleModalLongTitle">Detalles de la solicitud
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
                                                         </button>
-                                                    <button type="button" class="btn btn-danger"
-                                                        data-dismiss="modal">Cerrar
-                                                        Comentario</button>
-                                                </div>
+                                                    </div>
+                                                    <div class="modal-body" style="background-color: #FFDACC">
+                                                        <div class="card mb-3" style="max-width: 540px;">
+
+                                                            <!-- _____________________CUADRO - Inicio _____________________ -->
+                                                            <div class="row g-0">
+                                                                <div class="col-md-4">
+                                                                    <img src="/images/logo_FashionDog.png"
+                                                                        class="img-fluid rounded-start" alt="...">
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title">Datos Cliente</h5>
+                                                                        <p class="card-text">
+
+                                                                        <h6>
+                                                                            <!-- Getbootstrap: Columnas de compensación -->
+
+                                                                            <div class="container">
+                                                                                <div class="row">
+
+                                                                                    <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                        Nombre</div>
+                                                                                    <div
+                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                        {{ App\Models\User::getUserDates($solicitud->cliente_id)->nombre }}
+                                                                                        {{ App\Models\User::getUserDates($solicitud->cliente_id)->apellidoPaterno }}
+                                                                                    </div>
+
+                                                                                    <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                        Rut</div>
+                                                                                    <div
+                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                        {{ App\Models\User::getUserDates($solicitud->cliente_id)->rut }}
+                                                                                    </div>
+
+                                                                                    <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                        Telefono</div>
+                                                                                    <div
+                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                        {{ App\Models\User::getUserDates($solicitud->cliente_id)->telefono }}
+                                                                                    </div>
+
+                                                                                    <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                        Email</div>
+                                                                                    <div
+                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                        {{ App\Models\User::getUserDates($solicitud->cliente_id)->email }}
+                                                                                    </div>
+
+                                                                                    <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                        Dirección</div>
+                                                                                    <div
+                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                        {{ App\Models\User::getUserDates($solicitud->cliente_id)->direccion }}
+                                                                                    </div>
+                                                                                </div>
+                                                                        </h6>
+                                                                        </p>
+
+                                                                    </div>
+
+                                                                </div>
+                                                                <div
+                                                                    class="modal-footer justify-content-center align-content-center">
+                                                                    <button type="submit" class="btn btn-success">Atender
+                                                                        Solicitud
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-danger"
+                                                                        data-dismiss="modal">Cerrar
+                                                                        Comentario</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>

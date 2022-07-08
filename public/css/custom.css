@@ -1,10 +1,14 @@
-.jumbotron{
+.jumbotron {
     background: url('/images/perroV2.jpg') no-repeat center center;
 }
-.button{
-    background-color: #03b000; /* Cambiar color fuera de la paleta de bootstrap */
+
+.button {
+    background-color: #03b000;
+    /* Cambiar color fuera de la paleta de bootstrap */
 }
 
 .modal-backdrop {
-    background-color: #FFDACC;;
- }
+    background-color: #FFDACC;
+    ;
+}
+

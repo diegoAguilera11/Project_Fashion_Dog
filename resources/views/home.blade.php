@@ -4,24 +4,30 @@
     <div class="container">
 
         <body class style="background-color: #ffffff">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center ">
                 @if (session('exito'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <center>La Solicitud fue ingresada con exito!</center>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <div class="col-md-8 col-centered">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="text-center">
+                                <h4>¡La solicitud fue ingresada con éxito!</h4>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 @endif
 
                 @if (session('atender'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <center>
-                            <h2> La Solicitud fue atendida con exito!</h2>
-                        </center>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <div class="col-md-8 col-centered">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="text-center">
+                                <h4> ¡La solicitud fue atendida con éxito!</h4>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 @endif
                 <div class="col-md-8">

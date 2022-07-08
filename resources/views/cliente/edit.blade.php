@@ -8,11 +8,13 @@
                 <br>
                 <div class="row justify-content-between">
                     @if (session('anular'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <center>La Solicitud fue anulada con exito!</center>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                        <div class="text-center">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <h4>¡La solicitud fue anulada con éxito!</h4>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
                     @endif
 
@@ -64,38 +66,20 @@
                             @if ($solicitud->estado == 'ATENDIDA A TIEMPO' || $solicitud->estado == 'ATENDIDA CON RETRASO')
                                 @if ($solicitud->comentario == '')
                                     <td>
-
-                                        {{-- <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
-                                            title="Agrega un Comentario"
-                                            action="{{ route('agregar_comentario', ['id' => $solicitud->id]) }}">
-                                            <input id="comentario" class="comentario" name="comentario" hidden />
-                                            <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>
-                                                <center><img src="images/comment.png" with="20" height="20"
-                                                        class="d-inline-block align-text-top"></center>
-                                            </button>
-
-
-
-                                        </form> --}}
-
-                                        <button type="button" title="Agrega un Comentario" class=" ml-3 btn btn-success"
+                                        <button type="button" title="Agrega un Comentario" class="btn btn-success"
                                             data-toggle="modal" data-backdrop="static"
                                             data-target="#ModalComentario-{{ $solicitud->id }}">
                                             <center><img src="images/comment.png" with="20" height="20"
-                                                    class="d-inline-block align-text-top" tool></center>
+                                                    class="d-inline-block align-text-top"></center>
                                         </button>
                                     </td>
-
-
-
-
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="ModalComentario-{{ $solicitud->id }}" tabindex="-1"
                                         role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
-                                                <form method="GET" id="formComentario"
+                                                <form method="GET"
                                                     action="{{ route('agregar_comentario', ['id' => $solicitud->id]) }}">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLongTitle">Comparte tu
@@ -109,27 +93,26 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-
-                                                        <input name="comentario" class="text" rows="5" cols="50" placeholder="Ingrese un comentario."
-                                                            minlength="1" maxlength="100"/>
-
-                                                        <div
-                                                            class="modal-footer justify-content-center align-content-center">
-                                                            <button type="submit" class="btn btn-success" id="btnGuardar">
-                                                                Publicar
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger"
-                                                                data-dismiss="modal">Cerrar
-                                                                Comentario</button>
-                                                        </div>
+                                                        <textarea name="comentario" class="text" value="" rows="5" cols="50"
+                                                            placeholder="Ingrese un comentario." minlength="1" maxlength="100"></textarea>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center align-content-center">
+                                                        <button type="submit" class="btn btn-success">
+                                                            Publicar
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-dismiss="modal">Cerrar
+                                                            Comentario</button>
+                                                    </div>
                                                 </form>
                                             </div>
-
                                         </div>
                                     </div>
+                                @else
+                                    <td></td>
+                                @endif
+                            @endif
         </div>
-        @endif
-        @endif
         @if ($solicitud->estado == 'ANULADA')
             <td></td>
         @endif
@@ -154,16 +137,17 @@
         </div>
     @endif
 
-    <script>
+    {{-- <script>
         const formularios = document.getElementsByClassName("formulario");
         const estilistas = document.getElementsByClassName("estilista");
         let comentario = "";
+        var nombreEstilista = "";
 
         for (const form of formularios) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 Swal.fire({
-                    title: 'Comparte tu opinión sobre el Servicio de ',
+                    title: 'Comparte tu opinión sobre el Servicio de ' + nombreEstilista,
                     html: '<textarea rows="4" cols="40" placeholder="Ingrese un comentario." minlength="1" maxlength="100"></textarea>',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',
@@ -184,7 +168,7 @@
                 })
             })
         }
-    </script>
+    </script> --}}
 
 
     <script>

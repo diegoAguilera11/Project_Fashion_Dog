@@ -26,8 +26,10 @@ class EstadoUsuario extends Controller
 
     public function updateStatus($request)
     {
-        $usuario = User::where('id', $request)->get()->first();
-        if($usuario->estado == 'deshabilitado'){
+            $usuario = User::where('id', $request)->get()->first();
+           if($usuario == null){
+            return redirect('/notFound');
+           } if($usuario->estado == 'deshabilitado'){
             $usuario->estado = 'habilitado';
             $usuario->save();
             return redirect('/usuario');
@@ -36,6 +38,7 @@ class EstadoUsuario extends Controller
             $usuario->save();
             return redirect('/usuario');
         }
+
     }
 
     /**
