@@ -4,7 +4,32 @@
     <div class="container">
 
         <body class style="background-color: #ffffff">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center ">
+                @if (session('exito'))
+                    <div class="col-md-8 col-centered">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="text-center">
+                                <h4>¡La solicitud fue ingresada con éxito!</h4>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                @if (session('atender'))
+                    <div class="col-md-8 col-centered">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="text-center">
+                                <h4> ¡La solicitud fue atendida con éxito!</h4>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header text-black" style="background-color: #FFDACC;">
@@ -28,6 +53,11 @@
                                 </a>
                                 <center>
                                     <h1>Bienvenido Estilista {{ Auth::user()->nombre }}</h1>
+
+                                    <a href="/estilista" style="margin-right: 20px" class="btn btn-success">Ver
+                                        Solicitudes</a>
+                                    <a href="/estilista-administrar-solicitudes" class="btn btn-success">Administrar
+                                        solicitud/es</a>
                                 </center>
                             @endif
                             @if (Auth::user()->rol == 'administrador')

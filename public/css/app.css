@@ -382,10 +382,14 @@ button,
 select,
 optgroup,
 textarea {
+    display: block;
     margin: 0;
+    margin-left: auto;
+    margin-right: auto;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    resize: none;
 }
 
 button,
@@ -429,7 +433,7 @@ button:not(:disabled),
 }
 
 textarea {
-    resize: vertical;
+    resize: none;
 }
 
 fieldset {
@@ -5658,6 +5662,11 @@ fieldset:disabled .btn {
     background-color: #e2e3e5;
     border-color: #d3d6d8;
 }
+
+.alert-custom{
+    background-color:#00CDAC;
+    /* color:#00CDAC; */
+  }
 
 .alert-secondary .alert-link {
     color: #34383c;
