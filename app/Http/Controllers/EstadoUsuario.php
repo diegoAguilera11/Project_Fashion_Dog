@@ -19,19 +19,26 @@ class EstadoUsuario extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->texto == null) {
-            $usuarios = User::where('rol', "!=", 'administrador')->simplePaginate(5);
-            return view('administrador.usuario.index')->with('users', $usuarios);
-        } else {
-            $usuarios = User::where('rol', "!=", 'administrador')->where('rut', $request->texto)->simplePaginate(5);
-            return view('administrador.usuario.index')->with('users', $usuarios);
+
+        if($request->texto == null)
+        {
+            $usuarios = User::where('rol',"!=", 'administrador')->simplePaginate(10);
+        return view('administrador.usuario.index')->with('users',$usuarios);
+        }else{
+            $usuarios = User::where('rol',"!=", 'administrador')->where('rut', $request->texto)->simplePaginate(10);
+            return view('administrador.usuario.index')->with('users',$usuarios);
+
         }
     }
 
     public function updateStatus($request)
     {
-        $usuario = User::where('id', $request)->get()->first();
-        if ($usuario->estado == 'deshabilitado') {
+
+            $usuario = User::where('id', $request)->get()->first();
+           if($usuario == null){
+            return redirect('/notFound');
+           } if($usuario->estado == 'deshabilitado'){
+
             $usuario->estado = 'habilitado';
             $usuario->save();
             return redirect('/usuario');
@@ -40,6 +47,7 @@ class EstadoUsuario extends Controller
             $usuario->save();
             return redirect('/usuario');
         }
+
     }
 
 
