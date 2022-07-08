@@ -66,8 +66,7 @@
                                     <br>
 
                                     <a href="/administrador" style="margin-right: 20px" class="btn btn-success">Administrar Estilistas</a>
-                                    <a href="/usuario" class="btn btn-success">Deshabilitar y/o Habilitar Usuario</a>
-
+                                    <a href="/usuario" style="margin-right: 20px" class="btn btn-success ">Deshabilitar y/o Habilitar Usuario</a>
                                     <a href="/administrarSolicitud"  class="btn btn-success">Administrar solicitud/es</a>
 
                                 <center>
