@@ -58,6 +58,7 @@ Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
 
+
 Route::resource('estilistas', 'App\Http\Controllers\EstilistaController');
 
 Route::get('/administrador', [EstilistaController::class, "index"])->name("estilista");
@@ -67,6 +68,11 @@ Route::get('/administrador/edit/{id}', [EstilistaController::class, "edit"])->na
 Route::post("/administrador/edit/{id}", [EstilistaController::class, "update"])->name("editar_estilista_post");
 Route::get('/usuario', [EstadoUsuario::class, 'index'])->name('usuario');
 Route::get('/usuario/{id}', [EstadoUsuario::class, 'updateStatus'])->name('cambiarEstado');
+
+
+Route::get('/administrarSolicitud', [EstadoUsuario::class, 'create'])->name('administrar_Solicitudes');
+//Route::get('/x/{id}', [SolicitudController::class, 'desplegarContenido'])->name('desplegar_Contenido');
+
 
 Auth::routes();
 
@@ -86,8 +92,10 @@ Route::get('/cliente-comentario/{id}', [SolicitudController::class, 'agregarCome
 
 
 
+
 Route::get('/estilista-buscar', [SolicitudController::class, 'BuscarPorFecha'])->name('BuscarPorFecha');
 Route::get('/estilista', [SolicitudController::class, 'VerSolicitudes'])->name('VerSolicitudes');
 Route::get('/estilista/create/{id}',[SolicitudController::class, 'AceptarServicio'])->name('AceptarServicio');
 Route::get('/estilista-administrar-solicitudes',[SolicitudController::class,'indexEstilista'])->name('solicitudEstilista');
+
 
