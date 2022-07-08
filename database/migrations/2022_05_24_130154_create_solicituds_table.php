@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+
+
     /**
      * Run the migrations.
      *
@@ -16,7 +18,8 @@ return new class extends Migration
         Schema::create('solicituds', function (Blueprint $table) {
 
             $table->id();
-            $table->dateTime('fecha_solicitud');
+            $table->date('fecha_solicitud');
+            $table->time('hora_solicitud');
             $table->enum('estado', ['INGRESADA', 'ATENDIDA A TIEMPO', 'ATENDIDA CON RETRASO', 'ANULADA']);
             $table->string('comentario')->nullable();
 

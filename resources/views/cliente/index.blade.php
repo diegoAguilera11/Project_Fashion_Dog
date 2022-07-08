@@ -7,9 +7,11 @@
         <br>
         <br>
 
-        <body style="background-color: #ffffff">
             <div class="row justify-content-center">
                 <div class="col-md-8">
+                    <div class="col-sm-3">
+                        <a href="home" class="btn btn-danger" data-toggle="modal"><span>Volver</span></a>
+                    </div>
                     <form action="{{ route('changePassword') }}" method="POST" class="needs-validation" novalidate>
                         @csrf
                         <div class="card">
@@ -48,13 +50,28 @@
                                         </button>
                                     </div>
                                 </div>
+
                             </div>
+
                         </div>
-                </div>
+                    </div>
                 </form>
+
+
+                <br>
+                <br>
+                <div class="row mb-0">
+                    <div class="col-md-8 offset-md-4">
+                        <button type="submit" class="btn btn-success">
+                            {{ __('Enviar') }}
+                        </button>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+    </form>
     </div>
     </div>
-    </div>
-    </body>
+
 @endsection

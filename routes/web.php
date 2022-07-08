@@ -8,6 +8,7 @@ use App\Http\Controllers\EstadoUsuario;
 use App\Http\Controllers\EstilistaController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UserController;
+use App\Models\Solicitud;
 use Illuminate\Database\Schema\Blueprint;
 
 /*
@@ -40,10 +41,6 @@ Route::get('/estilista/create', function () {
 Route::get('/estilista/edit', function () {
     return view('estilista.edit');
 });
-//METODOS QUE RETORNAN LAS VIEWS DE CLIENTE
-
-Route::get('/GenerateRequest', [SolicitudController::class, 'GenerateRequest'])->name('GenerateRequest')->middleware('auth');
-Route::post('/cliente/create', [SolicitudController::class, 'requestService'])->name('requestService');
 
 Route::get('/cliente/create', function () {
     return view('cliente.create');
@@ -54,17 +51,6 @@ Route::get('/cliente/edit', function () {
 Route::get('/cliente', function () {
     return view('cliente.index');
 });
-//METODOS QUE RETORNAN LAS VIEWS DE ADMINISTRADOR
-/* Route::get('/administrador/create', function () {
-    return view('administrador.create');
-});
-Route::get('/administrador/edit', function () {
-    return view('administrador.edit');
-});
-Route::get('/administrador', function () {
-    return view('administrador.index');
-});
- */
 Route::get('/reset', function () {
     return view('passwords.reset');
 });
@@ -87,3 +73,14 @@ Route::get('/usuario/{id}', [EstadoUsuario::class, 'updateStatus'])->name('cambi
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/cliente', [SolicitudController::class, 'index'])->name('solicitud');
+Route::post('/cliente/edit', [SolicitudController::class, 'store'])->name('editar_solicitud_post');
+Route::get('/cliente/create', [SolicitudController::class, 'create'])->name('crear_solicitud');
+Route::post('/cliente/create', [SolicitudController::class, 'store'])->name('crear_solicitud_post');
+
+Route::get('/cliente/{id}', [SolicitudController::class, 'cancelStatusSolicitud'])->name('anularSolicitud');
+
+Route::get('/cliente-comentario/{id}', [SolicitudController::class, 'agregarComentario'])->name('agregar_comentario');
+
