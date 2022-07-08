@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Solicitud;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -51,24 +52,14 @@ class EstadoUsuario extends Controller
      */
     public function create()
     {
-        // _-_   (Inicio)
 
-        //$solicitudes = Auth::user()->solicitudesCliente()->orderBy('fecha_solicitud')->orderBy('hora_solicitud')->simplePaginate(10);
-
-        //return view('administrarSolicitud.index')->with('solicitudes', $solicitudes);
-
-        $solicitudes = Solicitud::get();
+        //$solicitudes = Solicitud::simplePaginate(5);
+        $solicitudes = DB::table('solicituds')->simplePaginate(10);
         /**
          * compact = va acompactar todas las variables que se vayan a enviar en algun momento
          *
          * **/
         return view('administrarSolicitud.index', compact('solicitudes'));
-
-
-
-        //return view('administrarSolicitud.index');
-
-        // _-_   (Fin)
     }
 
     /**
