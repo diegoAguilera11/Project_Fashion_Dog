@@ -38,9 +38,7 @@ Route::get('/estilista', function () {
 Route::get('/estilista/create', function () {
     return view('estilista.create');
 });
-Route::get('/estilista/edit', function () {
-    return view('estilista.edit');
-});
+
 
 Route::get('/cliente/create', function () {
     return view('cliente.create');
@@ -48,9 +46,9 @@ Route::get('/cliente/create', function () {
 Route::get('/cliente/edit', function () {
     return view('cliente.edit');
 });
-Route::get('/cliente', function () {
-    return view('cliente.index');
-});
+// Route::get('/cliente', function () {
+//     return view('cliente.index');
+// });
 Route::get('/reset', function () {
     return view('passwords.reset');
 });
@@ -59,6 +57,7 @@ Route::resource('user', 'App\Http\Controllers\UserController');
 Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
+
 
 Route::resource('estilistas', 'App\Http\Controllers\EstilistaController');
 
@@ -70,9 +69,16 @@ Route::post("/administrador/edit/{id}", [EstilistaController::class, "update"])-
 Route::get('/usuario', [EstadoUsuario::class, 'index'])->name('usuario');
 Route::get('/usuario/{id}', [EstadoUsuario::class, 'updateStatus'])->name('cambiarEstado');
 
+
+Route::get('/administrarSolicitud', [EstadoUsuario::class, 'create'])->name('administrar_Solicitudes');
+//Route::get('/x/{id}', [SolicitudController::class, 'desplegarContenido'])->name('desplegar_Contenido');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/notFound',[UserController::class, 'index']);
 
 
 Route::get('/cliente', [SolicitudController::class, 'index'])->name('solicitud');
@@ -83,4 +89,13 @@ Route::post('/cliente/create', [SolicitudController::class, 'store'])->name('cre
 Route::get('/cliente/{id}', [SolicitudController::class, 'cancelStatusSolicitud'])->name('anularSolicitud');
 
 Route::get('/cliente-comentario/{id}', [SolicitudController::class, 'agregarComentario'])->name('agregar_comentario');
+
+
+
+
+Route::get('/estilista-buscar', [SolicitudController::class, 'BuscarPorFecha'])->name('BuscarPorFecha');
+Route::get('/estilista', [SolicitudController::class, 'VerSolicitudes'])->name('VerSolicitudes');
+Route::get('/estilista/create/{id}',[SolicitudController::class, 'AceptarServicio'])->name('AceptarServicio');
+Route::get('/estilista-administrar-solicitudes',[SolicitudController::class,'indexEstilista'])->name('solicitudEstilista');
+
 
