@@ -27,30 +27,30 @@
                             </h2>
                         </div>
                         <!--
-                        <DIV ALIGN=right  class="col-auto my-1">
-                            <select class="form-select" aria-label="Default select example"
-                                id="estadoXD">
-                                <option selected>------ Estado ------</option>
+                                    <DIV ALIGN=right  class="col-auto my-1">
+                                        <select class="form-select" aria-label="Default select example"
+                                            id="estadoXD">
+                                            <option selected>------ Estado ------</option>
 
-                                <option value="1"> Ingresada</option>
+                                            <option value="1"> Ingresada</option>
 
-                                <option value="2"> Anulada</option>
-                                <option value="3"> Atendida a tiempo</option>
-                                <option value="4"> Atendida con retraso</option>
+                                            <option value="2"> Anulada</option>
+                                            <option value="3"> Atendida a tiempo</option>
+                                            <option value="4"> Atendida con retraso</option>
 
-                            </select>
-                        </DIV>
-                        -->
+                                        </select>
+                                    </DIV>
+                                    -->
 
                         <!-- Otra forma de hacer el filtrado
-                        <div class="form-group">
-                            <label for="">Categoria</label>
-                            <select name="categoria_id" id="inputCategoria_id" class="form-control">
+                                    <div class="form-group">
+                                        <label for="">Categoria</label>
+                                        <select name="categoria_id" id="inputCategoria_id" class="form-control">
 
-                            </select>
+                                        </select>
 
-                        </div>
-                        -->
+                                    </div>
+                                    -->
 
 
                     </div>
@@ -91,200 +91,301 @@
                             <!--Para el boton se omiti el color verde: class="btn btn-success"-->
 
                             <td>
+
                                 <body>
-                                    <button data-bs-toggle="modal" data-bs-target= "#Modal-{{ $solicitud->id }}"  type="submit"
-                                         title="Ver detalles"><i class="fas fa-check"></i>
+                                    <button data-bs-toggle="modal" data-bs-target="#Modal-{{ $solicitud->id }}"
+                                        type="submit" title="Ver detalles"><i class="fas fa-check"></i>
                                         <center><img src="images/search.png" with="20" height="20"
                                                 class="d-inline-block align-text-top"> </center>
                                     </button>
 
 
 
-                                    <div class="modal fade" id= "Modal-{{ $solicitud->id }}" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle" >
-                                        <div  class="modal-dialog modal-dialog-centered" >
-                                            <div  class="modaaaal-content" >  <!--x: cambiar tamaño-->
+                                    <div class="modal fade" id="Modal-{{ $solicitud->id }}" tabindex="-1"
+                                        aria-hidden="true" aria-labelledby="modalTitle">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modaaaal-content">
+                                                <!--x: cambiar tamaño-->
                                                 <!--
-                                                <div class="modal-header">
-                                                    <h5  class="modal-title" id="modalTitle">Titulasoo</h5>
-                                                </div> -->
-                                                <div  class="modal-body" > <!--x: cambiar tamaño-->
+                                                            <div class="modal-header">
+                                                                <h5  class="modal-title" id="modalTitle">Titulasoo</h5>
+                                                            </div> -->
+                                                <div class="modal-body">
+                                                    <!--x: cambiar tamaño-->
                                                     <p>
-                                                        <div class="card mb-3" style="max-width: 540px;">
+                                                    <div class="card mb-3" style="max-width: 540px;">
 
                                                         <!-- _____________________CUADRO - Inicio _____________________ -->
 
 
                                                         <div class="row g-0">
 
-                                                            <div  class="col-md-4" > <!--Real: col-md-4  x: cambiar tamaño  opcional: imageeenModal-->
-                                                                <img src="images/Perro 3.jpg"class="img-thumbnail" class="img-fluid rounded-start" alt="..."  witdh="40px">
+                                                            <div class="col-md-4">
+                                                                <!--Real: col-md-4  x: cambiar tamaño  opcional: imageeenModal-->
+                                                                <img src="images/Perro 3.jpg"class="img-thumbnail"
+                                                                    class="img-fluid rounded-start" alt="..."
+                                                                    witdh="40px">
                                                             </div>
                                                             <div class="col-md-8">
-                                                            <div class="card-body">
+                                                                <div class="card-body">
 
-                                                                <h5 align="CENTER" noshadclass="card-title" >𝐃𝐞𝐭𝐚𝐥𝐥𝐞𝐬 𝐝𝐞 𝐥𝐚 𝐬𝐨𝐥𝐢𝐜𝐢𝐭𝐮𝐝</h5>
+                                                                    <h5 align="CENTER" noshadclass="card-title">
+                                                                        𝐃𝐞𝐭𝐚𝐥𝐥𝐞𝐬 𝐝𝐞 𝐥𝐚 𝐬𝐨𝐥𝐢𝐜𝐢𝐭𝐮𝐝</h5>
 
-                                                                <p class="card-text" >
+                                                                    <p class="card-text">
 
-                                                                <h6>
-                                                                <!-- Getbootstrap: Columnas de compensación -->
+                                                                    <h6>
+                                                                        <!-- Getbootstrap: Columnas de compensación -->
 
-                                                                  <div class="container">
-                                                                    <div class="row">
+                                                                        <div class="container">
+                                                                            <div class="row">
 
-                                                                      <div class="col-sm-6 col-md-5 col-lg-6">Nombre</div>
-                                                                      <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::getUserNameById($solicitud->cliente_id) }}
-                                                                        {{ App\Models\User::getUserApellidoById($solicitud->cliente_id) }}</div>
+                                                                                <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                    Nombre</div>
+                                                                                <div
+                                                                                    class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                    {{ App\Models\User::getUserNameById($solicitud->cliente_id) }}
+                                                                                    {{ App\Models\User::getUserApellidoById($solicitud->cliente_id) }}
+                                                                                </div>
 
-                                                                      <div class="col-sm-6 col-md-5 col-lg-6">Rut</div>
-                                                                      <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::getUserRut($solicitud->cliente_id) }}</div>
+                                                                                <div class="col-sm-6 col-md-5 col-lg-6">Rut
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                    {{ App\Models\User::getUserRut($solicitud->cliente_id) }}
+                                                                                </div>
 
-                                                                      <div class="col-sm-6 col-md-5 col-lg-6">Telefono</div>
-                                                                      <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::  getUserTelefono($solicitud->cliente_id) }}</div>
+                                                                                <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                    Telefono</div>
+                                                                                <div
+                                                                                    class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                    {{ App\Models\User::getUserTelefono($solicitud->cliente_id) }}
+                                                                                </div>
 
-                                                                      <div class="col-sm-6 col-md-5 col-lg-6">Email</div>
-                                                                      <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::getUserEmail($solicitud->cliente_id) }}</div>
+                                                                                <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                    Email</div>
+                                                                                <div
+                                                                                    class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                    {{ App\Models\User::getUserEmail($solicitud->cliente_id) }}
+                                                                                </div>
 
-                                                                      <div class="col-sm-6 col-md-5 col-lg-6">Dirección</div>
-                                                                      <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User:: getUserDireccion($solicitud->cliente_id) }}</div>
+                                                                                <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                    Dirección</div>
+                                                                                <div
+                                                                                    class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                    {{ App\Models\User::getUserDireccion($solicitud->cliente_id) }}
+                                                                                </div>
 
-                                                                      <div class="col-sm-6 col-md-5 col-lg-6">Estado</div>
-                                                                      <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ $solicitud->estado }}</div>
+                                                                                <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                    Estado</div>
+                                                                                <div
+                                                                                    class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                    {{ $solicitud->estado }}</div>
 
 
 
-                                                                      @if ($solicitud->estado == 'ATENDIDA A TIEMPO' || $solicitud->estado == 'ATENDIDA CON RETRASO')
-                                                                            @if ($solicitud->comentario == '')
+                                                                                @if ($solicitud->estado == 'ATENDIDA A TIEMPO' || $solicitud->estado == 'ATENDIDA CON RETRASO')
+                                                                                    @if ($solicitud->comentario == '')
+                                                                                        <div
+                                                                                            class="col-sm-6 col-md-5 col-lg-6">
+                                                                                            Comentario</div>
+                                                                                        <div
+                                                                                            class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                            Sin comentarios</div>
 
-                                                                                <div class="col-sm-6 col-md-5 col-lg-6">Comentario</div>
-                                                                                <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">Sin comentarios</div>
+                                                                                        <br> <br>
+                                                                                        <div class="accordion accordion-flush"
+                                                                                            id="accordionFlushExample">
+                                                                                            <div class="accordion-item">
+                                                                                                <h2 class="accordion-header"
+                                                                                                    id="flush-headingOne">
+                                                                                                    <button
+                                                                                                        class="accordion-button collapsed"
+                                                                                                        type="button"
+                                                                                                        data-bs-toggle="collapse"
+                                                                                                        data-bs-target="#flush-collapseOne"
+                                                                                                        aria-expanded="false"
+                                                                                                        aria-controls="flush-collapseOne">
 
-                                                                                <br> <br>
-                                                                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                                                                    <div class="accordion-item">
-                                                                                      <h2 class="accordion-header" id="flush-headingOne">
-                                                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-
-                                                                                          Estilista:    {{ App\Models\User::getUserNameById($solicitud->estilista_id) }}
+                                                                                                        Estilista:
+                                                                                                        {{ App\Models\User::getUserNameById($solicitud->estilista_id) }}
                                                                                                         {{ App\Models\User::getUserApellidoById($solicitud->estilista_id) }}
 
-                                                                                        </button>
-                                                                                      </h2>
-                                                                                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                                                                        <div class="accordion-body">
+                                                                                                    </button>
+                                                                                                </h2>
+                                                                                                <div id="flush-collapseOne"
+                                                                                                    class="accordion-collapse collapse"
+                                                                                                    aria-labelledby="flush-headingOne"
+                                                                                                    data-bs-parent="#accordionFlushExample">
+                                                                                                    <div
+                                                                                                        class="accordion-body">
 
-                                                                                            <div class="container">
-                                                                                                <div class="row">
+                                                                                                        <div
+                                                                                                            class="container">
+                                                                                                            <div
+                                                                                                                class="row">
 
-                                                                                                  <div class="col-sm-6 col-md-5 col-lg-6">Nombre</div>
-                                                                                                  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::getUserNameById($solicitud->estilista_id) }}</div>
+                                                                                                                <div
+                                                                                                                    class="col-sm-6 col-md-5 col-lg-6">
+                                                                                                                    Nombre
+                                                                                                                </div>
+                                                                                                                <div
+                                                                                                                    class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                                                    {{ App\Models\User::getUserNameById($solicitud->estilista_id) }}
+                                                                                                                </div>
 
-                                                                                                  <div class="col-sm-6 col-md-5 col-lg-6">Rut</div>
-                                                                                                  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::getUserRut($solicitud->estilista_id) }}</div>
+                                                                                                                <div
+                                                                                                                    class="col-sm-6 col-md-5 col-lg-6">
+                                                                                                                    Rut
+                                                                                                                </div>
+                                                                                                                <div
+                                                                                                                    class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                                                    {{ App\Models\User::getUserRut($solicitud->estilista_id) }}
+                                                                                                                </div>
 
-                                                                                                  <div class="col-sm-6 col-md-5 col-lg-6">Telefono</div>
-                                                                                                  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::  getUserTelefono($solicitud->estilista_id) }}</div>
+                                                                                                                <div
+                                                                                                                    class="col-sm-6 col-md-5 col-lg-6">
+                                                                                                                    Telefono
+                                                                                                                </div>
+                                                                                                                <div
+                                                                                                                    class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                                                    {{ App\Models\User::getUserTelefono($solicitud->estilista_id) }}
+                                                                                                                </div>
 
-                                                                                                  <div class="col-sm-6 col-md-5 col-lg-6">Email</div>
-                                                                                                  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::getUserEmail($solicitud->estilista_id) }}</div>
-
-                                                                                                  <div class="col-sm-6 col-md-5 col-lg-6">Dirección</div>
-                                                                                                  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User:: getUserDireccion($solicitud->estilista_id) }}</div>
-
+                                                                                                                <div
+                                                                                                                    class="col-sm-6 col-md-5 col-lg-6">
+                                                                                                                    Email
+                                                                                                                </div>
+                                                                                                                <div
+                                                                                                                    class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                                                    {{ App\Models\User::getUserEmail($solicitud->estilista_id) }}
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
                                                                                                 </div>
                                                                                             </div>
-                                                                                        </div>
-                                                                                      </div>
-                                                                                    </div>
-
-                                                                            @else
-
-                                                                                <div class="col-sm-6 col-md-5 col-lg-6">Comentario</div>
-                                                                                <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ $solicitud->comentario }}</div>
-
-                                                                                <br> <br>
-                                                                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                                                                    <div class="accordion-item">
-                                                                                      <h2 class="accordion-header" id="flush-headingOne">
-                                                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                                                          Estilista:    {{ App\Models\User::getUserNameById($solicitud->estilista_id) }}
-                                                                                                        {{ App\Models\User::getUserApellidoById($solicitud->estilista_id) }}
-                                                                                        </button>
-                                                                                      </h2>
-                                                                                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                                                                        <div class="accordion-body">
-
-                                                                                            <div class="container">
-                                                                                                <div class="row">
-
-                                                                                                  <div class="col-sm-6 col-md-5 col-lg-6">Nombre</div>
-                                                                                                  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::getUserNameById($solicitud->estilista_id) }}</div>
-
-                                                                                                  <div class="col-sm-6 col-md-5 col-lg-6">Rut</div>
-                                                                                                  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::getUserRut($solicitud->estilista_id) }}</div>
-
-                                                                                                  <div class="col-sm-6 col-md-5 col-lg-6">Telefono</div>
-                                                                                                  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::  getUserTelefono($solicitud->estilista_id) }}</div>
-
-                                                                                                  <div class="col-sm-6 col-md-5 col-lg-6">Email</div>
-                                                                                                  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User::getUserEmail($solicitud->estilista_id) }}</div>
-
-                                                                                                  <div class="col-sm-6 col-md-5 col-lg-6">Dirección</div>
-                                                                                                  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">{{ App\Models\User:: getUserDireccion($solicitud->estilista_id) }}</div>
-
-                                                                                                </div>
+                                                                                        @else
+                                                                                            <div
+                                                                                                class="col-sm-6 col-md-5 col-lg-6">
+                                                                                                Comentario</div>
+                                                                                            <div
+                                                                                                class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                                {{ $solicitud->comentario }}
                                                                                             </div>
-                                                                                        </div>
-                                                                                      </div>
-                                                                                    </div>
-                                                                            @endif
 
+                                                                                            <br> <br>
+                                                                                            <div class="accordion accordion-flush"
+                                                                                                id="accordionFlushExample">
+                                                                                                <div
+                                                                                                    class="accordion-item">
+                                                                                                    <h2 class="accordion-header"
+                                                                                                        id="flush-headingOne">
+                                                                                                        <button
+                                                                                                            class="accordion-button collapsed"
+                                                                                                            type="button"
+                                                                                                            data-bs-toggle="collapse"
+                                                                                                            data-bs-target="#flush-collapseOne"
+                                                                                                            aria-expanded="false"
+                                                                                                            aria-controls="flush-collapseOne">
+                                                                                                            Estilista:
+                                                                                                            {{ App\Models\User::getUserNameById($solicitud->estilista_id) }}
+                                                                                                            {{ App\Models\User::getUserApellidoById($solicitud->estilista_id) }}
+                                                                                                        </button>
+                                                                                                    </h2>
+                                                                                                    <div id="flush-collapseOne"
+                                                                                                        class="accordion-collapse collapse"
+                                                                                                        aria-labelledby="flush-headingOne"
+                                                                                                        data-bs-parent="#accordionFlushExample">
+                                                                                                        <div
+                                                                                                            class="accordion-body">
 
-                                                                        @else
+                                                                                                            <div
+                                                                                                                class="container">
+                                                                                                                <div
+                                                                                                                    class="row">
 
-                                                                            @if ($solicitud->estado == 'ANULADA')
+                                                                                                                    <div
+                                                                                                                        class="col-sm-6 col-md-5 col-lg-6">
+                                                                                                                        Nombre
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                                                        {{ App\Models\User::getUserNameById($solicitud->estilista_id) }}
+                                                                                                                    </div>
 
-                                                                            @else
+                                                                                                                    <div
+                                                                                                                        class="col-sm-6 col-md-5 col-lg-6">
+                                                                                                                        Rut
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                                                        {{ App\Models\User::getUserRut($solicitud->estilista_id) }}
+                                                                                                                    </div>
 
-                                                                                @if ($solicitud->estado == 'INGRESADA')
+                                                                                                                    <div
+                                                                                                                        class="col-sm-6 col-md-5 col-lg-6">
+                                                                                                                        Telefono
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                                                        {{ App\Models\User::getUserTelefono($solicitud->estilista_id) }}
+                                                                                                                    </div>
 
-                                                                                     <footer class="text-muted"><br><li>Estilista por asignar </li></footer>
-
+                                                                                                                    <div
+                                                                                                                        class="col-sm-6 col-md-5 col-lg-6">
+                                                                                                                        Email
+                                                                                                                    </div>
+                                                                                                                    <div
+                                                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                                                        {{ App\Models\User::getUserEmail($solicitud->estilista_id) }}
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                    @endif
+                                                                                @else
+                                                                                    @if ($solicitud->estado == 'ANULADA')
+                                                                                    @else
+                                                                                        @if ($solicitud->estado == 'INGRESADA')
+                                                                                            <footer class="text-muted"><br>
+                                                                                                <li>Estilista por asignar
+                                                                                                </li>
+                                                                                            </footer>
+                                                                                        @endif
+                                                                                    @endif
                                                                                 @endif
 
-                                                                        @endif
+
+                                                                            </div>
+                                                                        </div>
 
 
-                                                                      @endif
-
-
-                                                                    </div>
-                                                                  </div>
-
-
-                                                                </h6>
-                                                                </p>
+                                                                    </h6>
+                                                                    </p>
 
 
 
 
 
 
-                                                            </div>
+                                                                </div>
                                                             </div>
 
                                                         </div>
-                                                        </div>
+                                                    </div>
 
-                                                        <!-- _____________________CUADRO - Fin _____________________ -->
+                                                    <!-- _____________________CUADRO - Fin _____________________ -->
 
                                                     </p>
 
                                                 </div>
                                                 <!--
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                </div> -->
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                            </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -310,7 +411,7 @@
                 <div class="d-flex justify-content-center">
                     {!! $solicitudes->links() !!}
                 </div>
-             @endif
+            @endif
         </div>
 
     </div>
