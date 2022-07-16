@@ -33,9 +33,9 @@
                     <tr>
 
                         <th>Nº Solicitud</th>
-                        <th>Fecha y Hora Solicitud</th>
+                        <th>Fecha y Hora</th>
                         <th>Estado</th>
-                        <th>Ver solicitud</th>
+                        <th>Ver</th>
 
                     </tr>
                 </thead>
@@ -43,29 +43,30 @@
                     @forelse ($solicituds as $solicitud)
                         <tr>
                             <td>{{ $solicitud->id }}</td>
-                            <td>{{ date('d-m-Y', strtotime($solicitud->fecha_solicitud)) }} -
-                                {{ $solicitud->hora_solicitud }}</td>
+                            <td>{{ date('d/m/Y', strtotime($solicitud->fecha_solicitud)) }} -
+                                {{ date('H:i', strtotime($solicitud->hora_solicitud)) }}</td>
                             <td>{{ $solicitud->estado }}</td>
                             <td>
-                                <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
+                                <form class="formularioAtender" method="GET" data-toggle="tooltip" data-placement="top"
                                     action="{{ route('AceptarServicio', ['id' => $solicitud->id]) }}">
 
-                                    <button type="button" class="btn btn-success" data-backdrop="static"
-                                        data-toggle="modal" data-target="#Modal-{{ $solicitud->id }}"><i
-                                            class="fas fa-check"></i>
-                                        <center><img src="images/Solicitud.png" with="20" height="20"
-                                                class="d-inline-block align-text-top"></center>
+                                    <button  style= "margin-left:0 !important"  type="button" data-backdrop="static" data-toggle="modal"
+                                        data-target="#Modal-{{ $solicitud->id }}"><i class="fas fa-check"></i>
+                                        <img src="images/search.png" with="20" height="20"
+                                                class="align-text-top">
                                     </button>
+
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="Modal-{{ $solicitud->id }}" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
-                                                <form method="GET"
+                                                <form class="formulario" method="GET"
                                                     action="{{ route('AceptarServicio', ['id' => $solicitud->id]) }}">
                                                     <div class="modal-header" style="background-color: #FC623B">
-                                                        <h5 class="modal-title " style="color:#ffffff" id="exampleModalLongTitle">Detalles de la solicitud
+                                                        <h5 class="modal-title " style="color:#ffffff"
+                                                            id="exampleModalLongTitle">Detalles de la solicitud
                                                         </h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -136,12 +137,12 @@
                                                                 </div>
                                                                 <div
                                                                     class="modal-footer justify-content-center align-content-center">
-                                                                    <button type="submit" class="btn btn-success">Atender
+                                                                    <button type="submit" class="btn btn-success"><i class="fas fa-check">Atender
                                                                         Solicitud
                                                                     </button>
                                                                     <button type="button" class="btn btn-danger"
                                                                         data-dismiss="modal">Cerrar
-                                                                        Comentario</button>
+                                                                        Solicitud</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -167,4 +168,31 @@
             {!! $solicituds->links() !!}
         </div>
     @endif
+
+    <script>
+        const formulariosAtender = document.getElementsByClassName("formularioAtender");
+
+        for (const form of formulariosAtender) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                Swal.fire({
+                    title: '¿Estás seguro que quieres atender la solicitud?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4DD091',
+                    cancelButtonColor: '#FF5C77',
+                    confirmButtonText: 'Confirmar',
+                    cancelButtonText: 'Cancelar',
+                    allowOutsideClick: false,
+
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+
+                        form.submit();
+                    }
+                })
+            })
+        }
+    </script>
 @endsection
