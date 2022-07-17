@@ -17,8 +17,17 @@ class EstilistaController extends Controller
      */
     public function index()
     {
-        $estilistas = User::where('rol', 'estilista')->simplePaginate(5);
-        return view("administrador.index")->with("estilistas",$estilistas);
+        if(auth()->check()){
+            if(auth()->user()->rol == 'administrador'){
+
+                $estilistas = User::where('rol', 'estilista')->simplePaginate(10);
+                return view("administrador.index")->with("estilistas",$estilistas);
+            }elseif(auth()->user()->rol == null){
+                return redirect()->to('/');
+            }
+            return redirect()->to('/home');
+        }
+        return redirect()->to('/');
     }
 
     /**

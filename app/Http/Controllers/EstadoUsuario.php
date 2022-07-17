@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Solicitud;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 use App\Models\User;
+
 class EstadoUsuario extends Controller
 {
     /**
@@ -13,30 +19,39 @@ class EstadoUsuario extends Controller
      */
     public function index(Request $request)
     {
+
         if($request->texto == null)
         {
-            $usuarios = User::where('rol',"!=", 'administrador')->simplePaginate(5);
+            $usuarios = User::where('rol',"!=", 'administrador')->simplePaginate(10);
         return view('administrador.usuario.index')->with('users',$usuarios);
         }else{
-            $usuarios = User::where('rol',"!=", 'administrador')->where('rut', $request->texto)->simplePaginate(5);
+            $usuarios = User::where('rol',"!=", 'administrador')->where('rut', $request->texto)->simplePaginate(10);
             return view('administrador.usuario.index')->with('users',$usuarios);
-        }
 
+        }
     }
 
     public function updateStatus($request)
     {
-        $usuario = User::where('id', $request)->get()->first();
-        if($usuario->estado == 'deshabilitado'){
+
+            $usuario = User::where('id', $request)->get()->first();
+           if($usuario == null){
+            return redirect('/notFound');
+           } if($usuario->estado == 'deshabilitado'){
+
             $usuario->estado = 'habilitado';
             $usuario->save();
             return redirect('/usuario');
-        }else{
+        } else {
             $usuario->estado = 'deshabilitado';
             $usuario->save();
             return redirect('/usuario');
         }
+
     }
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -45,7 +60,14 @@ class EstadoUsuario extends Controller
      */
     public function create()
     {
-        //
+
+        //$solicitudes = Solicitud::simplePaginate(5);
+        $solicitudes = DB::table('solicituds')->simplePaginate(10);
+        /**
+         * compact = va acompactar todas las variables que se vayan a enviar en algun momento
+         *
+         * **/
+        return view('administrarSolicitud.index', compact('solicitudes'));
     }
 
     /**

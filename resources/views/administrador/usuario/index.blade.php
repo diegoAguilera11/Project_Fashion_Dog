@@ -58,10 +58,11 @@
 
                             @if ($user->estado == 'habilitado')
                                 <td>
-                                    <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
-                                        title="Deshabilita al usuario"
+                                    <form class="formulario" method="GET"
                                         action="{{ route('cambiarEstado', ['id' => $user->id]) }}">
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>
+                                        <button type="submit" class="btn btn-success" data-toggle="tooltip"
+                                            data-placement="right" title="Deshabilita al usuario"><i
+                                                class="fas fa-check"></i>
                                             <center><img src="images/check.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
                                         </button>
@@ -69,10 +70,10 @@
                                 </td>
                             @else
                                 <td>
-                                    <form class="formulario" method="GET" data-toggle="tooltip" data-placement="top"
-                                        title="Habilita al usuario"
+                                    <form class="formulario" method="GET"
                                         action="{{ route('cambiarEstado', ['id' => $user->id]) }}">
-                                        <button type="submit" class="btn btn-danger"><i class="fas fa-ban"></i>
+                                        <button type="submit" class="btn btn-danger" data-toggle="tooltip"
+                                            data-placement="right" title="Habilita al usuario"><i class="fas fa-ban"></i>
                                             <center><img src="images/x.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
                                         </button>
