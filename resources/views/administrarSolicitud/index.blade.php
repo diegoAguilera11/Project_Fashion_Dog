@@ -27,30 +27,30 @@
                             </h2>
                         </div>
                         <!--
-                                    <DIV ALIGN=right  class="col-auto my-1">
-                                        <select class="form-select" aria-label="Default select example"
-                                            id="estadoXD">
-                                            <option selected>------ Estado ------</option>
+                                            <DIV ALIGN=right  class="col-auto my-1">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    id="estadoXD">
+                                                    <option selected>------ Estado ------</option>
 
-                                            <option value="1"> Ingresada</option>
+                                                    <option value="1"> Ingresada</option>
 
-                                            <option value="2"> Anulada</option>
-                                            <option value="3"> Atendida a tiempo</option>
-                                            <option value="4"> Atendida con retraso</option>
+                                                    <option value="2"> Anulada</option>
+                                                    <option value="3"> Atendida a tiempo</option>
+                                                    <option value="4"> Atendida con retraso</option>
 
-                                        </select>
-                                    </DIV>
-                                    -->
+                                                </select>
+                                            </DIV>
+                                            -->
 
                         <!-- Otra forma de hacer el filtrado
-                                    <div class="form-group">
-                                        <label for="">Categoria</label>
-                                        <select name="categoria_id" id="inputCategoria_id" class="form-control">
+                                            <div class="form-group">
+                                                <label for="">Categoria</label>
+                                                <select name="categoria_id" id="inputCategoria_id" class="form-control">
 
-                                        </select>
+                                                </select>
 
-                                    </div>
-                                    -->
+                                            </div>
+                                            -->
 
 
                     </div>
@@ -69,7 +69,7 @@
                         <th>Nombre del cliente</th>
                         <th>Fecha y Hora</th>
                         <th>Estado</th>
-                        <th>ver</th>
+                        <th>Ver</th>
 
                     </tr>
                 </thead>
@@ -83,7 +83,8 @@
                             <td>{{ App\Models\User::getUserNameById($solicitud->cliente_id) }}
                                 {{ App\Models\User::getUserApellidoById($solicitud->cliente_id) }}</td>
 
-                            <td>{{ $solicitud->fecha_solicitud }} • {{ $solicitud->hora_solicitud }}</td>
+                            <td>{{ date('d/m/Y', strtotime($solicitud->fecha_solicitud)) }} -
+                                {{ date('H:i', strtotime($solicitud->hora_solicitud)) }}</td>
 
                             <td>{{ $solicitud->estado }}</td>
 
@@ -93,8 +94,9 @@
                             <td>
 
                                 <body>
-                                    <button data-bs-toggle="modal" data-bs-target="#Modal-{{ $solicitud->id }}"
-                                        type="submit" title="Ver detalles"><i class="fas fa-check"></i>
+                                    <button style="margin-left:0 !important" data-bs-toggle="modal"
+                                        data-bs-target="#Modal-{{ $solicitud->id }}" type="submit"
+                                        title="Ver detalles"><i class="fas fa-check"></i>
                                         <center><img src="images/search.png" with="20" height="20"
                                                 class="d-inline-block align-text-top"> </center>
                                     </button>
@@ -107,9 +109,9 @@
                                             <div class="modaaaal-content">
                                                 <!--x: cambiar tamaño-->
                                                 <!--
-                                                            <div class="modal-header">
-                                                                <h5  class="modal-title" id="modalTitle">Titulasoo</h5>
-                                                            </div> -->
+                                                                    <div class="modal-header">
+                                                                        <h5  class="modal-title" id="modalTitle">Titulasoo</h5>
+                                                                    </div> -->
                                                 <div class="modal-body">
                                                     <!--x: cambiar tamaño-->
                                                     <p>
@@ -122,15 +124,14 @@
 
                                                             <div class="col-md-4">
                                                                 <!--Real: col-md-4  x: cambiar tamaño  opcional: imageeenModal-->
-                                                                <img src="images/Perro 3.jpg"class="img-thumbnail"
-                                                                    class="img-fluid rounded-start" alt="..."
-                                                                    witdh="40px">
+                                                                <img src="/images/logo_FashionDog.png"class="img-thumbnail"
+                                                                    alt="..." witdh="40px">
                                                             </div>
                                                             <div class="col-md-8">
                                                                 <div class="card-body">
 
                                                                     <h5 align="CENTER" noshadclass="card-title">
-                                                                        𝐃𝐞𝐭𝐚𝐥𝐥𝐞𝐬 𝐝𝐞 𝐥𝐚 𝐬𝐨𝐥𝐢𝐜𝐢𝐭𝐮𝐝</h5>
+                                                                        Detalles de la solicitud</h5>
 
                                                                     <p class="card-text">
 
@@ -383,9 +384,9 @@
 
                                                 </div>
                                                 <!--
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                            </div> -->
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                                    </div> -->
                                             </div>
                                         </div>
                                     </div>

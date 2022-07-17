@@ -20,7 +20,7 @@ class EstilistaController extends Controller
         if(auth()->check()){
             if(auth()->user()->rol == 'administrador'){
 
-                $estilistas = User::where('rol', 'estilista')->simplePaginate(5);
+                $estilistas = User::where('rol', 'estilista')->simplePaginate(10);
                 return view("administrador.index")->with("estilistas",$estilistas);
             }elseif(auth()->user()->rol == null){
                 return redirect()->to('/');

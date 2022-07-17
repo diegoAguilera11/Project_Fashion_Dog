@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'rut' => "12345",
+            'rut' => "17977139K",
             'nombre' => "Antonio",
             'apellidoPaterno' => "",
             'telefono' => "",

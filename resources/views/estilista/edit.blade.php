@@ -32,7 +32,7 @@
 
                             <td>{{ $solicitud->id }}</td>
                             <td>{{ date('d-m-Y', strtotime($solicitud->fecha_solicitud)) }} -
-                                {{ $solicitud->hora_solicitud }}</td>
+                                {{ date('H:i', strtotime($solicitud->hora_solicitud)) }}</td>
 
                             @if ($solicitud->cliente_id)
                                 <td>{{ App\Models\User::getUserNameById($solicitud->cliente_id) }}</td>

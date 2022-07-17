@@ -40,8 +40,8 @@
                         <tr>
 
                             <td>{{ $solicitud->id }}</td>
-                            <td>{{ date('d-m-Y', strtotime($solicitud->fecha_solicitud)) }} -
-                                {{ $solicitud->hora_solicitud }}</td>
+                            <td>{{ date('d/m/Y', strtotime($solicitud->fecha_solicitud)) }} -
+                                {{ date('H:i', strtotime($solicitud->hora_solicitud)) }}</td>
                             <td>{{ $solicitud->estado }}</td>
 
                             @if ($solicitud->estilista_id)
@@ -94,7 +94,7 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <textarea name="comentario" class="text" value="" rows="5" cols="50"
-                                                            placeholder="Ingrese un comentario." minlength="1" maxlength="100"></textarea>
+                                                            placeholder=" RECUERDA QUE EL COMENTARIO SOLAMENTE SE PUEDE ESCRIBIR UNA VEZ." minlength="1" maxlength="100"></textarea>
                                                     </div>
                                                     <div class="modal-footer justify-content-center align-content-center">
                                                         <button type="submit" class="btn btn-success">

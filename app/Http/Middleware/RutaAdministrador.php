@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class RutaEstilista
+class RutaAdministrador
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class RutaEstilista
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->check() && auth()->user()->rol == 'estilista'){
+        if(auth()->check() && auth()->user()->rol == 'administrador'){
             return $next($request);
         }else{
             return redirect('home');
