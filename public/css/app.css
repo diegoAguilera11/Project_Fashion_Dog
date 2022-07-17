@@ -6297,11 +6297,6 @@ fieldset:disabled .btn {
 }
 
 .modal {
-
-
-
-
-
     position: fixed;
     top: 0;
     left: 0;
@@ -6309,7 +6304,6 @@ fieldset:disabled .btn {
     display: none;
     width: 100%;
     height: 100%;
-
 
     overflow-x: auto;
     overflow-y: auto;
@@ -6461,7 +6455,7 @@ fieldset:disabled .btn {
 
     .modal-lg,
     .modal-xl {
-        max-width: 800px;
+        max-width: 600px;
     }
 }
 
