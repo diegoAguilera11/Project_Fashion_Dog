@@ -37,7 +37,6 @@ Route::middleware(['rutasAdministrador'])->group(function(){
 
 // RUTAS ESTILISTA
 Route::middleware(['rutasEstilista'])->group(function(){
-
     Route::get('/estilista-buscar', [SolicitudController::class, 'BuscarPorFecha'])->name('BuscarPorFecha');
     Route::get('/estilista', [SolicitudController::class, 'VerSolicitudes'])->name('VerSolicitudes');
     Route::get('/estilista/create/{id}',[SolicitudController::class, 'AceptarServicio'])->name('AceptarServicio');
@@ -51,7 +50,6 @@ Route::middleware(['rutasEstilista'])->group(function(){
 Route::middleware(['rutasCliente'])->group(function(){
 
     Route::get('/cliente', [SolicitudController::class, 'index'])->name('solicitud');
-
     Route::get('/cliente/create', [SolicitudController::class, 'create'])->name('crear_solicitud');
     Route::post('/cliente/create', [SolicitudController::class, 'store'])->name('crear_solicitud_post');
     Route::get('/cliente-anular/{id}', [SolicitudController::class, 'cancelStatusSolicitud'])->name('anularSolicitud');

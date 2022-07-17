@@ -157,7 +157,7 @@
                                                                                 </div>
 
                                                                                 <div class="col-sm-6 col-md-5 col-lg-6">
-                                                                                    Telefono</div>
+                                                                                    Teléfono</div>
                                                                                 <div
                                                                                     class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
                                                                                     {{ App\Models\User::getUserTelefono($solicitud->cliente_id) }}
@@ -246,7 +246,7 @@
 
                                                                                                                 <div
                                                                                                                     class="col-sm-6 col-md-5 col-lg-6">
-                                                                                                                    Telefono
+                                                                                                                    Teléfono
                                                                                                                 </div>
                                                                                                                 <div
                                                                                                                     class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
@@ -294,6 +294,7 @@
                                                                                                             {{ App\Models\User::getUserApellidoById($solicitud->estilista_id) }}
                                                                                                         </button>
                                                                                                     </h2>
+
                                                                                                     <div id="flush-collapseOne"
                                                                                                         class="accordion-collapse collapse"
                                                                                                         aria-labelledby="flush-headingOne"
@@ -326,7 +327,7 @@
 
                                                                                                                     <div
                                                                                                                         class="col-sm-6 col-md-5 col-lg-6">
-                                                                                                                        Telefono
+                                                                                                                        Teléfono
                                                                                                                     </div>
                                                                                                                     <div
                                                                                                                         class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">

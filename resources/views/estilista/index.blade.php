@@ -61,12 +61,12 @@
                                     <!-- Modal -->
                                     <div class="modal fade" id="Modal-{{ $solicitud->id }}" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                             <div class="modal-content">
                                                 <form class="formulario" method="GET"
                                                     action="{{ route('AceptarServicio', ['id' => $solicitud->id]) }}">
                                                     <div class="modal-header" style="background-color: #FC623B">
-                                                        <h5 class="modal-title " style="color:#ffffff"
+                                                        <h5 class="modal-title " style="color:#000000"
                                                             id="exampleModalLongTitle">Detalles de la solicitud
                                                         </h5>
                                                         <button type="button" class="close" data-dismiss="modal"
@@ -75,7 +75,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body" style="background-color: #FFDACC">
-                                                        <div class="card mb-3" style="max-width: 540px;">
+                                                        <div class="card mb-3" style="max-width: 600px;">
 
                                                             <!-- _____________________CUADRO - Inicio _____________________ -->
                                                             <div class="row g-0">
@@ -94,39 +94,39 @@
                                                                             <div class="container">
                                                                                 <div class="row">
 
-                                                                                    <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                    <div class="col-sm-6 col-md-5 col-lg-4">
                                                                                         Nombre</div>
                                                                                     <div
-                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-8 offset-lg-0">
                                                                                         {{ App\Models\User::getUserDates($solicitud->cliente_id)->nombre }}
                                                                                         {{ App\Models\User::getUserDates($solicitud->cliente_id)->apellidoPaterno }}
                                                                                     </div>
 
-                                                                                    <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                    <div class="col-sm-6 col-md-5 col-lg-4">
                                                                                         Rut</div>
                                                                                     <div
-                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-8 offset-lg-0">
                                                                                         {{ App\Models\User::getUserDates($solicitud->cliente_id)->rut }}
                                                                                     </div>
 
-                                                                                    <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                    <div class="col-sm-6 col-md-5 col-lg-4">
                                                                                         Telefono</div>
                                                                                     <div
-                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-8 offset-lg-0">
                                                                                         {{ App\Models\User::getUserDates($solicitud->cliente_id)->telefono }}
                                                                                     </div>
 
-                                                                                    <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                    <div class="col-sm-6 col-md-5 col-lg-4">
                                                                                         Email</div>
                                                                                     <div
-                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-8 offset-lg-0">
                                                                                         {{ App\Models\User::getUserDates($solicitud->cliente_id)->email }}
                                                                                     </div>
 
-                                                                                    <div class="col-sm-6 col-md-5 col-lg-6">
+                                                                                    <div class="col-sm-6 col-md-5 col-lg-4">
                                                                                         Dirección</div>
                                                                                     <div
-                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+                                                                                        class="col-sm-6 col-md-5 offset-md-2 col-lg-8 offset-lg-0">
                                                                                         {{ App\Models\User::getUserDates($solicitud->cliente_id)->direccion }}
                                                                                     </div>
                                                                                 </div>
@@ -138,7 +138,7 @@
                                                                 </div>
                                                                 <div
                                                                     class="modal-footer justify-content-center align-content-center">
-                                                                    <button type="submit" class="btn btn-success"><i class="fas fa-check">Atender
+                                                                    <button type="submit" class="btn btn-success">Atender
                                                                         Solicitud
                                                                     </button>
                                                                     <button type="button" class="btn btn-danger"
