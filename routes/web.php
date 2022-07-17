@@ -68,6 +68,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+
+
 Route::get('/reset', function () {
     return view('passwords.reset');
 });
@@ -84,4 +86,13 @@ Route::get('/notFound',[UserController::class, 'index']);
 
 
 
+
+
+
+
+
+
+Route::get('/estilista-buscar', [SolicitudController::class, 'BuscarPorFecha'])->name('BuscarPorFecha');
+Route::get('/estilista', [SolicitudController::class, 'VerSolicitudes'])->name('VerSolicitudes');
+Route::get('/estilista/create/{id}',[SolicitudController::class, 'AceptarServicio'])->name('AceptarServicio');
 

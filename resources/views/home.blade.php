@@ -54,10 +54,12 @@
                                 <center>
                                     <h1>Bienvenido Estilista {{ Auth::user()->nombre }}</h1>
 
+
                                     <a href="/estilista" style="margin-right: 20px" class="btn btn-success">Ver
                                         Solicitudes</a>
                                     <a href="/estilista-administrar-solicitudes" class="btn btn-success">Administrar
                                         solicitud/es</a>
+
                                 </center>
                             @endif
                             @if (Auth::user()->rol == 'administrador')

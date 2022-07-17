@@ -1,6 +1,7 @@
 @extends('layouts.plantilla_estilistas')
 
 @section('contenido')
+
     <div class="container">
         <div class="table-wrapper">
             <div class="table-title">
@@ -196,3 +197,4 @@
         }
     </script>
 @endsection
+

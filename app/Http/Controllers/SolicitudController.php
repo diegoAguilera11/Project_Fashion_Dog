@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+
+
 
 class SolicitudController extends Controller
 {
@@ -18,6 +21,7 @@ class SolicitudController extends Controller
     }
 
 
+
     public function create()
     {
         return view('cliente.create');
@@ -25,6 +29,7 @@ class SolicitudController extends Controller
 
 
     protected function requestService(Request $request)
+
     {
 
         $DateRequest = $request->dateRequest;
@@ -87,6 +92,7 @@ class SolicitudController extends Controller
             session()->flash('anular', 'La Solicitud fue anulada con exito!');
             return redirect('/cliente');
         }
+
     }
     /**
      * Display the specified resource.
@@ -119,7 +125,13 @@ class SolicitudController extends Controller
      */
     public function update(Request $request, Solicitud $solicitud)
     {
-        //
+        Solicitud::create([
+
+            'cliente_id' => Auth::user()->id,
+        ]);
+
+
+        return redirect(route('home'));
     }
 
     /**
@@ -168,7 +180,6 @@ class SolicitudController extends Controller
             }
         }
 
-
         Solicitud::create([
             'fecha_solicitud' => $date,
             'hora_solicitud' => $time,
@@ -191,6 +202,7 @@ class SolicitudController extends Controller
 
         $date = date($solicitud->fecha_solicitud);
         $time = date($solicitud->hora_solicitud);
+
 
         switch ($date) {
 
@@ -227,11 +239,14 @@ class SolicitudController extends Controller
 
     }
 
+
     public function VerSolicitudes()
     {
         $solicituds = solicitud::where('estado', 'INGRESADA')->simplePaginate(5);
         return view("estilista.index")->with('solicituds', $solicituds);
     }
+
+
 
     public function BuscarPorFecha(Request $request)
     {

@@ -9,6 +9,7 @@
 
     <!-- Scripts-->
 
+
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.all.min.js"></script>
@@ -28,6 +29,7 @@
     </script>
 
 
+
     <!-- Bootstrap CSS -->
 
     <!-- Fonts -->
@@ -39,6 +41,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 
     <title>Estilista - Fashion Dog</title>
 </head>
@@ -129,6 +132,7 @@
     <div class="container">
         @yield('contenido')
     </div>
+
 </body>
 
 </html>
