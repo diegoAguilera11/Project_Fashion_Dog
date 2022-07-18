@@ -53,7 +53,7 @@ class EstilistaController extends Controller
             'apellidoPaterno' => ['required', 'string', 'min:2'],
             'telefono' => ['required', 'string', 'min:10','max:15'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/(.*)@(.*)\.(.*)/i'],
-            'rut' => ['required', 'string', 'unique:users','cl_rut'],
+            'rut' => ['required', 'string', 'unique:users','cl_rut','min:8'],
         ]);
 
         //crear contraseña aleatoria
@@ -108,28 +108,26 @@ class EstilistaController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
         $user = User::where('id', $id)->FirstOrFail();
 
+            $request->validate([
+                'nombre' => ['required', 'string', 'min:2'],
+                'apellidoPaterno' => ['required', 'string', 'min:2'],
+                'telefono' => ['required', 'string', 'min:10','max:15'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/(.*)@(.*)\.(.*)/i'],
 
-        $request->validate([
-            'nombre' => ['required', 'string', 'min:2'],
-            'apellidoPaterno' => ['required', 'string', 'min:2'],
-            'telefono' => ['required', 'string', 'min:10','max:15'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/(.*)@(.*)\.(.*)/i'],
+            ]);
 
-        ]);
+            $user->nombre = $request->nombre;
+            $user->email = $request->email;
+            $user->apellidoPaterno = $request->apellidoPaterno;
+            $user->telefono = $request->telefono;
 
-        $user->nombre = $request->nombre;
-        $user->email = $request->email;
-        $user->apellidoPaterno = $request->apellidoPaterno;
-        $user->telefono = $request->telefono;
+            $user->save();
 
-        $user->save();
+            $estilistas = User::where('rol', 'estilista')->get();
+            return redirect(route('estilista'))->with("estilistaEditado",true)->with("estilistas",$estilistas);
 
-        $estilistas = User::where('rol', 'estilista')->get();
-        return redirect(route('estilista'))->with("estilistaEditado",true)->with("estilistas",$estilistas);
 
     }
 
