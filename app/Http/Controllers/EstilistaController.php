@@ -110,6 +110,18 @@ class EstilistaController extends Controller
     {
         $user = User::where('id', $id)->FirstOrFail();
 
+        if($user->email == $request->email){
+
+            $request->validate([
+                'nombre' => ['required', 'string', 'min:2'],
+                'apellidoPaterno' => ['required', 'string', 'min:2'],
+                'telefono' => ['required', 'string', 'min:10','max:15'],
+                'email' => ['required', 'string', 'email', 'max:255', 'regex:/(.*)@(.*)\.(.*)/i'],
+
+            ]);
+
+        }else{
+
             $request->validate([
                 'nombre' => ['required', 'string', 'min:2'],
                 'apellidoPaterno' => ['required', 'string', 'min:2'],
@@ -118,16 +130,17 @@ class EstilistaController extends Controller
 
             ]);
 
-            $user->nombre = $request->nombre;
             $user->email = $request->email;
-            $user->apellidoPaterno = $request->apellidoPaterno;
-            $user->telefono = $request->telefono;
+        }
+        
+        $user->nombre = $request->nombre;
+        $user->apellidoPaterno = $request->apellidoPaterno;
+        $user->telefono = $request->telefono;
 
-            $user->save();
+        $user->save();
 
             $estilistas = User::where('rol', 'estilista')->get();
             return redirect(route('estilista'))->with("estilistaEditado",true)->with("estilistas",$estilistas);
-
 
     }
 
