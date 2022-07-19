@@ -63,4 +63,41 @@ class User extends Authenticatable
     {
         return User::where('id', $id)->pluck('nombre')->first();
     }
+
+
+
+    public static function getUserApellidoById($id)
+    {
+        return User::where('id', $id)->pluck('apellidoPaterno')->first();
+    }
+
+    public static function getUserRut($id)
+    {
+        return User::where('id', $id)->pluck('rut')->first();
+    }
+
+    public static function getUserEmail($id)
+    {
+        return User::where('id', $id)->pluck('email')->first();
+    }
+    public static function getUserDireccion($id)
+    {
+        return User::where('id', $id)->pluck('direccion')->first();
+    }
+    public static function getUserTelefono($id)
+    {
+        return User::where('id', $id)->pluck('telefono')->first();
+    }
+
+    public static function getUserDireccionById($id)
+    {
+        return User::where('id', $id)->pluck('direccion')->first();
+    }
+
+    public static function getUserDates($id)
+    {
+        $user = (object)array('rut' => User::where('id', $id)->pluck('rut')->first(), 'nombre' => User::where('id', $id)->pluck('nombre')->first(), 'apellidoPaterno' => User::where('id', $id)->pluck('apellidoPaterno')->first(), 'telefono' => User::where('id', $id)->pluck('telefono')->first(), 'email' => User::where('id', $id)->pluck('email')->first(), 'direccion' => User::where('id', $id)->pluck('direccion')->first());
+        return $user;
+    }
+
 }
