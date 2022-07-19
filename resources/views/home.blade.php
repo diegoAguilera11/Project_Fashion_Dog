@@ -56,7 +56,7 @@
 
 
                                     <a href="/estilista" style="margin-right: 20px" class="btn btn-success">Ver
-                                        Solicitudes</a>
+                                        solicitudes</a>
                                     <a href="/estilista-administrar-solicitudes" class="btn btn-success">Administrar
                                         solicitud/es</a>
 
@@ -67,8 +67,8 @@
                                     <h1>Bienvenido Administrador {{ Auth::user()->nombre }}</h1>
                                     <br>
 
-                                    <a href="/administrador" style="margin-right: 20px" class="btn btn-success">Administrar Estilistas</a>
-                                    <a href="/usuario" style="margin-right: 20px" class="btn btn-success">Deshabilitar y/o Habilitar Usuario</a>
+                                    <a href="/administrador" style="margin-right: 20px" class="btn btn-success">Administrar estilistas</a>
+                                    <a href="/usuario" style="margin-right: 20px" class="btn btn-success">Deshabilitar y/o habilitar usuario</a>
                                     <a href="/administrarSolicitud"  class="btn btn-success" data-toggle="tooltip"
                                     data-placement="bottom" title="En esta opción puedes administrar todas las solicitudes realizadas en Fashion Dog.">Administrar solicitud/es</a>
 

@@ -66,7 +66,7 @@
                                                 <form class="formulario" method="GET"
                                                     action="{{ route('AceptarServicio', ['id' => $solicitud->id]) }}">
                                                     <div class="modal-header" style="background-color: #FC623B">
-                                                        <h5 class="modal-title " style="color:#000000"
+                                                        <h5 class="modal-title " style="color:#ffffff"
                                                             id="exampleModalLongTitle">Detalles de la solicitud
                                                         </h5>
                                                         <button type="button" class="close" data-dismiss="modal"
@@ -85,7 +85,7 @@
                                                                 </div>
                                                                 <div class="col-md-8">
                                                                     <div class="card-body">
-                                                                        <h5 class="card-title">Datos Cliente</h5>
+                                                                        <h5 class="card-title">Datos del cliente</h5>
                                                                         <p class="card-text">
 
                                                                         <h6>
@@ -110,7 +110,7 @@
                                                                                     </div>
 
                                                                                     <div class="col-sm-6 col-md-5 col-lg-4">
-                                                                                        Telefono</div>
+                                                                                        Teléfono</div>
                                                                                     <div
                                                                                         class="col-sm-6 col-md-5 offset-md-2 col-lg-8 offset-lg-0">
                                                                                         {{ App\Models\User::getUserDates($solicitud->cliente_id)->telefono }}
