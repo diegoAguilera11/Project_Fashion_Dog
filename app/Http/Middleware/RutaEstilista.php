@@ -16,10 +16,10 @@ class RutaEstilista
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->check() && auth()->user()->rol == 'administrador'){
+        if(auth()->check() && auth()->user()->rol == 'estilista'){
             return $next($request);
         }else{
-            return redirect('/');
+            return redirect('home');
         }
     }
 }

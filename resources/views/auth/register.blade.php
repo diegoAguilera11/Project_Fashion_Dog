@@ -9,7 +9,7 @@
                     <div class="card">
                         <center>
                             <div class="card-header text-black" style="background-color:#FFDACC ">
-                                <strong>{{ __('Rellene los campos') }}</strong>
+                                <strong>{{ __('Registro Cliente') }}</strong>
                             </div>
                         </center>
 
@@ -18,7 +18,6 @@
                                 @csrf
                                 <div class="row mb-3">
                                     <label for="rut" class="col-md-4 col-form-label text-md-end">{{ __('RUT') }}</label>
-
                                     <div class="col-md-6">
                                         <input id="rut" type="text"
                                             oninput="this.value = this.value.replace(/[^0-9\\K\\k]/g, '').replace(/[k]/g, 'K').replace(/(\..*)\./g, '$1');"
@@ -181,6 +180,7 @@
                     cancelButtonColor: '#FF5C77',
                     confirmButtonText: 'Enviar',
                     cancelButtonText: 'Cancelar',
+                    allowOutsideClick: false,
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
