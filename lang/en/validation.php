@@ -146,5 +146,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+
+        'rut' => 'RUT',
+        'telefono' => 'teléfono',
+        'email' => 'correo electrónico',
+        'direccion' => 'dirección',
+        'password' => 'contraseña',
+
+
+    ],
 ];

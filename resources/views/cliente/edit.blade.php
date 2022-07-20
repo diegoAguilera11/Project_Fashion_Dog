@@ -56,7 +56,7 @@
                                     title="Anula la Solicitud"
                                     action="{{ route('anularSolicitud', ['id' => $solicitud->id]) }}">
                                     <td>
-                                        <button type="submit" class="btn btn-danger"><i class="fas fa-check"></i>
+                                        <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Anula la solicitud"><i class="fas fa-check"></i>
                                             <center><img src="images/trash.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
                                         </button>
@@ -68,9 +68,9 @@
                                     <td>
                                         <form method="GET" class="formularioComentario"
                                             action="{{ route('agregar_comentario', ['id' => $solicitud->id]) }}">
-                                            <button type="button" title="Agrega un Comentario" class="btn btn-success"
-                                                data-toggle="modal" data-backdrop="static"
-                                                data-target="#ModalComentario-{{ $solicitud->id }}">
+                                            <button class="btn btn-success"
+                                                data-bs-toggle="modal" data-backdrop="static"
+                                                data-bs-target="#ModalComentario-{{ $solicitud->id }}" type="button" data-toggle="tooltip" title="Agrega un comentario a la solicitud."><i></i>
                                                 <center><img src="images/comment.png" with="20" height="20"
                                                         class="d-inline-block align-text-top"></center>
                                             </button>
@@ -88,7 +88,7 @@
                                                         <strong
                                                             style="color:#FC623B">{{ App\Models\User::getUserDates($solicitud->estilista_id)->nombre }}</strong>
                                                     </h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
+                                                    <button type="button" class="close" data-bs-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -101,7 +101,7 @@
                                                         Publicar
                                                     </button>
                                                     <button type="button" class="btn btn-danger"
-                                                        data-dismiss="modal">Cerrar
+                                                        data-bs-dismiss="modal">Cerrar
                                                         Comentario</button>
                                                 </div>
 

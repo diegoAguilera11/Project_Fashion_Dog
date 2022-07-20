@@ -19,7 +19,7 @@
                                     <input type="submit" class="btn btn-success" value="Buscar">
                                     <a href="home" class="btn btn-return"><span>Volver</span></a>
                                     <a href="/estilista" class="btn btn-warning" data-toggle="tooltip" data-placement="top"
-                                        title="Refresca el Listado de Usuarios"><span>
+                                        title="Refresca el listado de solicitudes ingresadas."><span>
                                             <center><img src="images/refrescar.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
                                         </span></a>
@@ -48,11 +48,11 @@
                                 {{ date('H:i', strtotime($solicitud->hora_solicitud)) }}</td>
                             <td>{{ $solicitud->estado }}</td>
                             <td>
-                                <form class="formularioAtender" method="GET" data-toggle="tooltip" data-placement="top"
+                                <form class="formularioAtender" method="GET"
                                     action="{{ route('AceptarServicio', ['id' => $solicitud->id]) }}">
 
-                                    <button  style= "margin-left:0 !important"  type="button" data-backdrop="static" data-toggle="modal"
-                                        data-target="#Modal-{{ $solicitud->id }}"><i class="fas fa-check"></i>
+                                    <button  style= "margin-left:0 !important"  type="button" data-bs-backdrop="static" data-bs-toggle="modal"
+                                        data-bs-target="#Modal-{{ $solicitud->id }}" data-toggle="tooltip" title="Ver detalle de la solicitud."><i class="fas fa-check"></i>
                                         <img src="images/search.png" with="20" height="20"
                                                 class="align-text-top">
                                     </button>
@@ -69,7 +69,7 @@
                                                         <h5 class="modal-title " style="color:#ffffff"
                                                             id="exampleModalLongTitle">Detalles de la solicitud
                                                         </h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
+                                                        <button type="button" class="close" data-bs-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -142,7 +142,7 @@
                                                                         Solicitud
                                                                     </button>
                                                                     <button type="button" class="btn btn-danger"
-                                                                        data-dismiss="modal">Cerrar
+                                                                        data-bs-dismiss="modal">Cerrar
                                                                         Solicitud</button>
                                                                 </div>
                                                             </div>
