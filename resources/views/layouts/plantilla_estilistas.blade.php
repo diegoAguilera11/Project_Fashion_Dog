@@ -10,24 +10,20 @@
     <!-- Scripts-->
 
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.all.min.js"></script>
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="js/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         })
     </script>
-
-
-    <script src="js/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
-    </script>
-
 
 
     <!-- Bootstrap CSS -->
@@ -92,9 +88,12 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
-                                    <a class="dropdown-item" href=" {{ route('NewPassword') }} " onclick="event.preventDefault();
-                                                                    style=" color:#707070">Cambiar Contraseña</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <a class="dropdown-item" href=" {{ route('NewPassword') }} "
+                                        onclick="event.preventDefault();
+                                                                    style="
+                                        color:#707070">Cambiar Contraseña</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </a>
@@ -109,7 +108,8 @@
                             @endif
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
-                                <a class="dropdown-item" href="{{-- {{ route('NewPassword') }} --}}" onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{-- {{ route('NewPassword') }} --}}"
+                                    onclick="event.preventDefault();
                                                                                     ">
                                     {{ __('Cambiar Contraseña') }}
                                 </a>
@@ -118,8 +118,7 @@
                                                                                                                         document.getElementById('logout-form').submit();">
                                     {{ __('Cerrar Sesión') }}
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>

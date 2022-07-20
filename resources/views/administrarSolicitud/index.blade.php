@@ -18,7 +18,7 @@
 
                                 <a href="home" class="btn btn-return"><span>Volver</span></a>
                                 <a href="/administrarSolicitud" class="btn btn-warning" data-toggle="tooltip"
-                                    data-placement="top" title="Refresca el listado de los clientes"><span>
+                                    data-placement="top" title="Refresca el listado de solicitudes."><span>
                                         <center><img src="images/refrescar.png" with="20" height="20"
                                                 class="d-inline-block align-text-top"></center>
                                     </span></a>
@@ -46,7 +46,7 @@
                     @forelse ($solicitudes as $solicitud)
                         <tr>
 
-                            <td><strong> {{ $solicitud->id }} </strong></td>
+                            <td>{{ $solicitud->id }}</td>
 
                             <td>{{ App\Models\User::getUserNameById($solicitud->cliente_id) }}
                                 {{ App\Models\User::getUserApellidoById($solicitud->cliente_id) }}</td>
@@ -63,8 +63,8 @@
 
 
                                 <button style="margin-left:0 !important" data-bs-toggle="modal"
-                                    data-bs-target="#Modal-{{ $solicitud->id }}" type="submit" title="Ver detalles"><i
-                                        class="fas fa-check"></i>
+                                    data-bs-target="#Modal-{{ $solicitud->id }}" type="submit" data-toggle="tooltip" title="Ver detalle de la solicitud." style="background-color: #000000"><i
+                                        ></i>
                                     <center><img src="images/search.png" with="20" height="20"
                                             class="d-inline-block align-text-top"> </center>
                                 </button>
@@ -77,7 +77,7 @@
                                             <div class="modal-header" style="background-color: #FC623B">
 
                                                 <strong>
-                                                    <h5 class="modal-title " style="color:rgb(0, 0, 0)"
+                                                    <h5 class="modal-title " style="color:rgb(255, 255, 255)"
                                                         id="exampleModalLongTitle">Detalles de la solicitud
                                                     </h5>
                                                 </strong>
