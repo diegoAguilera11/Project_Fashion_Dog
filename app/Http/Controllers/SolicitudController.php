@@ -242,7 +242,7 @@ class SolicitudController extends Controller
 
     public function VerSolicitudes()
     {
-        $solicituds = solicitud::where('estado', 'INGRESADA')->simplePaginate(5);
+        $solicituds = solicitud::where('estado', 'INGRESADA')->simplePaginate(10);
         return view("estilista.index")->with('solicituds', $solicituds);
     }
 
