@@ -174,7 +174,7 @@
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 Swal.fire({
-                    title: '¿Estás seguro que quieres Anular la solicitud?',
+                    title: '¿Estás seguro que quieres anular la solicitud?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',

@@ -31,7 +31,7 @@
                         <th>Cliente</th>
                         <th>Dirección</th>
                         <th>Comentario</th>
-                        <th>Ver comentario completo</th>
+                        <th>Ver comentario</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -160,7 +160,7 @@ class SolicitudController extends Controller
                 throw ValidationException::withMessages(['fecha_solicitud' => 'Debe seleccionar una fecha.']);
                 break;
 
-            case ($date < date("Y-m-d")):
+            case ($date <= date("Y-m-d")):
                 throw ValidationException::withMessages(['fecha_solicitud' => 'Las solicitudes se pueden realizar desde: ' .date("d/m/Y", strtotime($today . ' +1 day')) ]);
                 break;
 

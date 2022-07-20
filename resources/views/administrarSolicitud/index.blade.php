@@ -77,7 +77,7 @@
                                             <div class="modal-header" style="background-color: #FC623B">
 
                                                 <strong>
-                                                    <h5 class="modal-title " style="color:rgb(0, 0, 0)"
+                                                    <h5 class="modal-title " style="color:rgb(255, 255, 255)"
                                                         id="exampleModalLongTitle">Detalles de la solicitud
                                                     </h5>
                                                 </strong>
