@@ -21,7 +21,7 @@
 
                                     <a href="home" class="btn btn-return"><span>Volver</span></a>
                                     <a href="/usuario" class="btn btn-warning" data-toggle="tooltip" data-placement="top"
-                                        title="Refresca el Listado de Usuarios"><span>
+                                        title="Refresca el listado de usuarios."><span>
                                             <center><img src="images/refrescar.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
                                         </span></a>
@@ -61,7 +61,7 @@
                                     <form class="formulario" method="GET"
                                         action="{{ route('cambiarEstado', ['id' => $user->id]) }}">
                                         <button type="submit" class="btn btn-success" data-toggle="tooltip"
-                                            data-placement="right" title="Deshabilita al usuario"><i
+                                            data-placement="right" title="Deshabilita al usuario."><i
                                                 class="fas fa-check"></i>
                                             <center><img src="images/check.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
@@ -73,7 +73,7 @@
                                     <form class="formulario" method="GET"
                                         action="{{ route('cambiarEstado', ['id' => $user->id]) }}">
                                         <button type="submit" class="btn btn-danger" data-toggle="tooltip"
-                                            data-placement="right" title="Habilita al usuario"><i class="fas fa-ban"></i>
+                                            data-placement="right" title="Habilita al usuario."><i class="fas fa-ban"></i>
                                             <center><img src="images/x.png" with="20" height="20"
                                                     class="d-inline-block align-text-top"></center>
                                         </button>

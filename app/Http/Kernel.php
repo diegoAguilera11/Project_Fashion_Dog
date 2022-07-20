@@ -2,7 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\RutaAdministrador;
 use App\Http\Middleware\RutaEstilista;
+use App\Http\Middleware\RutaCliente;
 use App\Http\Middleware\UsuarioHabilitado;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -67,7 +69,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'rutasAdministrador' => RutaAdministrador::class,
         'rutasEstilista' => RutaEstilista::class,
+        'rutasCliente' => RutaCliente::class,
+
 
     ];
 }

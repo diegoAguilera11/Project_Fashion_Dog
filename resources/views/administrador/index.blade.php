@@ -35,14 +35,14 @@
                 <tbody>
                     @forelse ($estilistas as $estilista)
                         <tr>
-                            <td>{{ $estilista->rut }}</td>
+                            <td> {{ $estilista->rut }}</td>
                             <td>{{ $estilista->nombre }}</td>
                             <td>{{ $estilista->apellidoPaterno }}</td>
                             <td>{{ $estilista->telefono }}</td>
                             <td>{{ $estilista->email }}</td>
                             <td>
                                 <a href={{ route('editar_estilista', ['id' => $estilista->id]) }} class="edit"
-                                    data-toggle="tooltip" data-placement="top" title="Edita al Estilista"><img
+                                    data-toggle="tooltip" data-placement="top" title="Edita los datos del estilista"><img
                                         src="images/lapiz.png" with="25" height="25"
                                         class="d-inline-block align-text-top"></a>
                             </td>
