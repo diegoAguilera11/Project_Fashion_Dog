@@ -31,7 +31,7 @@
                         <th>Cliente</th>
                         <th>Dirección</th>
                         <th>Comentario</th>
-                        <th>Ver comentario completo</th>
+                        <th>Ver comentario</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,9 +51,9 @@
                                 @if (strlen($solicitud->comentario) > 30)
                                     <td>{{ Str::substr($solicitud->comentario, 0, 30) }}...</td>
                                     <td> <button type="button"
-                                        title="Ver comentario completo del cliente" class=" ml-1 btn btn-success"
-                                        data-toggle="modal" data-backdrop="static"
-                                        data-target="#Modal-{{ $solicitud->id }}">
+                                        class=" ml-1 btn btn-success"
+                                        data-bs-toggle="modal" data-backdrop="static"
+                                        data-bs-target="#Modal-{{ $solicitud->id }}" data-toggle="tooltip" title="Ver comentario completo del cliente.">
                                         <center><img src="images/comment.png" with="20" height="20"
                                                 class="d-inline-block align-text-top" tool ></center>
                                     </button></td>
@@ -73,7 +73,7 @@
                                                     <strong
                                                         style="color:#FC623B">{{ App\Models\User::getUserDates($solicitud->cliente_id)->nombre }}</strong>
                                                 </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
+                                                <button type="button" class="close" data-bs-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -84,7 +84,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer justify-content-center align-content-center">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar
                                                     comentario</button>
                                             </div>
                                         </div>
