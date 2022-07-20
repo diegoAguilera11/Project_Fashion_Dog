@@ -1,6 +1,14 @@
 @extends('layouts.plantilla_estilistas')
 
 @section('contenido')
+
+    <style>
+
+        .break-all {
+            word-break: break-all;
+        }
+        </style>
+
     <div class="container">
 
         <div class="table-wrapper">
@@ -19,10 +27,11 @@
                 <thead>
                     <tr>
                         <th>Nº Solicitud</th>
-                        <th>Fecha y Hora Solicitud</th>
+                        <th>Fecha y hora solicitud</th>
                         <th>Cliente</th>
                         <th>Dirección</th>
                         <th>Comentario</th>
+                        <th>Ver comentario</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,15 +49,18 @@
                                 <td>{{ App\Models\User::getUserDireccionById($solicitud->cliente_id) }}</td>
 
                                 @if (strlen($solicitud->comentario) > 30)
-                                    <td>{{ Str::substr($solicitud->comentario, 0, 30) }}...<button type="button"
-                                            title="Ver comentario Completo del Cliente" class=" ml-3 btn btn-success"
-                                            data-toggle="modal" data-backdrop="static"
-                                            data-target="#Modal-{{ $solicitud->id }}">
-                                            <center><img src="images/comment.png" with="20" height="20"
-                                                    class="d-inline-block align-text-top" tool></center>
-                                        </button></td>
+                                    <td>{{ Str::substr($solicitud->comentario, 0, 30) }}...</td>
+                                    <td> <button type="button"
+                                        title="Ver comentario completo del cliente" class=" ml-1 btn btn-success"
+                                        data-toggle="modal" data-backdrop="static"
+                                        data-target="#Modal-{{ $solicitud->id }}">
+                                        <center><img src="images/comment.png" with="20" height="20"
+                                                class="d-inline-block align-text-top" tool ></center>
+                                    </button></td>
                                 @else
                                     <td>{{ Str::substr($solicitud->comentario, 0, 30) }}
+                                    </td>
+                                    <td> </td>
                                 @endif
 
                                 <!-- Modal -->
@@ -57,8 +69,9 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Comentario Cliente
-                                                    {{App\Models\User::getUserDates($solicitud->cliente_id)->nombre}}
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Comentario del cliente
+                                                    <strong
+                                                        style="color:#FC623B">{{ App\Models\User::getUserDates($solicitud->cliente_id)->nombre }}</strong>
                                                 </h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
@@ -66,11 +79,13 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <h4>{{ $solicitud->comentario }}</h4>
+                                                <div class="break-all">
+                                                {{ $solicitud->comentario }}
+                                                </div>
                                             </div>
                                             <div class="modal-footer justify-content-center align-content-center">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar
-                                                    Comentario</button>
+                                                    comentario</button>
                                             </div>
                                         </div>
                                     </div>

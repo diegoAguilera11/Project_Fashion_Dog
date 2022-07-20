@@ -62,7 +62,7 @@ class EstadoUsuario extends Controller
     {
 
         //$solicitudes = Solicitud::simplePaginate(5);
-        $solicitudes = DB::table('solicituds')->simplePaginate(10);
+        $solicitudes = DB::table('solicituds')->orderBy('fecha_solicitud')->orderBy('hora_solicitud')->simplePaginate(10);
         /**
          * compact = va acompactar todas las variables que se vayan a enviar en algun momento
          *

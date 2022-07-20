@@ -66,12 +66,14 @@
                             @if ($solicitud->estado == 'ATENDIDA A TIEMPO' || $solicitud->estado == 'ATENDIDA CON RETRASO')
                                 @if ($solicitud->comentario == '')
                                     <td>
-                                        <button type="button" title="Agrega un Comentario" class="btn btn-success"
-                                            data-toggle="modal" data-backdrop="static"
-                                            data-target="#ModalComentario-{{ $solicitud->id }}">
-                                            <center><img src="images/comment.png" with="20" height="20"
-                                                    class="d-inline-block align-text-top"></center>
-                                        </button>
+                                        <form method="GET" class="formularioComentario"
+                                            action="{{ route('agregar_comentario', ['id' => $solicitud->id]) }}">
+                                            <button type="button" title="Agrega un Comentario" class="btn btn-success"
+                                                data-toggle="modal" data-backdrop="static"
+                                                data-target="#ModalComentario-{{ $solicitud->id }}">
+                                                <center><img src="images/comment.png" with="20" height="20"
+                                                        class="d-inline-block align-text-top"></center>
+                                            </button>
                                     </td>
 
                                     <!-- Modal -->
@@ -79,35 +81,34 @@
                                         role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
-                                                <form method="GET"
-                                                    action="{{ route('agregar_comentario', ['id' => $solicitud->id]) }}">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Comparte tu
-                                                            opinión
-                                                            sobre el Servicio de
-                                                            {{ App\Models\User::getUserDates($solicitud->estilista_id)->nombre }}
-                                                        </h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <textarea name="comentario" class="text" value="" rows="5" cols="50"
-                                                            placeholder=" RECUERDA QUE EL COMENTARIO SOLAMENTE SE PUEDE ESCRIBIR UNA VEZ." minlength="1" maxlength="100"></textarea>
-                                                    </div>
-                                                    <div class="modal-footer justify-content-center align-content-center">
-                                                        <button type="submit" class="btn btn-success">
-                                                            Publicar
-                                                        </button>
-                                                        <button type="button" class="btn btn-danger"
-                                                            data-dismiss="modal">Cerrar
-                                                            Comentario</button>
-                                                    </div>
-                                                </form>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Comparte tu
+                                                        opinión
+                                                        sobre el Servicio de
+                                                        <strong
+                                                            style="color:#FC623B">{{ App\Models\User::getUserDates($solicitud->estilista_id)->nombre }}</strong>
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <textarea name="comentario" class="text" value="" rows="5" cols="50" minlength="1" maxlength="100"></textarea>
+                                                </div>
+                                                <div class="modal-footer justify-content-center align-content-center">
+                                                    <button type="submit" class="btn btn-success">
+                                                        Publicar
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Cerrar
+                                                        Comentario</button>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
+                                    </form>
                                 @else
                                     <td></td>
                                 @endif
@@ -137,22 +138,19 @@
         </div>
     @endif
 
-    {{-- <script>
-        const formularios = document.getElementsByClassName("formulario");
-        const estilistas = document.getElementsByClassName("estilista");
-        let comentario = "";
-        var nombreEstilista = "";
+    <script>
+        const formularios = document.getElementsByClassName("formularioComentario");
 
         for (const form of formularios) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 Swal.fire({
-                    title: 'Comparte tu opinión sobre el Servicio de ' + nombreEstilista,
-                    html: '<textarea rows="4" cols="40" placeholder="Ingrese un comentario." minlength="1" maxlength="100"></textarea>',
+                    title: '¡RECUERDA QUE SOLO PUEDES COMENTAR UNA VEZ!',
+                    icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',
                     cancelButtonColor: '#FF5C77',
-                    confirmButtonText: 'Publicar',
+                    confirmButtonText: 'Confirmar',
                     cancelButtonText: 'Cancelar',
                     allowOutsideClick: false,
 
@@ -160,15 +158,13 @@
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
 
-                        comentario = Swal.getHtmlContainer().querySelector('textarea').value;
-                        form.firstElementChild.value = comentario;
-
                         form.submit();
                     }
                 })
             })
         }
-    </script> --}}
+    </script>
+
 
 
     <script>
@@ -178,7 +174,7 @@
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 Swal.fire({
-                    title: '¿Estás seguro que quieres Anular la solicitud?',
+                    title: '¿Estás seguro que quieres anular la solicitud?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#4DD091',
