@@ -11,11 +11,11 @@
                     </div>
                     <div class="col-sm-3">
                         <br>
-                        <a href="administrador/create" class="btn btn-success" data-toggle="modal"><img
-                                src="images/agregar.png" with="25" height="25" style="margin-right: 10px"
+                        <a href="administrador/create" class="btn btn-success" data-toggle="modal"><img src="images/agregar.png"
+                                with="25" height="25" style="margin-right: 10px"
                                 class="d-inline-block align-text-top"><span>Agregar estilista</span></a>
 
-                        <a href="home" class="btn btn-danger" data-toggle="modal"><span>Volver</span></a>
+                        <a href="home" class="btn btn-return" data-toggle="modal"><span>Volver</span></a>
 
                     </div>
                 </div>
@@ -35,14 +35,14 @@
                 <tbody>
                     @forelse ($estilistas as $estilista)
                         <tr>
-                            <td>{{ $estilista->rut }}</td>
+                            <td> {{ $estilista->rut }}</td>
                             <td>{{ $estilista->nombre }}</td>
                             <td>{{ $estilista->apellidoPaterno }}</td>
                             <td>{{ $estilista->telefono }}</td>
                             <td>{{ $estilista->email }}</td>
                             <td>
                                 <a href={{ route('editar_estilista', ['id' => $estilista->id]) }} class="edit"
-                                    data-toggle="tooltip" data-placement="top" title="Edita al Estilista"><img
+                                    data-toggle="tooltip" data-placement="top" title="Edita los datos del estilista"><img
                                         src="images/lapiz.png" with="25" height="25"
                                         class="d-inline-block align-text-top"></a>
                             </td>

@@ -25,7 +25,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
     </script>
-
+    <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 
 
 
@@ -56,7 +60,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <img src="images/logo_FashionDog.png" alt="" width="60" height="60"
+                        <img src="/images/logo_FashionDog.png" alt="" width="60" height="60"
                             class="d-inline-block align-text-top">
                     </ul>
 
@@ -73,8 +77,7 @@
                                                 <a class="nav-link" href="/" style="color:#ffffff">Inicio</a>
                                             </div>
                                             <div class="col-sm">
-                                                <a class="nav-link" href="/register"
-                                                    style="color:#ffffff">Registrar</a>
+                                                <a class="nav-link" href="/register" style="color:#ffffff">Registrar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -92,20 +95,20 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <!-- Cambiar Rutas Para "Cambiar Contraseña"-->
-                                    <a class="dropdown-item" href=" {{ route('NewPassword') }} " onclick="event.preventDefault();
+                                    <a class="dropdown-item" href=" {{ route('NewPassword') }} "
+                                        onclick="event.preventDefault();
 
-                                                                                                    style="
+                                        style="
                                         color:#707070">Cambiar
                                         Contraseña</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                            document.getElementById('logout-form').submit();">
+                                                                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
@@ -120,7 +123,6 @@
             @yield('content')
         </main>
     </div>
-
 </body>
 
 </html>

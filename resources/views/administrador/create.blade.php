@@ -36,7 +36,7 @@
 
                                 <div class="col-md-6">
                                     <input id="nombre" type="text"
-                                        oninput="this.value = this.value.replace(/[^A-Z\\a-z]/g, '').replace(/(\..*)\./g, '$1');"
+                                        oninput="this.value = this.value.replace(/[^A-Z\\a-z\\a-zA-ZñÑáéíóúÁÉÍÓÚ\s\\]/g, '').replace(/(\..*)\./g, '$1');"
                                         class="form-control @error('nombre') is-invalid @enderror" name="nombre"
                                         value="{{ old('nombre') }}" required autocomplete="nombre" autofocus>
 
@@ -56,7 +56,7 @@
 
                                 <div class="col-md-6">
                                     <input id="apellidoPaterno" type="text"
-                                        oninput="this.value = this.value.replace(/[^A-Z\\a-z]/g, '').replace(/(\..*)\./g, '$1');"
+                                        oninput="this.value = this.value.replace(/[^A-Z\\a-z\\a-zA-ZñÑáéíóúÁÉÍÓÚ\s\\]/g, '').replace(/(\..*)\./g, '$1');"
                                         class="form-control @error('apellidoPaterno') is-invalid @enderror"
                                         name="apellidoPaterno" value="{{ old('apellidoPaterno') }}" required
                                         autocomplete="apellidoPaterno" autofocus>
@@ -108,7 +108,7 @@
                                     <button id="boton" type="submit" class="btn btn-success">
                                         Agregar Estilista
                                     </button>
-                                    <a href="/administrador" class="btn btn-danger">Cancelar</a>
+                                    <a href="/administrador" class="btn btn-return">Volver</a>
                                 </div>
                             </div>
                         </form>
@@ -131,6 +131,7 @@
                 cancelButtonColor: '#FF5C77',
                 confirmButtonText: 'Agregar',
                 cancelButtonText: 'Cancelar',
+                allowOutsideClick: false,
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
