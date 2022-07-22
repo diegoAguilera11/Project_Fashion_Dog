@@ -154,6 +154,5 @@ return [
         'direccion' => 'dirección',
         'password' => 'contraseña',
 
-
     ],
 ];
