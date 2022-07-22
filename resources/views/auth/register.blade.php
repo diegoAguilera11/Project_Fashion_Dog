@@ -39,7 +39,7 @@
 
                                     <div class="col-md-6">
                                         <input id="nombre" type="text"
-                                            oninput="this.value = this.value.replace(/[^A-Z\\a-z]/g, '').replace(/(\..*)\./g, '$1');"
+                                            oninput="this.value = this.value.replace(/[^A-Z\\a-z\\a-zA-ZñÑáéíóúÁÉÍÓÚ\s\\]/g, '').replace(/(\..*)\./g, '$1');"
                                             class="form-control @error('nombre') is-invalid @enderror" name="nombre"
                                             value="{{ old('nombre') }}" required autocomplete="nombre" autofocus>
 
@@ -57,7 +57,7 @@
 
                                     <div class="col-md-6">
                                         <input id="apellidoPaterno" type="text"
-                                            oninput="this.value = this.value.replace(/[^A-Z\\a-z]/g, '').replace(/(\..*)\./g, '$1');"
+                                            oninput="this.value = this.value.replace(/[^A-Z\\a-z\\a-zA-ZñÑáéíóúÁÉÍÓÚ\s\\]/g, '').replace(/(\..*)\./g, '$1');"
                                             class="form-control @error('apellidoPaterno') is-invalid @enderror"
                                             name="apellidoPaterno" value="{{ old('apellidoPaterno') }}" required
                                             autocomplete="apellidoPaterno" autofocus>
